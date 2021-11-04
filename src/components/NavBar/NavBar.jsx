@@ -19,19 +19,19 @@ export default function NavBar() {
   return (
     <div style={containerStyles}>
       <NavLink style={linkStyles} activeStyle={activeStyles} exact to="/">
-        <h1>Home</h1>
+        <h3>Home</h3>
       </NavLink>
 
-      <NavLink style={linkStyles} activeStyle={activeStyles} to="/register">
-        <h1>Register</h1>
+      <NavLink to="/signup" style={linkStyles} activeStyle={activeStyles}>
+        <h3>Register</h3>
       </NavLink>
 
-      <NavLink style={linkStyles} activeStyle={activeStyles} to="/buy">
-        <h1>Buy</h1>
+      <NavLink to="/login" style={linkStyles} activeStyle={activeStyles}>
+        <h3>Log In</h3>
       </NavLink>
 
       <NavLink style={linkStyles} activeStyle={activeStyles} to="/forum">
-        <h1>Discussion</h1>
+        <h3>Discussion</h3>
       </NavLink>
     </div>
   );
