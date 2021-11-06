@@ -17,13 +17,19 @@ export default class LoginForm extends Component {
     event.preventDefault();
 
     axios
-      .post(`${process.env.REACT_APP_API_HOST}/auth/login`, {
-        email,
-        password,
-      })
+      .post(
+        `${process.env.REACT_APP_API_HOST}/auth/login`,
+        {
+          email,
+          password,
+        },
+        { withCredentials: true }
+      )
       .then((loggedUser) => {
         this.setState({ email: "", password: "" });
-
+        //
+        this.props.setUser(loggedUser.data, true);
+        //
         this.props.history.push("/");
       })
       .catch((err) => console.log(err));

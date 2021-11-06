@@ -27,7 +27,7 @@ export default class SignupForm extends Component {
       })
       .then((newUser) => {
         this.setState({ username: "", password: "", email: "", city: "" });
-
+        this.props.setUser(newUser.data, true);
         this.props.history.push("/");
       })
       .catch((err) => console.log(err));
