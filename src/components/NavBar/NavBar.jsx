@@ -20,6 +20,7 @@ export default function NavBar({ isLoggedIn, user, setUser }) {
   const logout = () => {
     axios.post(`${process.env.REACT_APP_API_HOST}/auth/logout`).then(() => {
       setUser(null, false);
+      this.props.history.push("/");
     });
   };
 
@@ -56,6 +57,9 @@ export default function NavBar({ isLoggedIn, user, setUser }) {
           </NavLink>
           <NavLink to="/create" style={linkStyles} activeStyle={activeStyles}>
             <h3>Create Thread</h3>
+          </NavLink>
+          <NavLink to="/profile" style={linkStyles} activeStyle={activeStyles}>
+            <h3>profile</h3>
           </NavLink>
           <button onClick={logout}>Log Out</button>
         </>

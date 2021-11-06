@@ -6,6 +6,7 @@ import LoginForm from "./components/AuthComponents/LoginForm";
 import SignupForm from "./components/AuthComponents/SignupForm";
 import Home from "./components/Home/Home";
 import NavBar from "./components/NavBar/NavBar";
+import Profile from "./components/ProfileComponent/Profile";
 
 class App extends Component {
   state = {
@@ -57,6 +58,8 @@ class App extends Component {
             render={(props) => <LoginForm {...props} setUser={this.setUser} />}
             exact
           />
+
+          {isLoggedIn && <Route path="/profile" component={Profile} exact />}
         </Switch>
       </div>
     );
