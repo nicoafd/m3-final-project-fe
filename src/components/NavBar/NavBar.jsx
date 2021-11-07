@@ -1,18 +1,23 @@
 import axios from "axios";
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { AiFillHome, AiFillWechat, AiTwotoneShop } from "react-icons/ai";
+import { MdLogout, MdLogin } from "react-icons/md";
 
 const containerStyles = {
   display: "flex",
   justifyContent: "space-evenly",
+  alignItems: "center",
+  height: "10vh",
+  backgroundColor: "grey",
 };
 
 const linkStyles = {
   textDecoration: "none",
+  color: "white",
 };
 
 const activeStyles = {
-  textDecoration: "underline",
   color: "black",
 };
 
@@ -20,22 +25,21 @@ export default function NavBar({ isLoggedIn, user, setUser }) {
   const logout = () => {
     axios.post(`${process.env.REACT_APP_API_HOST}/auth/logout`).then(() => {
       setUser(null, false);
-      this.props.history.push("/");
     });
   };
 
   return (
     <div style={containerStyles}>
       <NavLink style={linkStyles} activeStyle={activeStyles} exact to="/">
-        <h3>Home</h3>
+        <AiFillHome />
       </NavLink>
 
       <NavLink style={linkStyles} activeStyle={activeStyles} to="/forum">
-        <h3>Discussion</h3>
+        <AiFillWechat />
       </NavLink>
 
       <NavLink style={linkStyles} activeStyle={activeStyles} to="/marketplace">
-        <h3>Marketplace</h3>
+        <AiTwotoneShop />
       </NavLink>
 
       {!isLoggedIn && (
@@ -45,7 +49,7 @@ export default function NavBar({ isLoggedIn, user, setUser }) {
             <h3>Register</h3>
           </NavLink>
           <NavLink to="/login" style={linkStyles} activeStyle={activeStyles}>
-            <h3>Log In</h3>
+            <MdLogin />
           </NavLink>
         </>
       )}
@@ -61,7 +65,9 @@ export default function NavBar({ isLoggedIn, user, setUser }) {
           <NavLink to="/profile" style={linkStyles} activeStyle={activeStyles}>
             <h3>profile</h3>
           </NavLink>
-          <button onClick={logout}>Log Out</button>
+          <NavLink to="/" style={linkStyles} activeStyle={activeStyles}>
+            <MdLogout onClick={logout} />
+          </NavLink>
         </>
       )}
     </div>
