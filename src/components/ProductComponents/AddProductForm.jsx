@@ -18,19 +18,22 @@ class AddProductForm extends Component {
     this.setState({ [name]: value });
   };
 
-
   handleSubmit = (event) => {
     event.preventDefault();
     const { name, description, price, category, stock } = this.state;
     axios
-      .post(`${process.env.REACT_APP_API_HOST}/product/create`, {
-        name,
+      .post(
+        `${process.env.REACT_APP_API_HOST}/product/create`,
+        {
+          name,
 
-        description,
-        price: Number(price),
-        category,
-        stock: Number(stock),
-      }, {withCredentials: true})
+          description,
+          price: Number(price),
+          category,
+          stock: Number(stock),
+        },
+        { withCredentials: true }
+      )
       .then(() => this.props.history.push("/"))
       .catch(() => this.props.history.push("/500"));
   };
@@ -65,12 +68,21 @@ class AddProductForm extends Component {
           />
 
           <label htmlFor="category">Category</label>
-          <input
+          <select
+            onChange={this.handleChange}
+            id="category"
+            name="category"
+            value={category}
+          >
+            <option value="Tech">Tech</option>
+            <option value="Gaming">Gaming</option>
+          </select>
+          {/* <input
             onChange={this.handleChange}
             type="text"
             name="category"
             value={category}
-          />
+          /> */}
 
           <label htmlFor="stock">Stock</label>
           <input
