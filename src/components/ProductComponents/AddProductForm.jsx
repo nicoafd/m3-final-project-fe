@@ -5,33 +5,38 @@ class AddProductForm extends Component {
   state = {
     name: "",
     description: "",
-    price: "",
+    price: 0,
     category: "",
-    stock: "",
+    stock: 0,
   };
 
-  handleChange = (event) => {
-    this.setState({ [event.target.name]: event.target.value });
+  // handleChange = (event) => {
+  //   this.setState({ [event.target.name]: === "price" ? valueAsNumber : event.target.value });
+  // };
+
+  handleChange = ({ target: { name, value } }) => {
+    this.setState({ [name]: value });
   };
+
 
   handleSubmit = (event) => {
     event.preventDefault();
-    const { name, image, description, price, category, stock } = this.state;
+    const { name, description, price, category, stock } = this.state;
     axios
-      .post(`${process.env.REACT_APP_SERVER_API}/product/create`, {
+      .post(`${process.env.REACT_APP_API_HOST}/product/create`, {
         name,
-        image,
+
         description,
-        price,
+        price: Number(price),
         category,
-        stock,
-      })
+        stock: Number(stock),
+      }, {withCredentials: true})
       .then(() => this.props.history.push("/"))
       .catch(() => this.props.history.push("/500"));
   };
 
   render() {
-    const { name, image, description, price, category, stock } = this.state;
+    const { name, description, price, category, stock } = this.state;
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
@@ -54,7 +59,7 @@ class AddProductForm extends Component {
           <label htmlFor="price">Price</label>
           <input
             onChange={this.handleChange}
-            type="text"
+            type="number"
             name="price"
             value={price}
           />
@@ -70,7 +75,7 @@ class AddProductForm extends Component {
           <label htmlFor="stock">Stock</label>
           <input
             onChange={this.handleChange}
-            type="text"
+            type="number"
             name="stock"
             value={stock}
           />
