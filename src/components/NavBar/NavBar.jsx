@@ -23,9 +23,15 @@ const activeStyles = {
 
 export default function NavBar({ isLoggedIn, user, setUser }) {
   const logout = () => {
-    axios.post(`${process.env.REACT_APP_API_HOST}/auth/logout`).then(() => {
-      setUser(null, false);
-    });
+    axios
+      .post(
+        `${process.env.REACT_APP_API_HOST}/auth/logout`,
+        {},
+        { withCredentials: true }
+      )
+      .then(() => {
+        setUser(null, false);
+      });
   };
 
   return (
