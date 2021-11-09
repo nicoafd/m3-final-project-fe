@@ -59,12 +59,38 @@ export default class Profile extends Component {
   }
 
   render() {
-    const { username, city } = this.state;
+    const { username, city, products, threads } = this.state;
     return (
       <div>
         <h3>Welcome to your profile</h3>
         <h3>{username}</h3>
         <h3>{city}</h3>
+
+        {threads.length && (
+          <>
+            {threads.map((thread) => {
+              return (
+                <div>
+                  <h4>{thread.title}</h4>
+                  <p>{thread.categories}</p>
+                </div>
+              );
+            })}
+          </>
+        )}
+
+        {products.length && (
+          <>
+            {products.map((product) => {
+              return (
+                <div>
+                  <h4>{product.name}</h4>
+                  <p>{product.category}</p>
+                </div>
+              );
+            })}
+          </>
+        )}
       </div>
     );
   }
