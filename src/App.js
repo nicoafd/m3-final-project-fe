@@ -4,6 +4,7 @@ import { Route, Switch } from "react-router";
 import "./App.css";
 import LoginForm from "./components/AuthComponents/LoginForm";
 import SignupForm from "./components/AuthComponents/SignupForm";
+import AddThreadForm from "./components/ForumComponents/AddThreadForm";
 import Home from "./components/Home/Home";
 import NavBar from "./components/NavBar/NavBar";
 import AddProductForm from "./components/ProductComponents/AddProductForm";
@@ -59,8 +60,15 @@ class App extends Component {
             render={(props) => <LoginForm {...props} setUser={this.setUser} />}
             exact
           />
-          {isLoggedIn && <Route path="/sell" component={AddProductForm} exact />}
+          {isLoggedIn && (
+            <Route path="/sell" component={AddProductForm} exact />
+          )}
+
           {isLoggedIn && <Route path="/profile" component={Profile} exact />}
+
+          {isLoggedIn && (
+            <Route path="/create" component={AddThreadForm} exact />
+          )}
         </Switch>
       </div>
     );

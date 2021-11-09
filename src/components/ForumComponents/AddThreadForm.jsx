@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { Component } from "react";
 
-export class AddThreadForm extends Component {
+class AddThreadForm extends Component {
   state = {
     title: "",
     description: "",
@@ -41,19 +41,20 @@ export class AddThreadForm extends Component {
             type="text"
             value={title}
             onChange={this.handleChange}
-          ></input>
+          />
           <input
             name="description"
             type="text"
             value={description}
             onChange={this.handleChange}
-          ></input>
+          />
           <input
             name="categories"
             type="text"
             value={categories}
             onChange={this.handleChange}
-          ></input>
+          />
+          <button type="submit">submut</button>
         </form>
       </div>
     );
