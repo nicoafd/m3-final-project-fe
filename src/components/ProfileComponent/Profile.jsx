@@ -15,15 +15,26 @@ export default class Profile extends Component {
         withCredentials: true,
       })
       .then((response) => {
-        if (response.data.threads) {
-          this.setState({
-            threads: [...this.state.threads, response.data.threads],
-          });
-        }
+        this.setState({
+          threads: [...response.data.threads],
+        });
       })
       .catch((err) => {
         console.log(err);
       });
+  };
+
+  handleProducts = () => {
+    axios
+      .get(`${process.env.REACT_APP_API_HOST}/product/my-products`, {
+        withCredentials: true,
+      })
+      .then((response) => {
+        this.setState({
+          products: [...response.data.products],
+        });
+      })
+      .catch((err) => console.log(err));
   };
 
   handleUserInfo = () => {
@@ -44,6 +55,7 @@ export default class Profile extends Component {
   componentDidMount() {
     this.handleUserInfo();
     this.handleThreads();
+    this.handleProducts();
   }
 
   render() {
