@@ -8,7 +8,25 @@ export default class Profile extends Component {
     threads: [],
     products: [],
   };
-  componentDidMount() {
+
+  handleThreads = () => {
+    axios
+      .get(`${process.env.REACT_APP_API_HOST}/thread/my-threads`, {
+        withCredentials: true,
+      })
+      .then((response) => {
+        if (response.data.threads) {
+          this.setState({
+            threads: [...this.state.threads, response.data.threads],
+          });
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  handleUserInfo = () => {
     axios
       .get(`${process.env.REACT_APP_API_HOST}/profile`, {
         withCredentials: true,
@@ -21,6 +39,11 @@ export default class Profile extends Component {
         console.log(this.state.username, this.state.city);
       })
       .catch((err) => {});
+  };
+
+  componentDidMount() {
+    this.handleUserInfo();
+    this.handleThreads();
   }
 
   render() {
