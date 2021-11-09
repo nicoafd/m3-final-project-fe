@@ -18,6 +18,7 @@ export default class Profile extends Component {
           username: response.data.username,
           city: response.data.city,
         });
+        console.log(this.state.username, this.state.city);
       })
       .catch((err) => {});
   }
