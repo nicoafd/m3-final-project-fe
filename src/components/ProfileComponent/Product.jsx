@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { RingLoader } from "react-spinners";
 
 function Product() {
   const [products, setProducts] = useState([]);
@@ -25,7 +26,7 @@ function Product() {
     <div>
       <h2>All products listed by you</h2>
       {isLoading ? (
-        <h2>...Loading</h2>
+        <RingLoader loading={isLoading} size={50} />
       ) : (
         products.map((product) => {
           return (

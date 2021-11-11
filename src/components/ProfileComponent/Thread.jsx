@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { RingLoader } from "react-spinners";
 
 function Thread() {
   //Defining state = threads and setState = setThreads
@@ -29,7 +30,7 @@ function Thread() {
     <div>
       <h2>All your threads</h2>
       {isLoading ? (
-        <h2>..Loading</h2>
+        <RingLoader loading={isLoading} size={50} />
       ) : (
         threads.map((thread) => {
           return (
