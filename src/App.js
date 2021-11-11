@@ -5,11 +5,13 @@ import "./App.css";
 import LoginForm from "./components/AuthComponents/LoginForm";
 import SignupForm from "./components/AuthComponents/SignupForm";
 import AddThreadForm from "./components/ForumComponents/AddThreadForm";
+import AllThreads from "./components/ForumComponents/AllThreads";
 import Home from "./components/Home/Home";
 import NavBar from "./components/NavBar/NavBar";
 import AddProductForm from "./components/ProductComponents/AddProductForm";
 import AllProducts from "./components/ProductComponents/AllProducts";
 import Profile from "./components/ProfileComponent/Profile";
+import OneThread from "./components/ForumComponents/OneThread";
 
 class App extends Component {
   state = {
@@ -63,6 +65,11 @@ class App extends Component {
             render={(props) => <LoginForm {...props} setUser={this.setUser} />}
             exact
           />
+
+          <Route path="/forum" component={AllThreads} exact />
+
+          <Route path="/thread/:id" component={OneThread} exact />
+
           {isLoggedIn && (
             <Route path="/sell" component={AddProductForm} exact />
           )}

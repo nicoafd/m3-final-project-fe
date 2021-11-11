@@ -5,7 +5,7 @@ class AddThreadForm extends Component {
   state = {
     title: "",
     description: "",
-    categories: "",
+    category: "",
     isActive: true,
     edit: false,
   };
@@ -15,7 +15,7 @@ class AddThreadForm extends Component {
   };
 
   handleSubmit = (event) => {
-    const { title, description, categories } = this.state;
+    const { title, description, category } = this.state;
     event.preventDefault();
     axios
       .post(
@@ -23,7 +23,7 @@ class AddThreadForm extends Component {
         {
           title,
           description,
-          categories,
+          category,
         },
         { withCredentials: true }
       )
@@ -32,29 +32,32 @@ class AddThreadForm extends Component {
   };
 
   render() {
-    const { title, description, categories } = this.state;
+    const { title, description, category } = this.state;
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
+          <label htmlFor="title">Title:</label>
           <input
             name="title"
             type="text"
             value={title}
             onChange={this.handleChange}
           />
+          <label htmlFor="description">Description:</label>
           <input
             name="description"
             type="text"
             value={description}
             onChange={this.handleChange}
           />
+          <label htmlFor="category">Category:</label>
           <input
-            name="categories"
+            name="category"
             type="text"
-            value={categories}
+            value={category}
             onChange={this.handleChange}
           />
-          <button type="submit">submut</button>
+          <button type="submit">submit</button>
         </form>
       </div>
     );
