@@ -1,5 +1,4 @@
 import axios from "axios";
-import react from "react";
 import React, { Component } from "react";
 
 export class AllProducts extends Component {
