@@ -1,5 +1,6 @@
-import axios from 'axios';
-import React, { Component } from 'react'
+import axios from "axios";
+import react from "react";
+import React, { Component } from "react";
 
 export class AllProducts extends Component {
   state = {
@@ -12,8 +13,9 @@ export class AllProducts extends Component {
         withCredentials: true,
       })
       .then((response) => {
+        console.log(response.data);
         this.setState({
-          productList: [...response.data.products],
+          productList: [...response.data],
         });
       })
       .catch((err) => console.log(err));
@@ -24,17 +26,18 @@ export class AllProducts extends Component {
   }
 
   render() {
-      const { productList } = this.state;
+    const { productList } = this.state;
     return (
       <div>
+        <h1>TEST</h1>
         {productList.length && (
           <>
             {productList.map((product) => {
               return (
-                <div>
+                <React.Fragment key={product._id}>
                   <h4>{product.name}</h4>
                   <p>{product.category}</p>
-                </div>
+                </React.Fragment>
               );
             })}
           </>
@@ -44,4 +47,4 @@ export class AllProducts extends Component {
   }
 }
 
-export default AllProducts
+export default AllProducts;

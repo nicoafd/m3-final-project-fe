@@ -8,6 +8,7 @@ import AddThreadForm from "./components/ForumComponents/AddThreadForm";
 import Home from "./components/Home/Home";
 import NavBar from "./components/NavBar/NavBar";
 import AddProductForm from "./components/ProductComponents/AddProductForm";
+import AllProducts from "./components/ProductComponents/AllProducts";
 import Profile from "./components/ProfileComponent/Profile";
 
 class App extends Component {
@@ -54,6 +55,8 @@ class App extends Component {
             render={(props) => <SignupForm {...props} setUser={this.setUser} />}
             exact
           />
+
+          <Route path="/marketplace" component={AllProducts} exact />
 
           <Route
             path="/login"
