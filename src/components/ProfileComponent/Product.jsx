@@ -3,6 +3,7 @@ import axios from "axios";
 
 function Product() {
   const [products, setProducts] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   const handleProducts = () => {
     axios
@@ -11,7 +12,7 @@ function Product() {
       })
       .then((response) => {
         setProducts([...response.data.products]);
-        console.log(products);
+        setIsLoading(false);
       })
       .catch((err) => console.log(err));
   };
@@ -22,13 +23,19 @@ function Product() {
 
   return (
     <div>
-      {products.map((product) => {
-        return (
-          <React.Fragment key={product._id}>
-            <h2>{product.name}</h2>
-          </React.Fragment>
-        );
-      })}
+      <h2>All products listed by you</h2>
+      {isLoading ? (
+        <h2>...Loading</h2>
+      ) : (
+        products.map((product) => {
+          return (
+            <React.Fragment key={product._id}>
+              <h2>{product.name}</h2>
+              <p>{product.category}</p>
+            </React.Fragment>
+          );
+        })
+      )}
     </div>
   );
 }
