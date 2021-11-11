@@ -1,32 +1,49 @@
 import axios from "axios";
 import React, { Component } from "react";
+import PacmanLoader from "react-spinners/PacmanLoader";
 
 class AddProductForm extends Component {
   state = {
     name: "",
+    image: "",
     description: "",
     price: 0,
     category: "",
     stock: 0,
+    imageIsUploading: false,
   };
-
-  // handleChange = (event) => {
-  //   this.setState({ [event.target.name]: === "price" ? valueAsNumber : event.target.value });
-  // };
 
   handleChange = ({ target: { name, value } }) => {
     this.setState({ [name]: value });
   };
 
+  handleImageUpload = (event) => {
+    // console.log(event.target.files[0]);
+    this.setState({ imageIsUploading: true });
+    const uploadData = new FormData();
+    uploadData.append("image", event.target.files[0]);
+
+    axios
+      .post(`${process.env.REACT_APP_API_HOST}/upload`, uploadData)
+      .then((result) => {
+        console.log(result);
+        this.setState({
+          image: result.data.imagePath,
+          imageIsUploading: false,
+        });
+      })
+      .catch((err) => this.props.history.push("/500"));
+  };
+
   handleSubmit = (event) => {
     event.preventDefault();
-    const { name, description, price, category, stock } = this.state;
+    const { name, image, description, price, category, stock } = this.state;
     axios
       .post(
         `${process.env.REACT_APP_API_HOST}/product/create`,
         {
           name,
-
+          image,
           description,
           price: Number(price),
           category,
@@ -39,7 +56,15 @@ class AddProductForm extends Component {
   };
 
   render() {
-    const { name, description, price, category, stock } = this.state;
+    const {
+      name,
+      image,
+      description,
+      price,
+      category,
+      stock,
+      imageIsUploading,
+    } = this.state;
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
@@ -50,6 +75,10 @@ class AddProductForm extends Component {
             name="name"
             value={name}
           />
+
+          {image && <img src={this.state.image} alt="product uploaded" />}
+          <PacmanLoader loading={imageIsUploading} size={200}/>
+          <input onChange={this.handleImageUpload} type="file" name="image" />
 
           <label htmlFor="description">Description</label>
           <input
@@ -92,7 +121,9 @@ class AddProductForm extends Component {
             value={stock}
           />
 
-          <button type="submit">Submit</button>
+          <button type="submit" disabled={imageIsUploading}>
+            Add Product
+          </button>
         </form>
       </div>
     );
