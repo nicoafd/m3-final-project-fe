@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { Component } from "react";
-import PacmanLoader from "react-spinners/PacmanLoader";
+import RingLoader from "react-spinners/RingLoader";
 
 class AddProductForm extends Component {
   state = {
@@ -77,7 +77,7 @@ class AddProductForm extends Component {
           />
 
           {image && <img src={this.state.image} alt="product uploaded" />}
-          <PacmanLoader loading={imageIsUploading} size={200}/>
+          <RingLoader loading={imageIsUploading} size={150} />
           <input onChange={this.handleImageUpload} type="file" name="image" />
 
           <label htmlFor="description">Description</label>
@@ -103,8 +103,16 @@ class AddProductForm extends Component {
             name="category"
             value={category}
           >
-            <option value="Tech">Tech</option>
-            <option value="Gaming">Gaming</option>
+            <option value="Mobile, Computers & Devices">Mobile, Computers & Devices</option>
+            <option value="Consoles & Videogames">Consoles & Videogames</option>
+            <option value="Fashion">Fashion</option>
+            <option value="Sports & Outdoors">Sports & Outdoors</option>
+            <option value="Home & Garden">Home & Garden</option>
+            <option value="Health & Beauty">Health & Beauty</option>
+            <option value="Cinema, Books & Music">Cinema, Books & Music</option>
+            <option value="Vehicles & Motor">Vehicles & Motor</option>
+            <option value="Art & Collectibles">Art & Collectibles</option>
+            <option value="Toys & Kids">Toys & Kids</option>
           </select>
           {/* <input
             onChange={this.handleChange}
