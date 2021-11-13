@@ -17,7 +17,7 @@ export class AllThreads extends Component {
           threadList: [...response.data],
         });
       })
-      .catch((err) => console.log(err));
+      .catch((err) => this.props.history.push("/500"));
   };
   componentDidMount() {
     this.handleThreads();

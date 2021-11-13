@@ -17,7 +17,7 @@ export class Comments extends Component {
           commentList: [...response.data],
         });
       })
-      .catch((err) => console.log(err));
+      .catch((err) => this.props.history.push("/500"));
   };
 
   componentDidMount() {
