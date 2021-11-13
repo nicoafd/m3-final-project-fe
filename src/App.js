@@ -12,6 +12,10 @@ import AddProductForm from "./components/ProductComponents/AddProductForm";
 import AllProducts from "./components/ProductComponents/AllProducts";
 import Profile from "./components/ProfileComponent/Profile";
 import OneThread from "./components/ForumComponents/OneThread";
+import ServerError from "./components/ProfileComponent/ErrorComponents/ServerError";
+import NotFound from "./components/ProfileComponent/ErrorComponents/NotFound";
+
+//:/
 
 class App extends Component {
   state = {
@@ -79,6 +83,10 @@ class App extends Component {
           {isLoggedIn && (
             <Route path="/create" component={AddThreadForm} exact />
           )}
+
+          <Route path="/500" component={ServerError} />
+
+          <Route path="/not-found" component={NotFound} />
         </Switch>
       </div>
     );
