@@ -14,13 +14,13 @@ class AddCommentForm extends Component {
     event.preventDefault();
     axios
       .post(
-        `${process.env.REACT_APP_API_HOST}/comment/create`,
+        `${process.env.REACT_APP_API_HOST}/comment/create/${this.props.id}`,
         {
           description,
         },
         { withCredentials: true }
       )
-      .then(() => this.props.history.push("/"))
+      .then(() => this.props.handleComments())
       .catch(() => this.props.history.push("/500"));
   };
 
@@ -28,13 +28,15 @@ class AddCommentForm extends Component {
     const { description } = this.props;
     return (
       <div>
-        <form>
+        <form onSubmit={this.handleSubmit}>
+          <label htmlFor="title">comment:</label>
           <input
             type="text"
             name="description"
             value={description}
             onChange={this.handleChange}
           />
+          <button type="submit">submit</button>
         </form>
       </div>
     );

@@ -13,7 +13,6 @@ export class AllThreads extends Component {
         withCredentials: true,
       })
       .then((response) => {
-        console.log(response.data);
         this.setState({
           threadList: [...response.data],
         });
