@@ -14,6 +14,7 @@ import Profile from "./components/ProfileComponent/Profile";
 import OneThread from "./components/ForumComponents/OneThread";
 import ServerError from "./components/ProfileComponent/ErrorComponents/ServerError";
 import NotFound from "./components/ProfileComponent/ErrorComponents/NotFound";
+import ThreadEdit from "./components/ForumComponents/ThreadEdit";
 
 //:/
 
@@ -82,6 +83,10 @@ class App extends Component {
 
           {isLoggedIn && (
             <Route path="/create" component={AddThreadForm} exact />
+          )}
+
+          {isLoggedIn && (
+            <Route path="/thread/:id/edit" component={ThreadEdit} exact />
           )}
 
           <Route path="/500" component={ServerError} />

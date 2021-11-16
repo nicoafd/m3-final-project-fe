@@ -1,9 +1,12 @@
 import axios from "axios";
 import React, { Component } from "react";
+import Payment from "../PaymentsComponents/Payment";
 
 export class AllProducts extends Component {
   state = {
     productList: [],
+    isLoading: true,
+    itemToBuy: null,
   };
 
   handleProducts = () => {
@@ -24,8 +27,12 @@ export class AllProducts extends Component {
     this.handleProducts();
   }
 
+  handleClick = (item) => {
+    this.setState({ itemToBuy: item });
+  };
+
   render() {
-    const { productList } = this.state;
+    const { productList, isLoading, itemToBuy } = this.state;
     return (
       <div>
         <h1>TEST</h1>
@@ -36,6 +43,11 @@ export class AllProducts extends Component {
                 <React.Fragment key={product._id}>
                   <h4>{product.name}</h4>
                   <p>{product.category}</p>
+
+                  <button onClick={() => this.handleClick(product)}>Buy</button>
+                  {itemToBuy && itemToBuy._id === product._id && (
+                    <Payment itemToBuy={itemToBuy} />
+                  )}
                 </React.Fragment>
               );
             })}
