@@ -14,6 +14,7 @@ import Profile from "./components/ProfileComponent/Profile";
 import OneThread from "./components/ForumComponents/OneThread";
 import ServerError from "./components/ProfileComponent/ErrorComponents/ServerError";
 import NotFound from "./components/ProfileComponent/ErrorComponents/NotFound";
+import OneProduct from "./components/ProductComponents/OneProduct";
 
 //:/
 
@@ -73,6 +74,8 @@ class App extends Component {
           <Route path="/forum" component={AllThreads} exact />
 
           <Route path="/thread/:id" component={OneThread} exact />
+
+          <Route path="/product/:id" component={OneProduct} exact />
 
           {isLoggedIn && (
             <Route path="/sell" component={AddProductForm} exact />

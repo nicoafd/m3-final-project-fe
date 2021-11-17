@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 export class AllProducts extends Component {
   state = {
@@ -33,10 +34,10 @@ export class AllProducts extends Component {
           <>
             {productList.map((product) => {
               return (
-                <React.Fragment key={product._id}>
+                <Link to={`/product/${product._id}`}>
                   <h4>{product.name}</h4>
                   <p>{product.category}</p>
-                </React.Fragment>
+                </Link>
               );
             })}
           </>
