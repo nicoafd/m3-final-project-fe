@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import Payment from "../PaymentsComponents/Payment";
 
 export class AllProducts extends Component {
@@ -48,7 +49,7 @@ export class AllProducts extends Component {
                   {itemToBuy && itemToBuy._id === product._id && (
                     <Payment itemToBuy={itemToBuy} />
                   )}
-                </React.Fragment>
+                </Link>
               );
             })}
           </>

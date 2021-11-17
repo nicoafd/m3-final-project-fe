@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { Component } from "react";
 import RingLoader from "react-spinners/RingLoader";
+import "./Product.css";
 
 class AddProductForm extends Component {
   state = {
@@ -67,7 +68,7 @@ class AddProductForm extends Component {
     } = this.state;
     return (
       <div>
-        <form onSubmit={this.handleSubmit}>
+        <form class="add-product-form" onSubmit={this.handleSubmit}>
           <label htmlFor="name">Name</label>
           <input
             onChange={this.handleChange}
@@ -81,7 +82,10 @@ class AddProductForm extends Component {
           <input onChange={this.handleImageUpload} type="file" name="image" />
 
           <label htmlFor="description">Description</label>
-          <input
+          <textarea
+            rows="8"
+            cols="50"
+            id="description-input"
             onChange={this.handleChange}
             type="text"
             name="description"
@@ -103,7 +107,9 @@ class AddProductForm extends Component {
             name="category"
             value={category}
           >
-            <option value="Mobile, Computers & Devices">Mobile, Computers & Devices</option>
+            <option value="Mobile, Computers & Devices">
+              Mobile, Computers & Devices
+            </option>
             <option value="Consoles & Videogames">Consoles & Videogames</option>
             <option value="Fashion">Fashion</option>
             <option value="Sports & Outdoors">Sports & Outdoors</option>

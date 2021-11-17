@@ -15,6 +15,8 @@ import OneThread from "./components/ForumComponents/OneThread";
 import ServerError from "./components/ProfileComponent/ErrorComponents/ServerError";
 import NotFound from "./components/ProfileComponent/ErrorComponents/NotFound";
 import ThreadEdit from "./components/ForumComponents/ThreadEdit";
+import OneProduct from "./components/ProductComponents/OneProduct"
+import Footer from "./components/Footer/Footer";
 
 //:/
 
@@ -95,6 +97,7 @@ class App extends Component {
 
           <Route path="/not-found" component={NotFound} />
         </Switch>
+        {/* <Footer /> */}
       </div>
     );
   }
