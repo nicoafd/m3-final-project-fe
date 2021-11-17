@@ -20,6 +20,15 @@ export class Comments extends Component {
       .catch((err) => this.props.history.push("/500"));
   };
 
+  handleDelete = () => {
+    axios
+      .delete(
+        `${process.env.REACT_APP_SERVER_API}/comment/${this.props.match.params.id}`
+      )
+      .then(() => this.props.history.push("/"))
+      .catch(() => this.props.history.push("/500"));
+  };
+
   componentDidMount() {
     this.handleComments();
   }
@@ -36,7 +45,12 @@ export class Comments extends Component {
         {commentList.length && (
           <>
             {commentList.map((comment) => {
-              return <p>{comment.description}</p>;
+              return (
+                <div>
+                  <p>{comment.description}</p>
+                  <button onClick={this.handleDelete}>Delete</button>
+                </div>
+              );
             })}
           </>
         )}
