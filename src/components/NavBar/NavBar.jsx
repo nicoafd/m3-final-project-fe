@@ -36,6 +36,11 @@ export default function NavBar({ isLoggedIn, user, setUser }) {
 
   return (
     <div style={containerStyles}>
+      <img
+        src="https://res.cloudinary.com/db9eiaidf/image/upload/v1637173969/tradehub-logo-white_s3sfhi.png"
+        alt="logo"
+        style={{ width: "8rem" }}
+      />
       <NavLink style={linkStyles} activeStyle={activeStyles} exact to="/">
         <AiFillHome />
       </NavLink>
