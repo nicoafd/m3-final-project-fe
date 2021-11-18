@@ -2,6 +2,8 @@ import axios from "axios";
 import React, { Component } from "react";
 import RingLoader from "react-spinners/RingLoader";
 import "./Product.css";
+import Form from "react-bootstrap/Form";
+import { InputGroup, Button } from "react-bootstrap";
 
 class AddProductForm extends Component {
   state = {
@@ -139,6 +141,90 @@ class AddProductForm extends Component {
             Add Product
           </button>
         </form>
+
+        <Form class="add-product-form" onSubmit={this.handleSubmit}>
+          <Form.Group className="mb-3" controlId="formGroupEmail">
+            <Form.Label htmlFor="name">Name of Product</Form.Label>
+            <Form.Control
+              onChange={this.handleChange}
+              type="text"
+              name="name"
+              value={name}
+              placeholder="Enter product"
+            />
+          </Form.Group>
+
+          <Form.Group controlId="formFileSm" className="mb-3">
+            <Form.Label htmlFor="image">Image</Form.Label>
+            <Form.Control type="file" size="sm" />
+          </Form.Group>
+
+          <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+            <Form.Label htmlFor="description">Description</Form.Label>
+            <Form.Control
+              onChange={this.handleChange}
+              type="text"
+              name="description"
+              value={description}
+              as="textarea"
+              rows={3}
+            />
+          </Form.Group>
+
+          <Form.Group className="mb-3" controlId="formGroupEmail">
+            <Form.Label htmlFor="price">Price</Form.Label>
+            <InputGroup>
+              <InputGroup.Text id="inputGroupPrepend">€</InputGroup.Text>
+              <Form.Control
+                onChange={this.handleChange}
+                type="number"
+                name="price"
+                value={price}
+                placeholder="Enter price"
+              />
+            </InputGroup>
+          </Form.Group>
+
+          <Form.Select
+            onChange={this.handleChange}
+            id="category"
+            name="category"
+            value={category}
+          >
+            <option>Choose a category...</option>
+            <option value="Mobile, Computers & Devices">
+              Mobile, Computers & Devices
+            </option>
+            <option value="Consoles & Videogames">Consoles & Videogames</option>
+            <option value="Fashion">Fashion</option>
+            <option value="Sports & Outdoors">Sports & Outdoors</option>
+            <option value="Home & Garden">Home & Garden</option>
+            <option value="Health & Beauty">Health & Beauty</option>
+            <option value="Cinema, Books & Music">Cinema, Books & Music</option>
+            <option value="Vehicles & Motor">Vehicles & Motor</option>
+            <option value="Art & Collectibles">Art & Collectibles</option>
+            <option value="Toys & Kids">Toys & Kids</option>
+          </Form.Select>
+
+          <Form.Group className="mb-3" controlId="formGroupEmail">
+            <Form.Label htmlFor="stock">Stock</Form.Label>
+            <Form.Control
+              onChange={this.handleChange}
+              type="number"
+              name="stock"
+              value={stock}
+            />
+          </Form.Group>
+
+          <Button
+            type="submit"
+            disabled={imageIsUploading}
+            variant="secondary"
+            size="sm"
+          >
+            Submit Product
+          </Button>
+        </Form>
       </div>
     );
   }

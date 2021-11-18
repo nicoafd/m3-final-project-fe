@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+import Card from "react-bootstrap/Card";
+import Categories from "../CategoryComponent/Categories";
+
 
 const homeStyles = {
   display: "flex",
@@ -20,6 +23,7 @@ class Home extends Component {
   render() {
     return (
       <div style={homeStyles}>
+      <Categories/>
         <img
           src="https://res.cloudinary.com/db9eiaidf/image/upload/v1637173969/tradehub-logo-white_s3sfhi.png"
           alt="logo black"

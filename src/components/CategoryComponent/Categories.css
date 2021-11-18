@@ -1,0 +1,24 @@
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    align-items: auto;
+    align-content: center;
+    position: sticky
+}
+
+.category-card {
+    flex: 0 0 auto;
+    margin: 10px;
+}
+
+.category-image {
+        flex: 0 0 auto;
+        align-content: center
+
+}
+
+ .card-text {
+     font-size: 12px;
+ }

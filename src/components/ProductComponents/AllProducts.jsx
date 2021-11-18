@@ -2,6 +2,8 @@ import axios from "axios";
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Payment from "../PaymentsComponents/Payment";
+import Card from "react-bootstrap/Card";
+import Button from "react-bootstrap/Button";
 
 export class AllProducts extends Component {
   state = {
@@ -36,7 +38,7 @@ export class AllProducts extends Component {
     const { productList, isLoading, itemToBuy } = this.state;
     return (
       <div>
-        <h1>TEST</h1>
+        <h3>Latest Products</h3>
         {productList.length && (
           <>
             {productList.map((product) => {
@@ -54,6 +56,25 @@ export class AllProducts extends Component {
             })}
           </>
         )}
+
+       {productList.length && (
+          <>
+            {productList.map((product) => {
+              return (
+       <Card style={{ width: "18rem" }}>
+          <Card.Img variant="top" src={product.image} />
+          <Card.Body>
+            <Card.Title>{product.name}</Card.Title>
+            <Card.Text>{product.description}</Card.Text>
+            <Button variant="primary">See details</Button>
+          </Card.Body>
+        </Card>
+              );
+            })}
+          </>
+        )}
+
+
       </div>
     );
   }
