@@ -32,7 +32,7 @@ export class OneThread extends Component {
   handleDelete = () => {
     axios
       .delete(
-        `${process.env.REACT_APP_SERVER_API}/thread/${this.props.match.params.id}`
+        `${process.env.REACT_APP_API_HOST}/thread/${this.props.match.params.id}`
       )
       .then(() => this.props.history.push("/"))
       .catch(() => this.props.history.push("/500"));
@@ -56,7 +56,10 @@ export class OneThread extends Component {
             <button onClick={this.handleDelete}>Delete</button>
 
             {edit && <p>Edited</p>}
-            <Comments id={this.props.match.params.id} />
+            <Comments
+              id={this.props.match.params.id}
+              history={this.props.history}
+            />
           </div>
         )}
       </div>
