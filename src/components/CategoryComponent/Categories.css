@@ -1,24 +1,35 @@
-.container {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: center;
-    align-items: auto;
-    align-content: center;
-    position: sticky
+.my-container {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    flex-direction: row !important;
+    justify-content: center !important;
+    align-items: auto !important;
+    align-content: center !important;
+    position: sticky !important;
+    padding-bottom: 10px !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    min-width: 100%;
 }
+
+
 
 .category-card {
     flex: 0 0 auto;
-    margin: 10px;
+    margin: 0 auto;
+    align-content: center;
+    width: 100px ;
+    
 }
 
 .category-image {
         flex: 0 0 auto;
-        align-content: center
+        align-content: center;
+        width: 5rem !important;
 
 }
 
  .card-text {
      font-size: 12px;
+     white-space: initial
  }

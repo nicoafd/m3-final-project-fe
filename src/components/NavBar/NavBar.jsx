@@ -3,18 +3,13 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { AiFillHome, AiFillWechat, AiTwotoneShop } from "react-icons/ai";
 import { MdLogout, MdLogin } from "react-icons/md";
+import "./Navbar.css"
 
-const containerStyles = {
-  display: "flex",
-  justifyContent: "space-evenly",
-  alignItems: "center",
-  height: "10vh",
-  backgroundColor: "grey",
-};
 
 const linkStyles = {
   textDecoration: "none",
   color: "white",
+  
 };
 
 const activeStyles = {
@@ -35,11 +30,11 @@ export default function NavBar({ isLoggedIn, user, setUser }) {
   };
 
   return (
-    <div style={containerStyles}>
+    <div class="navbar">
       <img
         src="https://res.cloudinary.com/db9eiaidf/image/upload/v1637173969/tradehub-logo-white_s3sfhi.png"
         alt="logo"
-        style={{ width: "8rem" }}
+        style={{ width: "9rem" }}
       />
       <NavLink style={linkStyles} activeStyle={activeStyles} exact to="/">
         <AiFillHome />

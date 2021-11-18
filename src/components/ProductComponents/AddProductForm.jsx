@@ -70,78 +70,6 @@ class AddProductForm extends Component {
     } = this.state;
     return (
       <div>
-        <form class="add-product-form" onSubmit={this.handleSubmit}>
-          <label htmlFor="name">Name</label>
-          <input
-            onChange={this.handleChange}
-            type="text"
-            name="name"
-            value={name}
-          />
-
-          {image && <img src={this.state.image} alt="product uploaded" />}
-          <RingLoader loading={imageIsUploading} size={150} />
-          <input onChange={this.handleImageUpload} type="file" name="image" />
-
-          <label htmlFor="description">Description</label>
-          <textarea
-            rows="8"
-            cols="50"
-            id="description-input"
-            onChange={this.handleChange}
-            type="text"
-            name="description"
-            value={description}
-          />
-
-          <label htmlFor="price">Price</label>
-          <input
-            onChange={this.handleChange}
-            type="number"
-            name="price"
-            value={price}
-          />
-
-          <label htmlFor="category">Category</label>
-          <select
-            onChange={this.handleChange}
-            id="category"
-            name="category"
-            value={category}
-          >
-            <option value="Mobile, Computers & Devices">
-              Mobile, Computers & Devices
-            </option>
-            <option value="Consoles & Videogames">Consoles & Videogames</option>
-            <option value="Fashion">Fashion</option>
-            <option value="Sports & Outdoors">Sports & Outdoors</option>
-            <option value="Home & Garden">Home & Garden</option>
-            <option value="Health & Beauty">Health & Beauty</option>
-            <option value="Cinema, Books & Music">Cinema, Books & Music</option>
-            <option value="Vehicles & Motor">Vehicles & Motor</option>
-            <option value="Art & Collectibles">Art & Collectibles</option>
-            <option value="Toys & Kids">Toys & Kids</option>
-          </select>
-          {/* <input
-            onChange={this.handleChange}
-            type="text"
-            name="category"
-            value={category}
-          /> */}
-
-          <label htmlFor="stock">Stock</label>
-          <input
-            onChange={this.handleChange}
-            type="number"
-            name="stock"
-            value={stock}
-          />
-
-          <button type="submit" disabled={imageIsUploading}>
-            Add Product
-          </button>
-        </form>
-
         <Form class="add-product-form" onSubmit={this.handleSubmit}>
           <Form.Group className="mb-3" controlId="formGroupEmail">
             <Form.Label htmlFor="name">Name of Product</Form.Label>
@@ -154,8 +82,13 @@ class AddProductForm extends Component {
             />
           </Form.Group>
 
-          <Form.Group controlId="formFileSm" className="mb-3">
+          <Form.Group
+            onChange={this.handleImageUpload}
+            controlId="formFileSm"
+            className="mb-3"
+          >
             <Form.Label htmlFor="image">Image</Form.Label>
+            <RingLoader loading={imageIsUploading} size={150} />
             <Form.Control type="file" size="sm" />
           </Form.Group>
 

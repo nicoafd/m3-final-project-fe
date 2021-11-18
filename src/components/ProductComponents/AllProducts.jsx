@@ -43,38 +43,37 @@ export class AllProducts extends Component {
           <>
             {productList.map((product) => {
               return (
-                <Link to={`/product/${product._id}`}>
-                  <h4>{product.name}</h4>
-                  <p>{product.category}</p>
-
+                <>
+                  <Link to={`/product/${product._id}`}>
+                    <h4>{product.name}</h4>
+                    <p>{product.category}</p>
+                  </Link>
                   <button onClick={() => this.handleClick(product)}>Buy</button>
                   {itemToBuy && itemToBuy._id === product._id && (
                     <Payment itemToBuy={itemToBuy} />
                   )}
-                </Link>
+                </>
               );
             })}
           </>
         )}
 
-       {productList.length && (
+        {productList.length && (
           <>
             {productList.map((product) => {
               return (
-       <Card style={{ width: "18rem" }}>
-          <Card.Img variant="top" src={product.image} />
-          <Card.Body>
-            <Card.Title>{product.name}</Card.Title>
-            <Card.Text>{product.description}</Card.Text>
-            <Button variant="primary">See details</Button>
-          </Card.Body>
-        </Card>
+                <Card style={{ width: "18rem" }}>
+                  <Card.Img variant="top" src={product.image} />
+                  <Card.Body>
+                    <Card.Title>{product.name}</Card.Title>
+                    <Card.Text>{product.description}</Card.Text>
+                    <Button variant="primary">See</Button>
+                  </Card.Body>
+                </Card>
               );
             })}
           </>
         )}
-
-
       </div>
     );
   }

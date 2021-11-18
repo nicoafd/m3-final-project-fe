@@ -56,48 +56,54 @@ class App extends Component {
     return (
       <div className="App">
         <NavBar isLoggedIn={isLoggedIn} user={user} setUser={this.setUser} />
-        <Switch>
-          <Route path="/" component={Home} exact />
+        <div>
+          <Switch>
+            <Route path="/" component={Home} exact />
 
-          <Route
-            path="/signup"
-            render={(props) => <SignupForm {...props} setUser={this.setUser} />}
-            exact
-          />
+            <Route
+              path="/signup"
+              render={(props) => (
+                <SignupForm {...props} setUser={this.setUser} />
+              )}
+              exact
+            />
 
-          <Route path="/marketplace" component={AllProducts} exact />
+            <Route path="/marketplace" component={AllProducts} exact />
 
-          <Route
-            path="/login"
-            render={(props) => <LoginForm {...props} setUser={this.setUser} />}
-            exact
-          />
+            <Route
+              path="/login"
+              render={(props) => (
+                <LoginForm {...props} setUser={this.setUser} />
+              )}
+              exact
+            />
 
-          <Route path="/forum" component={AllThreads} exact />
+            <Route path="/forum" component={AllThreads} exact />
 
-          <Route path="/thread/:id" component={OneThread} exact />
+            <Route path="/thread/:id" component={OneThread} exact />
 
-          <Route path="/product/:id" component={OneProduct} exact />
+            <Route path="/product/:id" component={OneProduct} exact />
 
-          {isLoggedIn && (
-            <Route path="/sell" component={AddProductForm} exact />
-          )}
+            {isLoggedIn && (
+              <Route path="/sell" component={AddProductForm} exact />
+            )}
 
-          {isLoggedIn && <Route path="/profile" component={Profile} exact />}
+            {isLoggedIn && <Route path="/profile" component={Profile} exact />}
 
-          {isLoggedIn && (
-            <Route path="/create" component={AddThreadForm} exact />
-          )}
+            {isLoggedIn && (
+              <Route path="/create" component={AddThreadForm} exact />
+            )}
 
-          {isLoggedIn && (
-            <Route path="/thread/:id/edit" component={ThreadEdit} exact />
-          )}
+            {isLoggedIn && (
+              <Route path="/thread/:id/edit" component={ThreadEdit} exact />
+            )}
 
-          <Route path="/500" component={ServerError} />
+            <Route path="/500" component={ServerError} />
 
-          <Route path="/not-found" component={NotFound} />
-        </Switch>
-        <Footer />
+            <Route path="/not-found" component={NotFound} />
+          </Switch>
+        </div>
+        {/* <Footer /> */}
       </div>
     );
   }

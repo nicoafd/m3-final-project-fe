@@ -37,31 +37,6 @@ class AddThreadForm extends Component {
     const { title, description, category } = this.state;
     return (
       <div>
-        <form onSubmit={this.handleSubmit}>
-          <label htmlFor="title">Title:</label>
-          <input
-            name="title"
-            type="text"
-            value={title}
-            onChange={this.handleChange}
-          />
-          <label htmlFor="description">Description:</label>
-          <input
-            name="description"
-            type="text"
-            value={description}
-            onChange={this.handleChange}
-          />
-          <label htmlFor="category">Category:</label>
-          <input
-            name="category"
-            type="text"
-            value={category}
-            onChange={this.handleChange}
-          />
-          <button type="submit">submit</button>
-        </form>
-
         <Form class="add-thread-form" onSubmit={this.handleSubmit}>
           <Form.Group className="mb-3" controlId="formGroupEmail">
             <Form.Label htmlFor="title">Thread Title</Form.Label>

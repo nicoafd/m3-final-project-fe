@@ -1,9 +1,9 @@
-#root {
+/* #root {
   display: flex;
   align-items: center;
-}
+} */
 
-body {
+.payment-body {
   font-family: -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
@@ -14,7 +14,7 @@ body {
   width: 100vw;
 }
 
-form {
+#payment-form {
   width: 30vw;
   min-width: 500px;
   align-self: center;
@@ -37,7 +37,7 @@ form {
 }
 
 /* Buttons and links */
-button {
+#payment-button {
   background: #5469d4;
   font-family: Arial, sans-serif;
   color: #ffffff;
@@ -127,7 +127,7 @@ button:disabled {
 }
 
 @media only screen and (max-width: 600px) {
-  form {
+  #payment-form {
     width: 80vw;
     min-width: initial;
   }
