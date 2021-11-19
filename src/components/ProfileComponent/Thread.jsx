@@ -28,7 +28,6 @@ function Thread() {
 
   return (
     <div>
-      <h2>All your threads</h2>
       {isLoading ? (
         <RingLoader loading={isLoading} size={50} />
       ) : (

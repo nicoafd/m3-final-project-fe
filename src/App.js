@@ -56,7 +56,7 @@ class App extends Component {
     return (
       <div className="App">
         <NavBar isLoggedIn={isLoggedIn} user={user} setUser={this.setUser} />
-        <div>
+        <div style={{ Top: "300px" }}>
           <Switch>
             <Route path="/" component={Home} exact />
 
@@ -103,7 +103,7 @@ class App extends Component {
             <Route path="/not-found" component={NotFound} />
           </Switch>
         </div>
-        {/* <Footer /> */}
+        <Footer />
       </div>
     );
   }

@@ -24,16 +24,17 @@ function Product() {
 
   return (
     <div>
-      <h2>All products listed by you</h2>
       {isLoading ? (
         <RingLoader loading={isLoading} size={50} />
       ) : (
         products.map((product) => {
           return (
+            <div class="">
             <React.Fragment key={product._id}>
-              <h2>{product.name}</h2>
+              <h2 class="material-icons text-info mr-2" >{product.name}</h2>
               <p>{product.category}</p>
             </React.Fragment>
+            </div>
           );
         })
       )}

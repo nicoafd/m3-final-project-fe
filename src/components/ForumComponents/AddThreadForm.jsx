@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { Component } from "react";
 import Form from "react-bootstrap/Form";
 import { InputGroup, Button } from "react-bootstrap";
+import "./Forum.css"
 
 class AddThreadForm extends Component {
   state = {
@@ -36,7 +37,7 @@ class AddThreadForm extends Component {
   render() {
     const { title, description, category } = this.state;
     return (
-      <div>
+      <div class="create-thread-form">
         <Form class="add-thread-form" onSubmit={this.handleSubmit}>
           <Form.Group className="mb-3" controlId="formGroupEmail">
             <Form.Label htmlFor="title">Thread Title</Form.Label>

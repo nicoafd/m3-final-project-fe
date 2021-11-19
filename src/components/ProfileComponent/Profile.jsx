@@ -2,6 +2,8 @@ import axios from "axios";
 import React, { Component } from "react";
 import Product from "./Product";
 import Thread from "./Thread";
+import "./Profile.css"
+import ProfileInfo from "./ProfileInfo";
 
 export default class Profile extends Component {
   state = {
@@ -31,14 +33,9 @@ export default class Profile extends Component {
   render() {
     const { username, city } = this.state;
     return (
-      <div>
-        <h3>Welcome to your profile</h3>
-        <h3>{username}</h3>
-        <h3>{city}</h3>
-
-        <Thread />
-        <Product />
-  
+      <div class="profile-component">
+        <h3>Welcome to your profile, {username}!</h3>
+        <ProfileInfo/>
       </div>
     );
   }

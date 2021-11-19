@@ -69,8 +69,8 @@ class AddProductForm extends Component {
       imageIsUploading,
     } = this.state;
     return (
-      <div>
-        <Form class="add-product-form" onSubmit={this.handleSubmit}>
+      <div class="add-product-form">
+        <Form onSubmit={this.handleSubmit}>
           <Form.Group className="mb-3" controlId="formGroupEmail">
             <Form.Label htmlFor="name">Name of Product</Form.Label>
             <Form.Control
