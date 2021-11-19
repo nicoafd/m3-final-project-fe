@@ -17,6 +17,7 @@ import NotFound from "./components/ProfileComponent/ErrorComponents/NotFound";
 import ThreadEdit from "./components/ForumComponents/ThreadEdit";
 import OneProduct from "./components/ProductComponents/OneProduct"
 import Footer from "./components/Footer/Footer";
+import ProductEdit from "./components/ProductComponents/ProductEdit";
 
 //:/
 
@@ -96,6 +97,10 @@ class App extends Component {
 
             {isLoggedIn && (
               <Route path="/thread/:id/edit" component={ThreadEdit} exact />
+            )}
+
+            {isLoggedIn && (
+              <Route path="/product/:id/edit" component={ProductEdit} exact />
             )}
 
             <Route path="/500" component={ServerError} />

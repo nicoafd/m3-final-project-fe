@@ -1,15 +1,16 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { Form } from "react-bootstrap";
+import "./Product.css"
+import { Form, InputGroup } from "react-bootstrap";
 import Button from "@restart/ui/esm/Button";
-import "./Forum.css"
 
-export class ThreadEdit extends Component {
+export class ProductEdit extends Component {
   state = {
-    title: "",
+    name: "",
     description: "",
     category: "",
-    isActive: true,
+    stock: "",
+    price: "",
     edit: false,
   };
 
@@ -18,16 +19,17 @@ export class ThreadEdit extends Component {
   };
 
   handleSubmit = (event) => {
-    const { title, description, category, isActive } = this.state;
+    const { name, description, category, stock, price } = this.state;
     event.preventDefault();
     axios
       .patch(
-        `${process.env.REACT_APP_API_HOST}/thread/${this.props.match.params.id}`,
+        `${process.env.REACT_APP_API_HOST}/product/${this.props.match.params.id}`,
         {
-          title,
+          name,
           description,
           category,
-          isActive,
+          stock,
+          price,
           edit: true,
         },
         { withCredentials: true }
@@ -35,20 +37,30 @@ export class ThreadEdit extends Component {
       .then(() => this.props.history.push("/"))
       .catch(() => this.props.history.push("/500"));
   };
+
   render() {
-    const { title, description, category, isActive } = this.state;
+    const { name, description, category, price, stock,} = this.state;
     return (
-      <div class="create-thread-form">
-        <Form class="add-thread-form" onSubmit={this.handleSubmit}>
+      <div class="add-product-form">
+        <Form onSubmit={this.handleSubmit}>
           <Form.Group className="mb-3" controlId="formGroupEmail">
-            <Form.Label htmlFor="title">Thread Title</Form.Label>
+            <Form.Label htmlFor="name">Name of Product</Form.Label>
             <Form.Control
               onChange={this.handleChange}
               type="text"
-              name="title"
-              value={title}
-              placeholder="Enter title"
+              name="name"
+              value={name}
+              placeholder={"Enter product"}
             />
+          </Form.Group>
+
+          <Form.Group
+            onChange={this.handleImageUpload}
+            controlId="formFileSm"
+            className="mb-3"
+          >
+            <Form.Label htmlFor="image">Image</Form.Label>
+            <Form.Control type="file" size="sm" />
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
@@ -61,6 +73,20 @@ export class ThreadEdit extends Component {
               as="textarea"
               rows={3}
             />
+          </Form.Group>
+
+          <Form.Group className="mb-3" controlId="formGroupEmail">
+            <Form.Label htmlFor="price">Price</Form.Label>
+            <InputGroup>
+              <InputGroup.Text id="inputGroupPrepend">€</InputGroup.Text>
+              <Form.Control
+                onChange={this.handleChange}
+                type="number"
+                name="price"
+                value={price}
+                placeholder="Enter price"
+              />
+            </InputGroup>
           </Form.Group>
 
           <Form.Select
@@ -83,9 +109,23 @@ export class ThreadEdit extends Component {
             <option value="Art & Collectibles">Art & Collectibles</option>
             <option value="Toys & Kids">Toys & Kids</option>
           </Form.Select>
-          <br></br>
-          <Button type="submit" variant="secondary" size="sm">
-            Edit Thread
+
+          <Form.Group className="mb-3" controlId="formGroupEmail">
+            <Form.Label htmlFor="stock">Stock</Form.Label>
+            <Form.Control
+              onChange={this.handleChange}
+              type="number"
+              name="stock"
+              value={stock}
+            />
+          </Form.Group>
+
+          <Button
+            type="submit"
+            variant="secondary"
+            size="sm"
+          >
+            Submit Product
           </Button>
         </Form>
       </div>
@@ -93,4 +133,4 @@ export class ThreadEdit extends Component {
   }
 }
 
-export default ThreadEdit;
+export default ProductEdit;

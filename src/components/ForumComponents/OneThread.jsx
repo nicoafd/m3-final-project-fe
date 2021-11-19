@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Comments from "./Comments";
+import "./Forum.css"
 
 export class OneThread extends Component {
   state = {
@@ -41,7 +42,7 @@ export class OneThread extends Component {
   render() {
     const { isLoading, oneThread, edit } = this.state;
     return (
-      <div>
+      <div class="one-thread-card">
         <h2>One Thread</h2>
         {isLoading && <h1>...Loading</h1>}
         {!isLoading && (

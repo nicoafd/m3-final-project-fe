@@ -38,7 +38,7 @@ export default class LoginForm extends Component {
   render() {
     const { password, email } = this.state;
     return (
-      <div>
+      <div class="auth-form">
         <form onSubmit={this.handleSubmit}>
           <input
             type="email"

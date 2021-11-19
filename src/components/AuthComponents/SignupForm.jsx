@@ -1,6 +1,10 @@
+import Button from "@restart/ui/esm/Button";
 import axios from "axios";
 import React, { Component } from "react";
-import { PacmanLoader } from "react-spinners";
+import { Form, InputGroup } from "react-bootstrap";
+import { PacmanLoader, RingLoader } from "react-spinners";
+import "./Auth.css";
+
 require("dotenv");
 
 export default class SignupForm extends Component {
@@ -48,7 +52,13 @@ export default class SignupForm extends Component {
         city,
       })
       .then((newUser) => {
-        this.setState({ username: "", password: "", email: "", city: "", profilePic: ""});
+        this.setState({
+          username: "",
+          password: "",
+          email: "",
+          city: "",
+          profilePic: "",
+        });
         this.props.setUser(newUser.data, true);
         this.props.history.push("/");
       })
@@ -59,43 +69,75 @@ export default class SignupForm extends Component {
     const { username, password, email, city, profilePic, imageIsUploading } =
       this.state;
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
-          <input
-            type="text"
-            name="username"
-            value={username}
-            onChange={this.handleChange}
-            placeholder="Username"
-          />
-          <input
-            type="email"
-            name="email"
-            value={email}
-            onChange={this.handleChange}
-            placeholder="example@example.com"
-          />
+ <div>
+        <div class="add-product-form">
+          <Form onSubmit={this.handleSubmit}>
+            <Form.Group className="mb-3" controlId="formGroupEmail">
+              <Form.Label htmlFor="username">Username</Form.Label>
+              <Form.Control
+                onChange={this.handleChange}
+                type="text"
+                name="username"
+                value={username}
+                placeholder="Username"
+              />
+            </Form.Group>
 
-          {profilePic && <img src={this.state.profilePic} alt="profile pic uploaded" />}
-          <PacmanLoader loading={imageIsUploading} size={100} />
-          <input onChange={this.handleImageUpload} type="file" name="profilePic" />
+            <Form.Group className="mb-3" controlId="formGroupEmail">
+              <Form.Label htmlFor="password">Password</Form.Label>
+              <Form.Control
+                onChange={this.handleChange}
+                type="password"
+                name="password"
+                value={password}
+                placeholder="*******"
+              />
+            </Form.Group>
 
-          <input
-            type="text"
-            name="password"
-            value={password}
-            onChange={this.handleChange}
-            placeholder="Password"
-          />
-          <input
-            type="text"
-            name="city"
-            value={city}
-            onChange={this.handleChange}
-            placeholder="City"
-          />
-          <button type="submit">Register</button>
-        </form>
+            <Form.Group className="mb-3" controlId="formGroupEmail">
+              <Form.Label htmlFor="email">E-Mail</Form.Label>
+              <Form.Control
+                onChange={this.handleChange}
+                type="email"
+                name="email"
+                value={email}
+                placeholder="Enter E-Mail address"
+              />
+            </Form.Group>
+
+            <Form.Group
+              onChange={this.handleImageUpload}
+              controlId="formFileSm"
+              className="mb-3"
+            >
+              <Form.Label htmlFor="profilePic">Profile Picture</Form.Label>
+              <RingLoader loading={imageIsUploading} size={150} />
+              <Form.Control type="file" size="sm" />
+            </Form.Group>
+
+            <Form.Group className="mb-3" controlId="formGroupEmail">
+              <Form.Label htmlFor="price">City</Form.Label>
+              <InputGroup>
+                <Form.Control
+                  onChange={this.handleChange}
+                  type="text"
+                  name="city"
+                  value={city}
+                  placeholder="Enter city"
+                />
+              </InputGroup>
+            </Form.Group>
+
+            <Button
+              type="submit"
+              disabled={imageIsUploading}
+              variant="secondary"
+              size="sm"
+            >
+              Register
+            </Button>
+          </Form>
+        </div>
       </div>
     );
   }

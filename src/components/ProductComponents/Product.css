@@ -1,5 +1,9 @@
 
-  .add-product-form {
+  .add-product-form,
+  .all-products,
+  .edit-product-form,
+  .one-product-card,
+  .one-product-card {
     display: flex;
     flex-direction: column;
     margin-top: 4vh;
@@ -7,10 +11,4 @@
     padding-top: 80px;
   } 
 
-.all-products {
-      display: flex;
-      flex-direction:column;
-      margin-top: 4vh;
-      align-items: center;
-      padding-top: 80px;
-}
+

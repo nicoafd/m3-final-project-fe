@@ -51,6 +51,9 @@ export class AllProducts extends Component {
                     <button onClick={() => this.handleClick(product)}>
                       Buy
                     </button>
+                    <Link to={`/product/${product._id}`}>
+                    <button>See Details</button>
+                    </Link>
                     {itemToBuy && itemToBuy._id === product._id && (
                       <Payment itemToBuy={itemToBuy} />
                     )}

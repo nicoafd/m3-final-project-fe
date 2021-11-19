@@ -191,7 +191,7 @@ export class ProfileInfo extends Component {
                       <div class="col-sm-3">
                         <h6 class="mb-0">Email</h6>
                       </div>
-                      <div class="col-sm-9 text-secondary">fip@jukmuh.al</div>
+                      <div class="col-sm-9 text-secondary"></div>
                     </div>
                     <hr></hr>
                     <div class="row">
