@@ -26,7 +26,7 @@ export class AllThreads extends Component {
   render() {
     const { threadList } = this.state;
     return (
-      <div>
+      <div class="all-threads">
         {threadList.length && (
           <>
             {threadList.map((thread) => {

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { RingLoader } from "react-spinners";
+import { Badge, ListGroup } from "react-bootstrap";
 
 function Thread() {
   //Defining state = threads and setState = setThreads
@@ -33,10 +34,22 @@ function Thread() {
       ) : (
         threads.map((thread) => {
           return (
-            <React.Fragment key={thread._id}>
-              <h2>{thread.title}</h2>
-              <p>{thread.category}</p>
-            </React.Fragment>
+            <div class="thread-card">
+              <React.Fragment key={thread._id}>
+                <ListGroup.Item
+                  as="li"
+                  className="d-flex justify-content-between align-items-start"
+                >
+                  <div className="ms-2 me-auto">
+                    <div className="fw-bold">{thread.title}</div>
+                    {thread.description}
+                  </div>
+                  <Badge variant="primary" pill>
+                    details
+                  </Badge>
+                </ListGroup.Item>
+              </React.Fragment>
+            </div>
           );
         })
       )}

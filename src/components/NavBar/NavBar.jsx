@@ -40,14 +40,14 @@ export default function NavBar({ isLoggedIn, user, setUser }) {
         <AiFillHome />
       </NavLink>
 
-      <NavLink style={linkStyles} activeStyle={activeStyles} to="/forum">
-        <AiFillWechat />
-      </NavLink>
-
       <NavLink style={linkStyles} activeStyle={activeStyles} to="/marketplace">
         <AiTwotoneShop />
       </NavLink>
 
+      <NavLink style={linkStyles} activeStyle={activeStyles} to="/forum">
+        <AiFillWechat />
+      </NavLink>
+      
       {!isLoggedIn && (
         <>
           {" "}

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { RingLoader } from "react-spinners";
+import { Badge, ListGroup } from "react-bootstrap";
 
 function Product() {
   const [products, setProducts] = useState([]);
@@ -29,11 +30,21 @@ function Product() {
       ) : (
         products.map((product) => {
           return (
-            <div class="">
+            <div class="product-card">
             <React.Fragment key={product._id}>
-              <h2 class="material-icons text-info mr-2" >{product.name}</h2>
-              <p>{product.category}</p>
-            </React.Fragment>
+              <ListGroup.Item
+                as="li"
+                className="d-flex justify-content-between align-items-start"
+              >
+                <div className="ms-2 me-auto">
+                  <div className="fw-bold">{product.name}</div>
+                  {product.description}
+                </div>
+                <Badge variant="primary" pill>
+                  details
+                </Badge>
+              </ListGroup.Item>
+              </React.Fragment>
             </div>
           );
         })

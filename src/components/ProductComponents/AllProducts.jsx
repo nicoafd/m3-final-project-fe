@@ -37,27 +37,8 @@ export class AllProducts extends Component {
   render() {
     const { productList, isLoading, itemToBuy } = this.state;
     return (
-      <div>
+      <div class="all-products">
         <h3>Latest Products</h3>
-        {productList.length && (
-          <>
-            {productList.map((product) => {
-              return (
-                <>
-                  <Link to={`/product/${product._id}`}>
-                    <h4>{product.name}</h4>
-                    <p>{product.category}</p>
-                  </Link>
-                  <button onClick={() => this.handleClick(product)}>Buy</button>
-                  {itemToBuy && itemToBuy._id === product._id && (
-                    <Payment itemToBuy={itemToBuy} />
-                  )}
-                </>
-              );
-            })}
-          </>
-        )}
-
         {productList.length && (
           <>
             {productList.map((product) => {
@@ -67,7 +48,12 @@ export class AllProducts extends Component {
                   <Card.Body>
                     <Card.Title>{product.name}</Card.Title>
                     <Card.Text>{product.description}</Card.Text>
-                    <Button variant="primary">See</Button>
+                    <button onClick={() => this.handleClick(product)}>
+                      Buy
+                    </button>
+                    {itemToBuy && itemToBuy._id === product._id && (
+                      <Payment itemToBuy={itemToBuy} />
+                    )}
                   </Card.Body>
                 </Card>
               );
