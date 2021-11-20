@@ -5,6 +5,7 @@ import AddCommentForm from "./AddCommentForm";
 export class Comments extends Component {
   state = {
     commentList: [],
+    username: "",
   };
 
   handleComments = () => {
@@ -46,6 +47,7 @@ export class Comments extends Component {
               return (
                 <div>
                   <p>{comment.description}</p>
+                  <p>{comment.userId.username}</p>
                   <button onClick={() => this.handleDelete(comment._id)}>
                     Delete
                   </button>
