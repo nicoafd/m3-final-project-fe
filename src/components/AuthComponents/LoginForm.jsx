@@ -5,6 +5,7 @@ export default class LoginForm extends Component {
   state = {
     email: "",
     password: "",
+    errorMessage: "",
   };
 
   handleChange = ({ target: { name, value } }) => {
@@ -32,11 +33,13 @@ export default class LoginForm extends Component {
         //
         this.props.history.push("/");
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        this.setState({ errorMessage: err.response.data.errorMessage });
+      });
   };
 
   render() {
-    const { password, email } = this.state;
+    const { password, email, errorMessage } = this.state;
     return (
       <div class="auth-form">
         <form onSubmit={this.handleSubmit}>
@@ -55,6 +58,7 @@ export default class LoginForm extends Component {
             placeholder="Password"
           />
 
+          {errorMessage && <p>{errorMessage}</p>}
           <button type="submit">Login</button>
         </form>
       </div>

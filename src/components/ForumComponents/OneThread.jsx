@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Comments from "./Comments";
-import "./Forum.css"
+import "./Forum.css";
 
 export class OneThread extends Component {
   state = {
@@ -27,7 +27,7 @@ export class OneThread extends Component {
           edit: response.data.edit,
         });
       })
-      .catch((err) => console.log(err));
+      .catch((err) => this.props.history.push("/error"));
   }
 
   handleDelete = () => {
@@ -36,7 +36,7 @@ export class OneThread extends Component {
         `${process.env.REACT_APP_API_HOST}/thread/${this.props.match.params.id}`
       )
       .then(() => this.props.history.push("/"))
-      .catch(() => this.props.history.push("/500"));
+      .catch(() => this.props.history.push("/error"));
   };
 
   render() {

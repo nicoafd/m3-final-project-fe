@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Form } from "react-bootstrap";
 import Button from "@restart/ui/esm/Button";
-import "./Forum.css"
+import "./Forum.css";
 
 export class ThreadEdit extends Component {
   state = {
@@ -32,8 +32,8 @@ export class ThreadEdit extends Component {
         },
         { withCredentials: true }
       )
-      .then(() => this.props.history.push("/"))
-      .catch(() => this.props.history.push("/500"));
+      .then(() => this.props.history.push("/forum"))
+      .catch(() => this.props.history.push("/error"));
   };
   render() {
     const { title, description, category, isActive } = this.state;

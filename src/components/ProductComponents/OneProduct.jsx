@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import AddProductForm from "./AddProductForm";
 import { Link } from "react-router-dom";
-import "./Product.css"
+import "./Product.css";
 
 export class OneProduct extends Component {
   state = {
@@ -26,7 +26,7 @@ export class OneProduct extends Component {
           data: response.data.edit,
         });
       })
-      .catch((err) => console.log(err));
+      .catch((err) => this.props.history.push("/error"));
   }
 
   handleDelete = () => {
@@ -35,7 +35,7 @@ export class OneProduct extends Component {
         `${process.env.REACT_APP_API_HOST}/product/${this.props.match.params.id}`
       )
       .then(() => this.props.history.push("/"))
-      .catch(() => this.props.history.push("/500"));
+      .catch(() => this.props.history.push("/error"));
   };
 
   render() {

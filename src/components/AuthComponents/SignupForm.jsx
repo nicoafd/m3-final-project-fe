@@ -15,6 +15,7 @@ export default class SignupForm extends Component {
     email: "",
     city: "",
     imageIsUploading: false,
+    errorMessage: "",
   };
 
   handleChange = ({ target: { name, value } }) => {
@@ -62,14 +63,16 @@ export default class SignupForm extends Component {
         this.props.setUser(newUser.data, true);
         this.props.history.push("/");
       })
-      .catch((err) => console.log(err));
+      .catch((err) =>
+        this.setState({ errorMessage: err.response.data.errorMessage })
+      );
   };
 
   render() {
-    const { username, password, email, city, profilePic, imageIsUploading } =
+    const { username, password, email, city, errorMessage, imageIsUploading } =
       this.state;
     return (
- <div>
+      <div>
         <div class="add-product-form">
           <Form onSubmit={this.handleSubmit}>
             <Form.Group className="mb-3" controlId="formGroupEmail">
@@ -136,6 +139,7 @@ export default class SignupForm extends Component {
             >
               Register
             </Button>
+            {errorMessage && <p>{errorMessage}</p>}
           </Form>
         </div>
       </div>

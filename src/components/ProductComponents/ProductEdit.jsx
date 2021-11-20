@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import "./Product.css"
+import "./Product.css";
 import { Form, InputGroup } from "react-bootstrap";
 import Button from "@restart/ui/esm/Button";
 
@@ -12,6 +12,7 @@ export class ProductEdit extends Component {
     stock: "",
     price: "",
     edit: false,
+    errorMessage: "",
   };
 
   handleChange = ({ target: { name, value } }) => {
@@ -35,11 +36,14 @@ export class ProductEdit extends Component {
         { withCredentials: true }
       )
       .then(() => this.props.history.push("/"))
-      .catch(() => this.props.history.push("/500"));
+      .catch((err) =>
+        this.setState({ errorMessage: err.response.data.errorMessage })
+      );
   };
 
   render() {
-    const { name, description, category, price, stock,} = this.state;
+    const { name, description, category, price, stock, errorMessage } =
+      this.state;
     return (
       <div class="add-product-form">
         <Form onSubmit={this.handleSubmit}>
@@ -120,13 +124,10 @@ export class ProductEdit extends Component {
             />
           </Form.Group>
 
-          <Button
-            type="submit"
-            variant="secondary"
-            size="sm"
-          >
+          <Button type="submit" variant="secondary" size="sm">
             Submit Product
           </Button>
+          {errorMessage && <p>{errorMessage}</p>}
         </Form>
       </div>
     );

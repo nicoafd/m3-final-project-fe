@@ -54,7 +54,6 @@
   .navbarLinks {
     display: none;
     width: 100%;
-    /* padding-left: 50px; */
   }
   .minimizedNavlinks {
     display: flex;

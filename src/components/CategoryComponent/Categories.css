@@ -1,35 +1,53 @@
 .my-container {
-    display: flex !important;
-    flex-wrap: wrap !important;
-    flex-direction: row !important;
-    justify-content: center !important;
-    align-items: auto !important;
-    align-content: center !important;
-    position: sticky !important;
-    padding-bottom: 10px !important;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-    min-width: 100%;
+  display: flex !important;
+  flex-wrap: wrap !important;
+  flex-direction: row !important;
+  justify-content: space-around;
+  align-content: center !important;
+  position: sticky !important;
+  padding-bottom: 10px !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  min-width: 100%;
 }
 
-
-
-.category-card {
-    flex: 0 0 auto;
-    margin: 0 auto;
-    align-content: center;
-    width: 100px ;
-    
+.card {
+  flex: 0 0 auto;
+  margin: 0 auto;
+  align-content: center;
+  width: 100px;
+  height: 20vh;
 }
 
 .category-image {
-        flex: 0 0 auto;
-        align-content: center;
-        width: 5rem !important;
-
+  flex: 0 0 auto;
+  align-content: center;
+  width: 5rem !important;
 }
 
- .card-text {
-     font-size: 12px;
-     white-space: initial
- }
+.card-text {
+  font-size: 12px;
+  white-space: initial;
+}
+
+@media (max-width: 530px) {
+  .my-container {
+    margin-top: 10vh;
+  }
+}
+
+/* We need another media query at 520px approximately */
+
+@media (max-width: 400px) {
+  .my-container {
+    margin-top: 32vh;
+    row-gap: 2.5vh;
+  }
+  .card {
+    height: 15vh;
+  }
+  .category-image {
+    height: 3.2rem;
+    width: 1.5rem;
+  }
+}

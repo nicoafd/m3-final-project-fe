@@ -23,7 +23,7 @@ export class AllProducts extends Component {
           productList: [...response.data],
         });
       })
-      .catch((err) => console.log(err));
+      .catch((err) => this.props.history.push("/error"));
   };
 
   componentDidMount() {

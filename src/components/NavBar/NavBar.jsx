@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { BsFillGrid3X3GapFill } from "react-icons/bs";
 import "./Navbar.css";
-import "./index.js";
 
 const linkStyles = {
   textDecoration: "none",

@@ -21,7 +21,7 @@ export class ProfileInfo extends Component {
           username: response.data.username,
           city: response.data.city,
           email: response.data.email,
-          createdAt: response.data.createdAt
+          createdAt: response.data.createdAt,
         });
         console.log(this.state.username, this.state.city);
       })
@@ -33,7 +33,7 @@ export class ProfileInfo extends Component {
   }
 
   render() {
-        const { username, city, email, createdAt } = this.state;
+    const { username, city, email, createdAt } = this.state;
     return (
       <div>
         <div class="container">
@@ -184,12 +184,12 @@ export class ProfileInfo extends Component {
                       <div class="col-sm-3">
                         <h6 class="mb-0">Full Name</h6>
                       </div>
-                      <div class="col-sm-9 text-secondary">Kenneth Valdez</div>
+                      <div class="col-sm-9 text-secondary">{username}</div>
                     </div>
                     <hr></hr>
                     <div class="row">
                       <div class="col-sm-3">
-                        <h6 class="mb-0">Email</h6>
+                        <h6 class="mb-0">{email}</h6>
                       </div>
                       <div class="col-sm-9 text-secondary"></div>
                     </div>
@@ -210,7 +210,7 @@ export class ProfileInfo extends Component {
                     <hr></hr>
                     <div class="row">
                       <div class="col-sm-3">
-                        <h6 class="mb-0">Address</h6>
+                        <h6 class="mb-0">{city}</h6>
                       </div>
                       <div class="col-sm-9 text-secondary">
                         Bay Area, San Francisco, CA
@@ -222,7 +222,7 @@ export class ProfileInfo extends Component {
                         <a
                           class="btn btn-info "
                           target="__blank"
-                          href="https://www.bootdey.com/snippets/view/profile-edit-data-and-skills"
+                          href="#" //here we add the edit route to the profile
                         >
                           Edit
                         </a>

@@ -4,6 +4,7 @@ import axios from "axios";
 class AddCommentForm extends Component {
   state = {
     description: "",
+    errorMessage: "",
   };
   handleChange = ({ target: { name, value } }) => {
     this.setState({ [name]: value });
@@ -21,11 +22,13 @@ class AddCommentForm extends Component {
         { withCredentials: true }
       )
       .then(() => this.props.handleComments())
-      .catch(() => this.props.history.push("/500"));
+      .catch((err) =>
+        this.setState({ errorMessage: err.response.data.errorMessage })
+      );
   };
 
   render() {
-    const { description } = this.props;
+    const { description, errorMessage } = this.state;
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
@@ -38,6 +41,8 @@ class AddCommentForm extends Component {
           />
           <button type="submit">submit</button>
         </form>
+
+        {errorMessage && <p>{errorMessage}</p>}
       </div>
     );
   }

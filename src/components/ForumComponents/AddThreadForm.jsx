@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { Component } from "react";
 import Form from "react-bootstrap/Form";
 import { InputGroup, Button } from "react-bootstrap";
-import "./Forum.css"
+import "./Forum.css";
 
 class AddThreadForm extends Component {
   state = {
@@ -11,6 +11,7 @@ class AddThreadForm extends Component {
     category: "",
     isActive: true,
     edit: false,
+    errorMessage: "",
   };
 
   handleChange = ({ target: { name, value } }) => {
@@ -31,11 +32,13 @@ class AddThreadForm extends Component {
         { withCredentials: true }
       )
       .then(() => this.props.history.push("/"))
-      .catch(() => this.props.history.push("/500"));
+      .catch((err) =>
+        this.setState({ errorMessage: err.response.data.errorMessage })
+      );
   };
 
   render() {
-    const { title, description, category } = this.state;
+    const { title, description, category, errorMessage } = this.state;
     return (
       <div class="create-thread-form">
         <Form class="add-thread-form" onSubmit={this.handleSubmit}>
@@ -86,6 +89,7 @@ class AddThreadForm extends Component {
           <Button type="submit" variant="secondary" size="sm">
             Post Thread
           </Button>
+          {errorMessage && <p>{errorMessage}</p>}
         </Form>
       </div>
     );

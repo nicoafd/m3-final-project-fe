@@ -14,6 +14,7 @@ class AddProductForm extends Component {
     category: "",
     stock: 0,
     imageIsUploading: false,
+    errorMessage: "",
   };
 
   handleChange = ({ target: { name, value } }) => {
@@ -35,7 +36,7 @@ class AddProductForm extends Component {
           imageIsUploading: false,
         });
       })
-      .catch((err) => this.props.history.push("/500"));
+      .catch((err) => this.props.history.push("/error"));
   };
 
   handleSubmit = (event) => {
@@ -55,7 +56,9 @@ class AddProductForm extends Component {
         { withCredentials: true }
       )
       .then(() => this.props.history.push("/"))
-      .catch(() => this.props.history.push("/500"));
+      .catch((err) =>
+        this.setState({ errorMessage: err.response.data.errorMessage })
+      );
   };
 
   render() {
@@ -67,6 +70,7 @@ class AddProductForm extends Component {
       category,
       stock,
       imageIsUploading,
+      errorMessage,
     } = this.state;
     return (
       <div class="add-product-form">
@@ -157,6 +161,7 @@ class AddProductForm extends Component {
           >
             Submit Product
           </Button>
+          {errorMessage && <p>{errorMessage}</p>}
         </Form>
       </div>
     );

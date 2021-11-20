@@ -7,61 +7,53 @@ export class Categories extends Component {
   render() {
     return (
       <div class="container my-container">
-        <div class="category-card">
-          <Card>
-            <Card.Img
-              class="category-image"
-              variant="top"
-              src="https://res.cloudinary.com/db9eiaidf/image/upload/v1637232639/mobile_computers_devices_ahinyq.png"
-            />
-            <Card.Body>
-              <Card.Title class="card-text">
-                Mobile Computers & Devices
-              </Card.Title>
-            </Card.Body>
-          </Card>
-        </div>
+        <Card className="card">
+          <Card.Img
+            class="category-image"
+            variant="top"
+            src="https://res.cloudinary.com/db9eiaidf/image/upload/v1637232639/mobile_computers_devices_ahinyq.png"
+          />
+          <Card.Body>
+            <Card.Title className="card-text">
+              Mobile Computers & Devices
+            </Card.Title>
+          </Card.Body>
+        </Card>
 
-        <div class="category-card">
-          <Card>
-            <Card.Img
-              class="category-image"
-              variant="top"
-              src="https://res.cloudinary.com/db9eiaidf/image/upload/v1637232639/console_videogames_lqyghb.png"
-            />
-            <Card.Body>
-              <Card.Title class="card-text">Consoles & Videogames</Card.Title>
-            </Card.Body>
-          </Card>
-        </div>
-        <div class="category-card">
-          <Card class="category-card">
-            <Card.Img
-              class="category-image"
-              variant="top"
-              src="https://res.cloudinary.com/db9eiaidf/image/upload/v1637232639/fashion_hwpu6b.png"
-            />
-            <Card.Body>
-              <Card.Title class="card-text">Fashion</Card.Title>
-            </Card.Body>
-          </Card>
-        </div>
+        <Card className="card">
+          <Card.Img
+            class="category-image"
+            variant="top"
+            src="https://res.cloudinary.com/db9eiaidf/image/upload/v1637232639/console_videogames_lqyghb.png"
+          />
+          <Card.Body>
+            <Card.Title class="card-text">Consoles & Videogames</Card.Title>
+          </Card.Body>
+        </Card>
 
-        <div class="category-card">
-          <Card class="category-card">
-            <Card.Img
-              class="category-image"
-              variant="top"
-              src="https://res.cloudinary.com/db9eiaidf/image/upload/v1637232639/sports_outdoors_kp5cmw.png"
-            />
-            <Card.Body>
-              <Card.Title class="card-text">Sports & Outdoors</Card.Title>
-            </Card.Body>
-          </Card>
-        </div>
-
-        <div class="category-card">
         <Card class="category-card">
+          <Card.Img
+            class="category-image"
+            variant="top"
+            src="https://res.cloudinary.com/db9eiaidf/image/upload/v1637232639/fashion_hwpu6b.png"
+          />
+          <Card.Body>
+            <Card.Title class="card-text">Fashion</Card.Title>
+          </Card.Body>
+        </Card>
+
+        <Card className="card">
+          <Card.Img
+            class="category-image"
+            variant="top"
+            src="https://res.cloudinary.com/db9eiaidf/image/upload/v1637232639/sports_outdoors_kp5cmw.png"
+          />
+          <Card.Body>
+            <Card.Title class="card-text">Sports & Outdoors</Card.Title>
+          </Card.Body>
+        </Card>
+
+        <Card className="card">
           <Card.Img
             class="category-image"
             variant="top"
@@ -71,10 +63,8 @@ export class Categories extends Component {
             <Card.Title class="card-text">Home & Garden</Card.Title>
           </Card.Body>
         </Card>
-        </div>
 
-<div class="category-card">
-        <Card class="category-card">
+        <Card className="card">
           <Card.Img
             class="category-image"
             variant="top"
@@ -84,9 +74,8 @@ export class Categories extends Component {
             <Card.Title class="card-text">Health & Beauty</Card.Title>
           </Card.Body>
         </Card>
-        </div>
-<div class="category-card">
-        <Card class="category-card">
+
+        <Card className="card">
           <Card.Img
             class="category-image"
             variant="top"
@@ -96,9 +85,8 @@ export class Categories extends Component {
             <Card.Title class="card-text">Cinema, Books & Music</Card.Title>
           </Card.Body>
         </Card>
-</div>
-<div class="category-card">
-        <Card class="category-card">
+
+        <Card className="card">
           <Card.Img
             class="category-image"
             variant="top"
@@ -108,9 +96,8 @@ export class Categories extends Component {
             <Card.Title class="card-text">Vehicles & Motor</Card.Title>
           </Card.Body>
         </Card>
-</div>
-<div class="category-card">
-        <Card class="category-card">
+
+        <Card className="card">
           <Card.Img
             class="category-image"
             variant="top"
@@ -120,9 +107,8 @@ export class Categories extends Component {
             <Card.Title class="card-text">Art & Collectibles</Card.Title>
           </Card.Body>
         </Card>
-</div>
-<div class="category-card">
-        <Card class="category-card">
+
+        <Card className="card">
           <Card.Img
             class="category-image"
             variant="top"
@@ -132,7 +118,6 @@ export class Categories extends Component {
             <Card.Title class="card-text">Toys & Kids</Card.Title>
           </Card.Body>
         </Card>
-        </div>
       </div>
     );
   }
