@@ -24,9 +24,17 @@ export class AllThreads extends Component {
   }
 
   render() {
+    const { isLoggedIn } = this.props;
     const { threadList } = this.state;
     return (
       <div class="all-threads">
+        {isLoggedIn && (
+          <Link to="/create">
+            <button>Create Thread</button>
+          </Link>
+        )}
+
+        <h3>Latest Threads</h3>
         {threadList.length && (
           <>
             {threadList.map((thread) => {

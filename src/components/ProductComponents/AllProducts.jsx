@@ -36,8 +36,14 @@ export class AllProducts extends Component {
 
   render() {
     const { productList, isLoading, itemToBuy } = this.state;
+    const { isLoggedIn } = this.props;
     return (
       <div class="all-products">
+        {isLoggedIn && (
+          <Link to="/sell">
+            <button>List Product</button>
+          </Link>
+        )}
         <h3>Latest Products</h3>
         {productList.length && (
           <>
@@ -52,7 +58,7 @@ export class AllProducts extends Component {
                       Buy
                     </button>
                     <Link to={`/product/${product._id}`}>
-                    <button>See Details</button>
+                      <button>See Details</button>
                     </Link>
                     {itemToBuy && itemToBuy._id === product._id && (
                       <Payment itemToBuy={itemToBuy} />

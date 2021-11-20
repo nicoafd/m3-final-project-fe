@@ -65,7 +65,12 @@ class App extends Component {
             exact
           />
 
-          <Route path="/marketplace" component={AllProducts} exact />
+          <Route
+            path="/marketplace"
+            render={(props) => (
+              <AllProducts {...props} isLoggedIn={isLoggedIn} exact />
+            )}
+          />
 
           <Route
             path="/login"
@@ -73,7 +78,13 @@ class App extends Component {
             exact
           />
 
-          <Route path="/forum" component={AllThreads} exact />
+          <Route
+            path="/forum"
+            render={(props) => (
+              <AllThreads {...props} isLoggedIn={isLoggedIn} />
+            )}
+            exact
+          />
 
           <Route path="/thread/:id" component={OneThread} exact />
 

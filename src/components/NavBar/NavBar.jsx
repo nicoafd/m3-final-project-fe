@@ -1,8 +1,7 @@
 import axios from "axios";
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { AiFillHome, AiFillWechat, AiTwotoneShop } from "react-icons/ai";
-import { MdLogout, MdLogin } from "react-icons/md";
+import { BsFillGrid3X3GapFill } from "react-icons/bs";
 import "./Navbar.css";
 import "./index.js";
 
@@ -12,10 +11,14 @@ const linkStyles = {
 };
 
 const activeStyles = {
-  color: "black",
+  color: "yellow",
 };
 
 export default function NavBar({ isLoggedIn, user, setUser }) {
+  const [isShowing, setShowing] = useState(false);
+
+  //onclick from false t true and true to false
+  //setting the menu as the top layer
   const logout = () => {
     axios
       .post(
@@ -28,25 +31,29 @@ export default function NavBar({ isLoggedIn, user, setUser }) {
       });
   };
 
+  const handleClick = () => {
+    setShowing(!isShowing);
+  };
+
   return (
     <div class="navbar">
-      <img
-        src="https://res.cloudinary.com/db9eiaidf/image/upload/v1637173969/tradehub-logo-white_s3sfhi.png"
-        alt="logo"
-        style={{ width: "9rem" }}
+      <div>
+        <NavLink exact to="/">
+          <img
+            src="https://res.cloudinary.com/db9eiaidf/image/upload/v1637173969/tradehub-logo-white_s3sfhi.png"
+            alt="logo"
+            style={{ width: "9rem" }}
+          />
+        </NavLink>
+      </div>
+
+      <BsFillGrid3X3GapFill
+        className="toggleButton"
+        onClick={handleClick}
+        color="white"
       />
-      <a href="#" class="toggleButton">
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
-      </a>
 
       <div className="navbarLinks">
-        <NavLink style={linkStyles} activeStyle={activeStyles} exact to="/">
-          {/*  <AiFillHome /> */}
-          <h3>Home</h3>
-        </NavLink>
-
         <NavLink
           style={linkStyles}
           activeStyle={activeStyles}
@@ -87,7 +94,7 @@ export default function NavBar({ isLoggedIn, user, setUser }) {
               style={linkStyles}
               activeStyle={activeStyles}
             >
-              <h3>profile</h3>
+              <h3>Profile</h3>
             </NavLink>
             <NavLink to="/" style={linkStyles} activeStyle={activeStyles}>
               {/* <MdLogout onClick={logout} /> */}
@@ -96,6 +103,85 @@ export default function NavBar({ isLoggedIn, user, setUser }) {
           </>
         )}
       </div>
+
+      {isShowing && (
+        <div className="navbarLinks minimizedNavlinks">
+          <NavLink
+            style={linkStyles}
+            activeStyle={activeStyles}
+            to="/marketplace"
+            onClick={handleClick}
+          >
+            {/* <AiTwotoneShop /> */}
+            <h3>Market</h3>
+          </NavLink>
+
+          <NavLink
+            style={linkStyles}
+            activeStyle={activeStyles}
+            to="/forum"
+            onClick={handleClick}
+          >
+            {/* <AiFillWechat /> */}
+            <h3>Forum</h3>
+          </NavLink>
+
+          {!isLoggedIn && (
+            <>
+              {" "}
+              <NavLink
+                to="/signup"
+                style={linkStyles}
+                activeStyle={activeStyles}
+                onClick={handleClick}
+              >
+                <h3>Register</h3>
+              </NavLink>
+              <NavLink
+                to="/login"
+                style={linkStyles}
+                activeStyle={activeStyles}
+                onClick={handleClick}
+              >
+                {/*  <MdLogin /> */}
+                <h3>Login</h3>
+              </NavLink>
+            </>
+          )}
+
+          {isLoggedIn && (
+            <>
+              {/*  <NavLink to="/sell" style={linkStyles} activeStyle={activeStyles}>
+                <h3>List Item</h3>
+              </NavLink>
+              <NavLink
+                to="/create"
+                style={linkStyles}
+                activeStyle={activeStyles}
+              >
+                <h3>Create Thread</h3>
+              </NavLink> */}
+              <NavLink
+                to="/profile"
+                style={linkStyles}
+                activeStyle={activeStyles}
+                onClick={handleClick}
+              >
+                <h3>Profile</h3>
+              </NavLink>
+              <NavLink
+                to="/"
+                style={linkStyles}
+                activeStyle={activeStyles}
+                onClick={handleClick}
+              >
+                {/* <MdLogout onClick={logout} /> */}
+                <button onClick={logout}>Log out</button>
+              </NavLink>
+            </>
+          )}
+        </div>
+      )}
     </div>
   );
 }

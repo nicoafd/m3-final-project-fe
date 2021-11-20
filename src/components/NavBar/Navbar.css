@@ -1,6 +1,7 @@
 .navbar {
   display: flex;
   justify-content: space-evenly;
+  flex-direction: row;
   align-items: center;
   height: 10vh;
   background-color: grey;
@@ -10,7 +11,12 @@
   z-index: 9999 !important;
   padding-bottom: 10px !important;
 }
-
+.navbarLinks {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 80%;
+}
 .toggleButton {
   position: absolute;
   top: 0.75rem;
@@ -28,6 +34,11 @@
   background-color: white;
   border-radius: 10px;
 }
+.minimizedNavlinks {
+  display: none;
+  flex-direction: column;
+  background-color: black;
+}
 
 @media (max-width: 800px) {
   .navbar {
@@ -43,9 +54,12 @@
   .navbarLinks {
     display: none;
     width: 100%;
-    padding-left: 50px;
+    /* padding-left: 50px; */
   }
-  .navbar-links.active {
+  .minimizedNavlinks {
     display: flex;
+    width: 45%;
+    margin-top: 10vh;
+    margin-left: 16.5vw;
   }
 }
