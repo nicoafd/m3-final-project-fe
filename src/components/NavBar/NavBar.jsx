@@ -3,13 +3,12 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { AiFillHome, AiFillWechat, AiTwotoneShop } from "react-icons/ai";
 import { MdLogout, MdLogin } from "react-icons/md";
-import "./Navbar.css"
-
+import "./Navbar.css";
+import "./index.js";
 
 const linkStyles = {
   textDecoration: "none",
   color: "white",
-  
 };
 
 const activeStyles = {
@@ -36,46 +35,67 @@ export default function NavBar({ isLoggedIn, user, setUser }) {
         alt="logo"
         style={{ width: "9rem" }}
       />
-      <NavLink style={linkStyles} activeStyle={activeStyles} exact to="/">
-        <AiFillHome />
-      </NavLink>
+      <a href="#" class="toggleButton">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </a>
 
-      <NavLink style={linkStyles} activeStyle={activeStyles} to="/marketplace">
-        <AiTwotoneShop />
-      </NavLink>
+      <div className="navbarLinks">
+        <NavLink style={linkStyles} activeStyle={activeStyles} exact to="/">
+          {/*  <AiFillHome /> */}
+          <h3>Home</h3>
+        </NavLink>
 
-      <NavLink style={linkStyles} activeStyle={activeStyles} to="/forum">
-        <AiFillWechat />
-      </NavLink>
-      
-      {!isLoggedIn && (
-        <>
-          {" "}
-          <NavLink to="/signup" style={linkStyles} activeStyle={activeStyles}>
-            <h3>Register</h3>
-          </NavLink>
-          <NavLink to="/login" style={linkStyles} activeStyle={activeStyles}>
-            <MdLogin />
-          </NavLink>
-        </>
-      )}
+        <NavLink
+          style={linkStyles}
+          activeStyle={activeStyles}
+          to="/marketplace"
+        >
+          {/* <AiTwotoneShop /> */}
+          <h3>Marketplace</h3>
+        </NavLink>
 
-      {isLoggedIn && (
-        <>
-          <NavLink to="/sell" style={linkStyles} activeStyle={activeStyles}>
-            <h3>List Item</h3>
-          </NavLink>
-          <NavLink to="/create" style={linkStyles} activeStyle={activeStyles}>
-            <h3>Create Thread</h3>
-          </NavLink>
-          <NavLink to="/profile" style={linkStyles} activeStyle={activeStyles}>
-            <h3>profile</h3>
-          </NavLink>
-          <NavLink to="/" style={linkStyles} activeStyle={activeStyles}>
-            <MdLogout onClick={logout} />
-          </NavLink>
-        </>
-      )}
+        <NavLink style={linkStyles} activeStyle={activeStyles} to="/forum">
+          {/* <AiFillWechat /> */}
+          <h3>Forum</h3>
+        </NavLink>
+
+        {!isLoggedIn && (
+          <>
+            {" "}
+            <NavLink to="/signup" style={linkStyles} activeStyle={activeStyles}>
+              <h3>Register</h3>
+            </NavLink>
+            <NavLink to="/login" style={linkStyles} activeStyle={activeStyles}>
+              {/*  <MdLogin /> */}
+              <h3>Login</h3>
+            </NavLink>
+          </>
+        )}
+
+        {isLoggedIn && (
+          <>
+            <NavLink to="/sell" style={linkStyles} activeStyle={activeStyles}>
+              <h3>List Item</h3>
+            </NavLink>
+            <NavLink to="/create" style={linkStyles} activeStyle={activeStyles}>
+              <h3>Create Thread</h3>
+            </NavLink>
+            <NavLink
+              to="/profile"
+              style={linkStyles}
+              activeStyle={activeStyles}
+            >
+              <h3>profile</h3>
+            </NavLink>
+            <NavLink to="/" style={linkStyles} activeStyle={activeStyles}>
+              {/* <MdLogout onClick={logout} /> */}
+              <button onClick={logout}>Log out</button>
+            </NavLink>
+          </>
+        )}
+      </div>
     </div>
   );
 }

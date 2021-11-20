@@ -12,12 +12,10 @@ import AddProductForm from "./components/ProductComponents/AddProductForm";
 import AllProducts from "./components/ProductComponents/AllProducts";
 import Profile from "./components/ProfileComponent/Profile";
 import OneThread from "./components/ForumComponents/OneThread";
-import ServerError from "./components/ProfileComponent/ErrorComponents/ServerError";
-import NotFound from "./components/ProfileComponent/ErrorComponents/NotFound";
-import ThreadEdit from "./components/ForumComponents/ThreadEdit";
-import OneProduct from "./components/ProductComponents/OneProduct"
-import Footer from "./components/Footer/Footer";
-import ProductEdit from "./components/ProductComponents/ProductEdit";
+import ServerError from "./components/ErrorComponents/ServerError";
+import NotFound from "./components/ErrorComponents/NotFound";
+import NotAuthorized from "./components/ErrorComponents/NotAuthorized";
+import OneProduct from "./components/ProductComponents/OneProduct";
 
 //:/
 
@@ -57,58 +55,45 @@ class App extends Component {
     return (
       <div className="App">
         <NavBar isLoggedIn={isLoggedIn} user={user} setUser={this.setUser} />
-        <div style={{ Top: "300px" }}>
-          <Switch>
-            <Route path="/" component={Home} exact />
 
-            <Route
-              path="/signup"
-              render={(props) => (
-                <SignupForm {...props} setUser={this.setUser} />
-              )}
-              exact
-            />
+        <Switch>
+          <Route path="/" component={Home} exact />
 
-            <Route path="/marketplace" component={AllProducts} exact />
+          <Route
+            path="/signup"
+            render={(props) => <SignupForm {...props} setUser={this.setUser} />}
+            exact
+          />
 
-            <Route
-              path="/login"
-              render={(props) => (
-                <LoginForm {...props} setUser={this.setUser} />
-              )}
-              exact
-            />
+          <Route path="/marketplace" component={AllProducts} exact />
 
-            <Route path="/forum" component={AllThreads} exact />
+          <Route
+            path="/login"
+            render={(props) => <LoginForm {...props} setUser={this.setUser} />}
+            exact
+          />
 
-            <Route path="/thread/:id" component={OneThread} exact />
+          <Route path="/forum" component={AllThreads} exact />
 
-            <Route path="/product/:id" component={OneProduct} exact />
+          <Route path="/thread/:id" component={OneThread} exact />
 
-            {isLoggedIn && (
-              <Route path="/sell" component={AddProductForm} exact />
-            )}
+          <Route path="/product/:id" component={OneProduct} exact />
 
-            {isLoggedIn && <Route path="/profile" component={Profile} exact />}
+          {isLoggedIn && (
+            <Route path="/sell" component={AddProductForm} exact />
+          )}
 
-            {isLoggedIn && (
-              <Route path="/create" component={AddThreadForm} exact />
-            )}
+          {isLoggedIn && <Route path="/profile" component={Profile} exact />}
 
-            {isLoggedIn && (
-              <Route path="/thread/:id/edit" component={ThreadEdit} exact />
-            )}
+          {isLoggedIn && (
+            <Route path="/create" component={AddThreadForm} exact />
+          )}
 
-            {isLoggedIn && (
-              <Route path="/product/:id/edit" component={ProductEdit} exact />
-            )}
+          <Route path="/not-found" component={NotFound} />
 
-            <Route path="/500" component={ServerError} />
-
-            <Route path="/not-found" component={NotFound} />
-          </Switch>
-        </div>
-        <Footer />
+          <Route path="/not-authorized" component={NotAuthorized} />
+          <Route path="/error" component={ServerError} />
+        </Switch>
       </div>
     );
   }

@@ -8,7 +8,44 @@
   top: 0 !important;
   width: 100% !important;
   z-index: 9999 !important;
-padding-bottom: 10px !important;
+  padding-bottom: 10px !important;
+}
+
+.toggleButton {
+  position: absolute;
+  top: 0.75rem;
+  right: 1rem;
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 21px;
+}
+
+.toggleButton .bar {
+  height: 3px;
+  width: 100%;
+  background-color: white;
+  border-radius: 10px;
+}
+
+@media (max-width: 800px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
   }
 
-  
+  .toggleButton {
+    display: flex;
+    height: 5vh;
+  }
+
+  .navbarLinks {
+    display: none;
+    width: 100%;
+    padding-left: 50px;
+  }
+  .navbar-links.active {
+    display: flex;
+  }
+}
