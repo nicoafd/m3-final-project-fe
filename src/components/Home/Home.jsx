@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Card from "react-bootstrap/Card";
-import Categories from "../CategoryComponent/Categories";
 import "./Home.css";
 
 const heading2Styles = {
@@ -23,7 +22,7 @@ class Home extends Component {
           At TradeHub you will sell items you no longer use, and connect with
           the community.
         </h2>
-        <Categories />
+
       </div>
     );
   }

@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Payment from "../PaymentsComponents/Payment";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
+import Categories from "../CategoryComponent/Categories";
 
 export class AllProducts extends Component {
   state = {
@@ -39,6 +40,7 @@ export class AllProducts extends Component {
     const { isLoggedIn } = this.props;
     return (
       <div class="all-products">
+        <Categories />
         {isLoggedIn && (
           <Link to="/sell">
             <button>List Product</button>

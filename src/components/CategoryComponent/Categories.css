@@ -1,4 +1,4 @@
-.my-container {
+.category-container {
   display: flex !important;
   flex-wrap: wrap !important;
   flex-direction: row !important;
@@ -10,7 +10,11 @@
   margin-right: 0 !important;
 }
 
-.card {
+.category-container-mobile {
+  display: none;
+}
+
+.category-card {
   flex: 0 0 auto;
   margin: 0 auto;
   align-content: center;
@@ -23,13 +27,13 @@
   width: 5rem !important;
 }
 
-.card-text {
+.category-card-text {
   font-size: 12px;
   white-space: initial;
 }
 
 @media (max-width: 530px) {
-  .my-container {
+  .category-container {
     margin-top: 10vh;
   }
 }
@@ -37,7 +41,7 @@
 /* We need another media query at 520px approximately */
 
 @media (max-width: 400px) {
-  .my-container {
+  .category-container {
     row-gap: 2.5vh;
     column-gap: 0.5vw;
   }
@@ -48,5 +52,15 @@
   .category-image {
     height: 3.2rem;
     width: 1.5rem;
+  }
+}
+
+@media (max-width: 520px) {
+  .category-card {
+    display: none !important;
+  }
+
+  .category-container-mobile {
+    display: inline-block !important;
   }
 }
