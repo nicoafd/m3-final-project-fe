@@ -34,7 +34,7 @@ export default class Profile extends Component {
     const { username, city } = this.state;
     return (
       <div class="profile-component">
-        <h3>Welcome to your profile, {username}!</h3>
+        {/* <h3>Welcome to your profile, {username}!</h3> */}
         <ProfileInfo />
       </div>
     );

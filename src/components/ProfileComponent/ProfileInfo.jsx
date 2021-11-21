@@ -35,7 +35,7 @@ export class ProfileInfo extends Component {
   render() {
     const { username, city, email, createdAt } = this.state;
     return (
-      <div>
+      <div class="body-profile">
         <div class="container">
           <div class="main-body">
             <div class="row gutters-sm">
