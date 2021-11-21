@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import { RingLoader } from "react-spinners";
 import { Badge, ListGroup } from "react-bootstrap";
 
@@ -44,9 +45,11 @@ function Thread() {
                     <div className="fw-bold">{thread.title}</div>
                     {thread.description}
                   </div>
-                  <Badge variant="primary" pill>
-                    details
-                  </Badge>
+                  <Link to={`/thread/${thread._id}`}>
+                    <Badge variant="primary" pill>
+                      details
+                    </Badge>
+                  </Link>
                 </ListGroup.Item>
               </React.Fragment>
             </div>

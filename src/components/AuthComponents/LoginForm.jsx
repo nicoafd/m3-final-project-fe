@@ -53,7 +53,7 @@ export default class LoginForm extends Component {
             placeholder="example@example.com"
           />
           <input
-            type="text"
+            type="password"
             name="password"
             value={password}
             onChange={this.handleChange}

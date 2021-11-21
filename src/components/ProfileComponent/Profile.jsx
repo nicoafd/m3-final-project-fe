@@ -1,14 +1,16 @@
 import axios from "axios";
 import React, { Component } from "react";
-/* import Product from "./Product";
-import Thread from "./Thread"; */
-import "./Profile.css";
-import ProfileInfo from "./ProfileInfo";
+import Product from "./Product";
+import Thread from "./Thread";
+import "./Profile2.css";
 
 export default class Profile extends Component {
   state = {
     username: "",
     city: "",
+    email: "",
+    createdAt: "",
+    profilePic: "",
   };
 
   handleUserInfo = () => {
@@ -19,11 +21,15 @@ export default class Profile extends Component {
       .then((response) => {
         this.setState({
           username: response.data.username,
+          email: response.data.email,
           city: response.data.city,
+          createdAt: response.data.createdAt.slice(0, 10),
+          profilePic: response.data.profilePic,
         });
-        console.log(this.state.username, this.state.city);
       })
-      .catch((err) => {});
+      .catch((err) => {
+        this.props.history.push("/error");
+      });
   };
 
   componentDidMount() {
@@ -31,11 +37,29 @@ export default class Profile extends Component {
   }
 
   render() {
-    const { username, city } = this.state;
+    const { username, city, email, createdAt, profilePic } = this.state;
     return (
-      <div class="profile-component">
-        {/* <h3>Welcome to your profile, {username}!</h3> */}
-        <ProfileInfo />
+      <div className="profile-component">
+        <div className="profile-img-div">
+          <img src={profilePic} className="profile-img" alt="Profile Img" />
+          <h4>{username}</h4>
+          <p>TradeHub User Since {createdAt}</p>
+          <p>{email}</p>
+          <p>{city}</p>
+          <button>Edit Profile</button>
+        </div>
+
+        <div className="profile-listings">
+          <div className="profile-products">
+            <h6>Your products</h6>
+            <Product />
+          </div>
+
+          <div className="profile-threads">
+            <h6>Your Threads</h6>
+            <Thread />
+          </div>
+        </div>
       </div>
     );
   }

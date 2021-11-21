@@ -1,0 +1,56 @@
+.profile-component {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile-img-div {
+  margin-top: 13.2vh;
+  width: 85vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1.6vh;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.profile-products {
+  margin-top: 3.2vh;
+}
+
+.profile-threads {
+  margin-top: 3.2vh;
+}
+
+.profile-img {
+  width: 15vw;
+  border: 1px solid white;
+  border-radius: 50px 50px;
+}
+
+.profile-img-div > button {
+  height: 4vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.6vh;
+}
+
+@media (min-width: 900px) {
+  .profile-component {
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+  .profile-img-div {
+    width: 33vw;
+  }
+  .profile-listings {
+    margin-top: 15vh;
+  }
+  .profile-products {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  }
+  .profile-threads {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  }
+}

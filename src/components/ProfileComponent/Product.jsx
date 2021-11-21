@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import { RingLoader } from "react-spinners";
 import { Badge, ListGroup } from "react-bootstrap";
 
@@ -31,19 +32,21 @@ function Product() {
         products.map((product) => {
           return (
             <div class="product-card">
-            <React.Fragment key={product._id}>
-              <ListGroup.Item
-                as="li"
-                className="d-flex justify-content-between align-items-start"
-              >
-                <div className="ms-2 me-auto">
-                  <div className="fw-bold">{product.name}</div>
-                  {product.description}
-                </div>
-                <Badge variant="primary" pill>
-                  details
-                </Badge>
-              </ListGroup.Item>
+              <React.Fragment key={product._id}>
+                <ListGroup.Item
+                  as="li"
+                  className="d-flex justify-content-between align-items-start"
+                >
+                  <div className="ms-2 me-auto">
+                    <div className="fw-bold">{product.name}</div>
+                    {product.description}
+                  </div>
+                  <Link to={`/product/${product._id}`}>
+                    <Badge variant="primary" pill>
+                      details
+                    </Badge>
+                  </Link>
+                </ListGroup.Item>
               </React.Fragment>
             </div>
           );
