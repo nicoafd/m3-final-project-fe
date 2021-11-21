@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { BsFillGrid3X3GapFill } from "react-icons/bs";
+import { FiLogOut } from "react-icons/fi";
 import "./Navbar.css";
 
 const linkStyles = {
@@ -39,7 +40,7 @@ export default function NavBar({ isLoggedIn, user, setUser }) {
       <div>
         <NavLink exact to="/">
           <img
-            src="https://res.cloudinary.com/db9eiaidf/image/upload/v1637173969/tradehub-logo-white_s3sfhi.png"
+            src="https://res.cloudinary.com/db9eiaidf/image/upload/v1637173969/tradehub-logo-black_tgvwyt.png"
             alt="logo"
             style={{ width: "9rem" }}
           />
@@ -95,9 +96,8 @@ export default function NavBar({ isLoggedIn, user, setUser }) {
             >
               <h3>Profile</h3>
             </NavLink>
-            <NavLink to="/" style={linkStyles} activeStyle={activeStyles}>
-              {/* <MdLogout onClick={logout} /> */}
-              <button onClick={logout}>Log out</button>
+            <NavLink to="/" style={linkStyles}>
+              <h3 onClick={logout}>Log out</h3>
             </NavLink>
           </>
         )}
@@ -168,14 +168,8 @@ export default function NavBar({ isLoggedIn, user, setUser }) {
               >
                 <h3>Profile</h3>
               </NavLink>
-              <NavLink
-                to="/"
-                style={linkStyles}
-                activeStyle={activeStyles}
-                onClick={handleClick}
-              >
-                {/* <MdLogout onClick={logout} /> */}
-                <button onClick={logout}>Log out</button>
+              <NavLink to="/" style={linkStyles} onClick={handleClick}>
+                <h3 onClick={logout}>Log out</h3>
               </NavLink>
             </>
           )}

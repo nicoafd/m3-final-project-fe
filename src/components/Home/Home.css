@@ -1,0 +1,14 @@
+.home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 90vh;
+  margin-top: 40vh;
+}
+
+@media (max-width: 400px) {
+  .home-container {
+    margin-top: 25vh;
+  }
+}

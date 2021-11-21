@@ -1,7 +1,7 @@
 .auth-form {
-    display: flex;
-    flex-direction: column;
-    margin-top: 4vh;
-    align-items: center;
-    padding-top: 80px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 15vh;
+  align-items: center;
+  padding-top: 80px;
 }

@@ -1,8 +1,8 @@
 import axios from "axios";
 import React, { Component } from "react";
-import Product from "./Product";
-import Thread from "./Thread";
-import "./Profile.css"
+/* import Product from "./Product";
+import Thread from "./Thread"; */
+import "./Profile.css";
 import ProfileInfo from "./ProfileInfo";
 
 export default class Profile extends Component {
@@ -35,7 +35,7 @@ export default class Profile extends Component {
     return (
       <div class="profile-component">
         <h3>Welcome to your profile, {username}!</h3>
-        <ProfileInfo/>
+        <ProfileInfo />
       </div>
     );
   }

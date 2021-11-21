@@ -222,7 +222,7 @@ export class ProfileInfo extends Component {
                         <a
                           class="btn btn-info "
                           target="__blank"
-                          href="#" //here we add the edit route to the profile
+                          //here we add the edit route to the profile
                         >
                           Edit
                         </a>

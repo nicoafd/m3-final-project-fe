@@ -31,7 +31,7 @@ export class Categories extends Component {
           </Card.Body>
         </Card>
 
-        <Card class="category-card">
+        <Card className="card">
           <Card.Img
             class="category-image"
             variant="top"

@@ -1,5 +1,7 @@
 import axios from "axios";
 import React, { Component } from "react";
+import { Form, InputGroup } from "react-bootstrap";
+import "./Auth.css";
 
 export default class LoginForm extends Component {
   state = {
@@ -42,7 +44,7 @@ export default class LoginForm extends Component {
     const { password, email, errorMessage } = this.state;
     return (
       <div class="auth-form">
-        <form onSubmit={this.handleSubmit}>
+        <Form onSubmit={this.handleSubmit}>
           <input
             type="email"
             name="email"
@@ -60,7 +62,7 @@ export default class LoginForm extends Component {
 
           {errorMessage && <p>{errorMessage}</p>}
           <button type="submit">Login</button>
-        </form>
+        </Form>
       </div>
     );
   }
