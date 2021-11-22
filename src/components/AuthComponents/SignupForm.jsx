@@ -2,7 +2,7 @@ import Button from "@restart/ui/esm/Button";
 import axios from "axios";
 import React, { Component } from "react";
 import { Form, InputGroup } from "react-bootstrap";
-import { PacmanLoader, RingLoader } from "react-spinners";
+import { RingLoader } from "react-spinners";
 import "./Auth.css";
 
 require("dotenv");

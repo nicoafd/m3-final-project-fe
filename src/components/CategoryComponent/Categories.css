@@ -61,6 +61,6 @@
   }
 
   .category-container-mobile {
-    display: inline-block !important;
+    display:table-row !important;
   }
 }
