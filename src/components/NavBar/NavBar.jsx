@@ -2,7 +2,6 @@ import axios from "axios";
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { BsFillGrid3X3GapFill } from "react-icons/bs";
-import { FiLogOut } from "react-icons/fi";
 import "./Navbar.css";
 
 const linkStyles = {

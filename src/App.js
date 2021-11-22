@@ -16,6 +16,8 @@ import ServerError from "./components/ErrorComponents/ServerError";
 import NotFound from "./components/ErrorComponents/NotFound";
 import NotAuthorized from "./components/ErrorComponents/NotAuthorized";
 import OneProduct from "./components/ProductComponents/OneProduct";
+import ProductEdit from "./components/ProductComponents/ProductEdit";
+import ThreadEdit from "./components/ForumComponents/ThreadEdit";
 
 //:/
 
@@ -91,6 +93,7 @@ class App extends Component {
           {/* <Route path="/thread/:id/edit" component={} exact /> */}
 
           <Route path="/product/:id" component={OneProduct} exact />
+          <Route path="/product/:id/edit" component={ProductEdit} exact />
 
           {isLoggedIn && (
             <Route path="/sell" component={AddProductForm} exact />

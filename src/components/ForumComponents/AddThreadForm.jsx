@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { Component } from "react";
 import Form from "react-bootstrap/Form";
-import { InputGroup, Button } from "react-bootstrap";
+import Button from "react-bootstrap/Button";
 import "./Forum.css";
 
 class AddThreadForm extends Component {
