@@ -89,7 +89,7 @@ class App extends Component {
           />
 
           <Route path="/thread/:id" component={OneThread} exact />
-          <Route path="/thread/:id/edit" component={ThreadEdit} exact />
+          {/* <Route path="/thread/:id/edit" component={} exact /> */}
 
           <Route path="/product/:id" component={OneProduct} exact />
           <Route path="/product/:id/edit" component={ProductEdit} exact />
