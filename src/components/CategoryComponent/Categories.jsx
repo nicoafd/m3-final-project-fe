@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Button, Card, DropdownButton, Form } from "react-bootstrap";
-import "bootstrap/dist/css/bootstrap.min.css";
+
+import "./Categories.css";
+import Dropdown from "@restart/ui/esm/Dropdown";
 
 
 

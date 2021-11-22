@@ -3,6 +3,8 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Payment from "../PaymentsComponents/Payment";
 import Card from "react-bootstrap/Card";
+
+import Categories from "../CategoryComponent/Categories";
 import Form from "react-bootstrap/Form";
 import "./Product.css"
 

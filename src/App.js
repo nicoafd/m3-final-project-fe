@@ -18,6 +18,7 @@ import NotAuthorized from "./components/ErrorComponents/NotAuthorized";
 import OneProduct from "./components/ProductComponents/OneProduct";
 import ProductEdit from "./components/ProductComponents/ProductEdit";
 import ThreadEdit from "./components/ForumComponents/ThreadEdit";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 //:/
 
