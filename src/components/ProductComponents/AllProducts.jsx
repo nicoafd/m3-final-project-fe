@@ -27,6 +27,7 @@ export class AllProducts extends Component {
         console.log(response.data);
         this.setState({
           productList: [...response.data],
+          filteredList: [...response.data],
         });
       })
       .catch((err) => this.props.history.push("/error"));
@@ -42,10 +43,7 @@ export class AllProducts extends Component {
     console.log(filteredList);
   };
 
-displayText = () => {
-
-}
-
+  displayText = () => {};
 
   componentDidMount() {
     this.handleProducts();
@@ -234,13 +232,13 @@ displayText = () => {
           </>
 
           <div class="category-container-mobile">
-            <Button onClick={() => this.setState({ isFiltered: false })}>
-              All Categories
-            </Button>
             <Form.Select
               onChange={(event) => this.handleFilter(event.target.value)}
               id="category"
             >
+              <option onClick={() => this.setState({ isFiltered: false })}>
+                All Categories
+              </option>
               <option value="Mobile, Computers & Devices">
                 Mobile, Computers & Devices
               </option>
@@ -258,6 +256,12 @@ displayText = () => {
               <option value="Art & Collectibles">Art & Collectibles</option>
               <option value="Toys & Kids">Toys & Kids</option>
             </Form.Select>
+            <Button
+              className="all-categories-btn"
+              onClick={() => this.setState({ isFiltered: false })}
+            >
+              All Categories
+            </Button>
           </div>
         </div>
         <div class="all-products">
@@ -267,6 +271,17 @@ displayText = () => {
             </Link>
           )}
           <h3>Latest Products</h3>
+          {filteredList.length === 0 && (
+            <>
+              <h4 style={{ color: "red" }}>
+                There are no products for this category.
+              </h4>
+              <h4 style={{ fontWeight: "bold" }}>
+                Be the first to list a product under this category!
+                <Link to="/sell">Click Here!</Link>
+              </h4>
+            </>
+          )}
           {isFiltered && (
             <>
               {filteredList.map((product) => {
