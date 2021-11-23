@@ -1,15 +1,23 @@
 
-  .add-product-form,
+
   .all-products,
-  .edit-product-form,
   .one-product-card,
   .one-product-card {
     display: flex;
     flex-direction: column;
     margin-top: 4vh;
     align-items: center;
-    padding-top: 80px;
+    padding-top: 5vh;
   } 
+
+    .add-product-form,
+    .edit-product-form {
+          display: flex;
+          flex-direction: column;
+          margin-top: 4vh;
+          align-items: center;
+          padding-top: 10vh;
+    }
 
 .category-container {
   display: flex !important;
@@ -24,26 +32,46 @@
   padding-top: 15vh;
 }
 
+.product-card {
+  width: 18rem;
+  margin-bottom: 2.5vh;
+}
+
 .category-container-mobile {
   display: none;
 }
 
 .category-card {
-  flex: 0 0 auto;
-  margin: 0 auto;
-  align-content: center;
-  width: 100px;
+display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32vw;
+  height: 16vh;
+  margin-top: 5vh !important;
+
 }
 
+.category-card :hover > .category-card-text {
+  display: block;
+
+}
+
+
+
 .category-image {
-  flex: 0 0 auto;
-  align-content: center;
+  margin: 0 auto;
   width: 5rem !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
 }
 
 .category-card-text {
-  font-size: 12px;
+  font-size: 0.95rem !important;
   white-space: initial;
+  display: none
+
 }
 
 @media (max-width: 530px) {

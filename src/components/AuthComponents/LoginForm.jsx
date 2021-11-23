@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { Component } from "react";
-import { Form, InputGroup } from "react-bootstrap";
+import Form from "react-bootstrap/Form";
 import "./Auth.css";
 
 export default class LoginForm extends Component {
