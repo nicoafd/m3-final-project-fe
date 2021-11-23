@@ -31,7 +31,7 @@ function Product() {
       ) : (
         products.map((product) => {
           return (
-            <div class="product-card">
+            <div className="product-card">
               <React.Fragment key={product._id}>
                 <ListGroup.Item
                   as="li"

@@ -37,6 +37,10 @@
   margin-bottom: 2.5vh;
 }
 
+.all-categories-btn {
+  display: flex !important;
+  justify-content: center !important;
+}
 .category-container-mobile {
   display: none;
 }
