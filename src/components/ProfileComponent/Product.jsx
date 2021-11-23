@@ -3,6 +3,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { RingLoader } from "react-spinners";
 import { Badge, ListGroup } from "react-bootstrap";
+import "./Profile2.css";
 
 function Product() {
   const [products, setProducts] = useState([]);
@@ -31,7 +32,7 @@ function Product() {
       ) : (
         products.map((product) => {
           return (
-            <div class="product-card">
+            <div className="thread-card">
               <React.Fragment key={product._id}>
                 <ListGroup.Item
                   as="li"

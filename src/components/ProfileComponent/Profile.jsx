@@ -110,6 +110,7 @@ export default class Profile extends Component {
             <p>Succesfully changed your profile picture. You look beautiful</p>
             <AiOutlineClose
               color="red"
+              size={25}
               onClick={() => this.setState({ successMessage: false })}
             />
           </div>

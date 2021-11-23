@@ -3,6 +3,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { RingLoader } from "react-spinners";
 import { Badge, ListGroup } from "react-bootstrap";
+import "./Profile2.css";
 
 function Thread() {
   //Defining state = threads and setState = setThreads
@@ -35,7 +36,7 @@ function Thread() {
       ) : (
         threads.map((thread) => {
           return (
-            <div class="thread-card">
+            <div className="thread-card">
               <React.Fragment key={thread._id}>
                 <ListGroup.Item
                   as="li"
