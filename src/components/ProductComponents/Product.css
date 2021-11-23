@@ -16,7 +16,7 @@
           flex-direction: column;
           margin-top: 4vh;
           align-items: center;
-          padding-top: 10vh;
+          padding-top: 6vh;
     }
 
 .category-container {
@@ -45,7 +45,7 @@
 display: flex;
   justify-content: center;
   align-items: center;
-  width: 32vw;
+  width: 8vw;
   height: 16vh;
   margin-top: 5vh !important;
 
