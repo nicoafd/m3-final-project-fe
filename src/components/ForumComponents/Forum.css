@@ -1,10 +1,57 @@
 .create-thread-form,
 .one-thread-card,
 .all-threads {
-    display: flex;
-    flex-direction: column;
-    margin-top: 4vh;
-    align-items: center;
-    padding-top: 80px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 4vh;
+  align-items: center;
+  padding-top: 80px;
 }
 
+/* CSS for all threads*/
+
+.category-container {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  flex-direction: row !important;
+  justify-content: space-around;
+  align-content: center !important;
+  position: sticky !important;
+  padding-bottom: 10px !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  padding-top: 15vh;
+}
+.category-container-mobile {
+  display: none;
+}
+
+.category-card {
+  flex: 0 0 auto;
+  margin: 0 auto;
+  align-content: center;
+  width: 100px;
+}
+
+.category-image {
+  flex: 0 0 auto;
+  align-content: center;
+  width: 5rem !important;
+}
+
+.category-card-text {
+  font-size: 12px;
+  white-space: initial;
+}
+
+@media (max-width: 530px) {
+  .category-container {
+    margin-top: 10vh;
+  }
+}
+
+.single-thread-card {
+  margin-bottom: 10px;
+}
+
+/*CSS for One thread*/

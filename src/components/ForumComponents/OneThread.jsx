@@ -33,9 +33,12 @@ export class OneThread extends Component {
   handleDelete = () => {
     axios
       .delete(
-        `${process.env.REACT_APP_API_HOST}/thread/${this.props.match.params.id}`
+        `${process.env.REACT_APP_API_HOST}/thread/${this.props.match.params.id}`,
+        {
+          withCredentials: true,
+        }
       )
-      .then(() => this.props.history.push("/"))
+      .then(() => this.props.history.push("/forum"))
       .catch(() => this.props.history.push("/error"));
   };
 

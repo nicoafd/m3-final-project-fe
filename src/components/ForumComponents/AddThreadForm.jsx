@@ -31,7 +31,7 @@ class AddThreadForm extends Component {
         },
         { withCredentials: true }
       )
-      .then(() => this.props.history.push("/"))
+      .then(() => this.props.history.push("/forum"))
       .catch((err) =>
         this.setState({ errorMessage: err.response.data.errorMessage })
       );

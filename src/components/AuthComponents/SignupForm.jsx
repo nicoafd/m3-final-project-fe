@@ -37,7 +37,7 @@ export default class SignupForm extends Component {
           imageIsUploading: false,
         });
       })
-      .catch((err) => this.props.history.push("/500"));
+      .catch((err) => this.props.history.push("/error"));
   };
 
   handleSubmit = (event) => {

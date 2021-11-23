@@ -18,14 +18,16 @@ export class Comments extends Component {
           commentList: [...response.data],
         });
       })
-      .catch((err) => this.props.history.push("/500"));
+      .catch((err) => this.props.history.push("/error"));
   };
 
   handleDelete = (commentId) => {
     axios
-      .delete(`${process.env.REACT_APP_API_HOST}/comment/${commentId}`)
-      .then(() => this.props.history.push("/"))
-      .catch(() => this.props.history.push("/500"));
+      .delete(`${process.env.REACT_APP_API_HOST}/comment/${commentId}`, {
+        withCredentials: true,
+      })
+      .then(() => this.props.history.push("/forum"))
+      .catch(() => this.props.history.push("/error"));
   };
 
   componentDidMount() {
@@ -46,8 +48,9 @@ export class Comments extends Component {
             {commentList.map((comment) => {
               return (
                 <div>
+                  <p style={{ fontSize: "18px" }}>{comment.userId.username}</p>
                   <p>{comment.description}</p>
-                  <p>{comment.userId.username}</p>
+
                   <button onClick={() => this.handleDelete(comment._id)}>
                     Delete
                   </button>
