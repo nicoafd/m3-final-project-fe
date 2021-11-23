@@ -58,7 +58,7 @@
   .minimizedNavlinks {
     display: flex;
     width: 45%;
-    margin-top: 10vh;
+    margin-top: 0vh;
     margin-left: 16.5vw;
   }
 }

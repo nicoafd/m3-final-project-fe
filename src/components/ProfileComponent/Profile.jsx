@@ -3,6 +3,8 @@ import React, { Component } from "react";
 import Product from "./Product";
 import Thread from "./Thread";
 import "./Profile2.css";
+import { Form, Button } from "react-bootstrap";
+import { AiOutlineClose } from "react-icons/ai";
 
 export default class Profile extends Component {
   state = {
@@ -11,6 +13,9 @@ export default class Profile extends Component {
     email: "",
     createdAt: "",
     profilePic: "",
+    isShowingForm: false,
+    imageIsUploading: false,
+    successMessage: false,
   };
 
   handleUserInfo = () => {
@@ -36,8 +41,59 @@ export default class Profile extends Component {
     this.handleUserInfo();
   }
 
+  handleImageUpload = (event) => {
+    this.setState({ imageIsUploading: true });
+    const uploadData = new FormData();
+    uploadData.append("image", event.target.files[0]);
+
+    axios
+      .post(`${process.env.REACT_APP_API_HOST}/upload`, uploadData)
+      .then((result) => {
+        console.log(result);
+        this.setState({
+          profilePic: result.data.imagePath,
+          imageIsUploading: false,
+        });
+      })
+      .catch((err) => this.props.history.push("/error"));
+  };
+
+  handleSubmit = (event) => {
+    const { profilePic, isShowingForm } = this.state;
+    event.preventDefault();
+
+    axios
+      .patch(
+        `${process.env.REACT_APP_API_HOST}/profile/edit-pic`,
+        { profilePic },
+        { withCredentials: true }
+      )
+      .then((result) => {
+        console.log(result);
+        /*  this.setState({ profilePic: result.data.imagePath }); */
+        this.setState({ isShowingForm: !isShowingForm, successMessage: true });
+        this.props.history.push("/profile");
+      })
+      .catch((err) => {
+        console.log(err);
+        this.props.history.push("/error");
+      });
+  };
+
+  showForm = () => {
+    this.setState({ isShowingForm: !this.state.isShowingForm });
+  };
+
   render() {
-    const { username, city, email, createdAt, profilePic } = this.state;
+    const {
+      username,
+      city,
+      email,
+      createdAt,
+      profilePic,
+      isShowingForm,
+      successMessage,
+    } = this.state;
     return (
       <div className="profile-component">
         <div className="profile-img-div">
@@ -46,8 +102,32 @@ export default class Profile extends Component {
           <p>TradeHub User Since {createdAt}</p>
           <p>{email}</p>
           <p>{city}</p>
-          <button>Edit Profile</button>
+          <button onClick={this.showForm}>Edit Profile Picture</button>
         </div>
+
+        {successMessage && (
+          <div className="success-msg">
+            <p>Succesfully changed your profile picture. You look beautiful</p>
+            <AiOutlineClose
+              color="red"
+              onClick={() => this.setState({ successMessage: false })}
+            />
+          </div>
+        )}
+
+        {isShowingForm && (
+          <Form onSubmit={this.handleSubmit}>
+            <Form.Group
+              onChange={this.handleImageUpload}
+              controlId="formFileSm"
+              className="mb-3"
+            >
+              <Form.Label htmlFor="profilePic">Profile Picture</Form.Label>
+              <Form.Control type="file" size="sm" name="profilePic" />
+            </Form.Group>
+            <Button type="submit">Upload</Button>
+          </Form>
+        )}
 
         <div className="profile-listings">
           <div className="profile-products">
