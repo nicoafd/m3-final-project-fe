@@ -19,6 +19,7 @@ import OneProduct from "./components/ProductComponents/OneProduct";
 import ProductEdit from "./components/ProductComponents/ProductEdit";
 import ThreadEdit from "./components/ForumComponents/ThreadEdit";
 import "bootstrap/dist/css/bootstrap.min.css";
+import Footer from "./components/Footer/Footer";
 
 //:/
 
@@ -111,6 +112,7 @@ class App extends Component {
           <Route path="/not-authorized" component={NotAuthorized} />
           <Route path="/error" component={ServerError} />
         </Switch>
+        <Footer/>
       </div>
     );
   }

@@ -39,6 +39,8 @@ class AddProductForm extends Component {
       .catch((err) => this.props.history.push("/error"));
   };
 
+
+
   handleSubmit = (event) => {
     event.preventDefault();
     const { name, image, description, price, category, stock } = this.state;

@@ -3,6 +3,8 @@ import axios from "axios";
 import AddProductForm from "./AddProductForm";
 import { Link } from "react-router-dom";
 import "./Product.css";
+import { Card } from "react-bootstrap";
+import Button from "@restart/ui/esm/Button";
 
 export class OneProduct extends Component {
   state = {
@@ -20,6 +22,7 @@ export class OneProduct extends Component {
         }
       )
       .then((response) => {
+        console.log(response)
         this.setState({
           oneProduct: response.data,
           isLoading: false,
@@ -44,22 +47,27 @@ export class OneProduct extends Component {
       <div class="one-product-card">
         {isLoading && <h1>...Loading</h1>}
         {!isLoading && (
-          <div>
-            <h2>{oneProduct.name}</h2>
-            <img src={oneProduct.image} alt="item" />
-            <p>{oneProduct.description}</p>
-            <p>Price: €{oneProduct.price}</p>
-            <p>{oneProduct.category}</p>
-            {/* <AddProductForm history={this.props.history} /> */}
-            {/* <Comments threadId={this.props.match.params} /> */}
-            <Link to={`/product/${oneProduct._id}/edit`}>
-              <button>Edit</button>
-            </Link>
-
-            <button onClick={this.handleDelete}>Delete</button>
-
-            {edit && <p>Edited</p>}
-          </div>
+          <>
+            <div>
+              <Card className="text-center">
+                <Card.Header>{oneProduct.category}</Card.Header>
+                <Card.Body>
+                  <Card.Title>{oneProduct.name}</Card.Title>
+                  <Card.Img src={oneProduct.image} />
+                  <Card.Text>{oneProduct.description}</Card.Text>
+                  <Card.Text>Price: €{oneProduct.price}</Card.Text>
+                  <Button onClick={this.handleDelete} variant="primary">
+                    Delete
+                  </Button>
+                  <Link to={`/product/${oneProduct._id}/edit`}>
+                    <Button>Edit</Button>
+                  </Link>
+                  {edit && <p>Edited</p>}
+                </Card.Body>
+                <Card.Footer className="text-muted">Added by {oneProduct.addedBy.username}</Card.Footer>
+              </Card>
+            </div>
+          </>
         )}
       </div>
     );

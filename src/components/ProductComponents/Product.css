@@ -10,13 +10,21 @@
     padding-top: 5vh;
   } 
 
+.one-product-card {
+  /* display: flex; */
+  /* flex-direction: column; */
+  margin-top: 4vh;
+  align-items: center;
+  padding-top: 12vh;
+}
+
     .add-product-form,
     .edit-product-form {
           display: flex;
           flex-direction: column;
           margin-top: 4vh;
           align-items: center;
-          padding-top: 6vh;
+          padding-top: 11vh;
     }
 
 .category-container {
