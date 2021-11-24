@@ -10,17 +10,24 @@
 
 /* CSS for all threads*/
 
-.category-container {
+.thread-category-container {
   display: flex !important;
   flex-wrap: wrap !important;
-  flex-direction: row !important;
-  justify-content: space-around;
-  align-content: center !important;
-  position: sticky !important;
-  padding-bottom: 10px !important;
-  margin-left: 0 !important;
-  margin-right: 0 !important;
-  padding-top: 15vh;
+  flex-direction: column !important;
+  max-width: 25vw !important;
+  margin-left: 0.5vw !important;
+  padding-top: 1vh !important;
+  margin-top: 10vh !important;
+}
+
+.all-thread-container {
+  display: flex !important;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.all-threads {
+  margin-top: 10vh;
 }
 .category-container-mobile {
   display: none;
@@ -33,7 +40,7 @@
   width: 100px;
 }
 
-.category-image {
+.thread-category-image {
   flex: 0 0 auto;
   align-content: center;
   width: 5rem !important;

@@ -31,132 +31,136 @@ export class AllThreads extends Component {
     const { isLoggedIn } = this.props;
     const { threadList } = this.state;
     return (
-      <div>
-        <div class="category-container">
+      <div className="all-thread-container">
+        <div class="thread-category-container">
           <>
-            <Card className="category-card">
+            <Card className="thread-category-card">
               <Card.Img
-                class="category-image"
+                class="thread-category-image"
                 variant="top"
                 src="https://res.cloudinary.com/db9eiaidf/image/upload/v1637232639/mobile_computers_devices_ahinyq.png"
               />
               <Card.Body>
-                <Card.Title class="category-card-text">
+                <Card.Title class="thread-category-card-text">
                   Mobile Computers & Devices
                 </Card.Title>
               </Card.Body>
             </Card>
 
-            <Card className="category-card">
+            <Card className="thread-category-card">
               <Card.Img
-                class="category-image"
+                class="thread-category-image"
                 variant="top"
                 src="https://res.cloudinary.com/db9eiaidf/image/upload/v1637232639/console_videogames_lqyghb.png"
               />
               <Card.Body>
-                <Card.Title class="category-card-text">
+                <Card.Title class="thread-category-card-text">
                   Consoles & Videogames
                 </Card.Title>
               </Card.Body>
             </Card>
 
-            <Card className="category-card">
+            <Card className="thread-category-card">
               <Card.Img
-                class="category-image"
+                class="thread-category-image"
                 variant="top"
                 src="https://res.cloudinary.com/db9eiaidf/image/upload/v1637232639/fashion_hwpu6b.png"
               />
               <Card.Body>
-                <Card.Title class="category-card-text">Fashion</Card.Title>
+                <Card.Title class="thread-category-card-text">
+                  Fashion
+                </Card.Title>
               </Card.Body>
             </Card>
 
-            <Card className="category-card">
+            <Card className="thread-category-card">
               <Card.Img
-                class="category-image"
+                class="thread-category-image"
                 variant="top"
                 src="https://res.cloudinary.com/db9eiaidf/image/upload/v1637232639/sports_outdoors_kp5cmw.png"
               />
               <Card.Body>
-                <Card.Title class="category-card-text">
+                <Card.Title class="thread-category-card-text">
                   Sports & Outdoors
                 </Card.Title>
               </Card.Body>
             </Card>
 
-            <Card className="category-card">
+            <Card className="thread-category-card">
               <Card.Img
-                class="category-image"
+                class="thread-category-image"
                 variant="top"
                 src="https://res.cloudinary.com/db9eiaidf/image/upload/v1637232638/home_garden_f2zga1.png"
               />
               <Card.Body>
-                <Card.Title class="category-card-text">
+                <Card.Title class="thread-category-card-text">
                   Home & Garden
                 </Card.Title>
               </Card.Body>
             </Card>
 
-            <Card className="category-card">
+            <Card className="thread-category-card">
               <Card.Img
-                class="category-image"
+                class="thread-category-image"
                 variant="top"
                 src="https://res.cloudinary.com/db9eiaidf/image/upload/v1637232638/health_beauty_vtwx9s.png"
               />
               <Card.Body>
-                <Card.Title class="category-card-text">
+                <Card.Title class="thread-category-card-text">
                   Health & Beauty
                 </Card.Title>
               </Card.Body>
             </Card>
 
-            <Card className="category-card">
+            <Card className="thread-category-card">
               <Card.Img
-                class="category-image"
+                class="thread-category-image"
                 variant="top"
                 src="https://res.cloudinary.com/db9eiaidf/image/upload/v1637232638/cinema_book_music_geee25.png"
               />
               <Card.Body>
-                <Card.Title class="category-card-text">
+                <Card.Title class="thread-category-card-text">
                   Cinema, Books & Music
                 </Card.Title>
               </Card.Body>
             </Card>
 
-            <Card className="category-card">
+            <Card className="thread-category-card">
               <Card.Img
-                class="category-image"
+                class="thread-category-image"
                 variant="top"
                 src="https://res.cloudinary.com/db9eiaidf/image/upload/v1637232638/vehicle_motor_himq6u.png"
               />
               <Card.Body>
-                <Card.Title class="category-card-text">
+                <Card.Title class="thread-category-card-text">
                   Vehicles & Motor
                 </Card.Title>
               </Card.Body>
             </Card>
 
-            <Card className="category-card">
+            <Card className="thread-category-card">
               <Card.Img
-                class="category-image"
+                class="thread-category-image"
                 variant="top"
                 src="https://res.cloudinary.com/db9eiaidf/image/upload/v1637232638/art_collectible_xfmxgn.png"
               />
               <Card.Body>
-                <Card.Title class="category-card-text">
+                <Card.Title class="thread-category-card-text">
                   Art & Collectibles
                 </Card.Title>
               </Card.Body>
             </Card>
 
-            <Card className="category-card">
+            <Card className="thread-category-card">
               <Card.Img
-                class="category-image"
+                class="thread-category-image"
                 variant="top"
                 src="https://res.cloudinary.com/db9eiaidf/image/upload/v1637232638/kid_toy_psfz5w.png"
               />
               <Card.Body>
-                <Card.Title class="category-card-text">Toys & Kids</Card.Title>
+                <Card.Title class="thread-category-card-text">
+                  Toys & Kids
+                </Card.Title>
               </Card.Body>
             </Card>
           </>
@@ -190,10 +194,11 @@ export class AllThreads extends Component {
               {threadList.map((thread) => {
                 return (
                   <Card
-                    style={{ width: "18rem" }}
+                    style={{ width: "70vw" }}
                     className="single-thread-card"
                   >
                     <Card.Body key={thread._id}>
+                      <Card.Title>{thread.createdBy.username}</Card.Title>
                       <Card.Title>{thread.title}</Card.Title>
                       <Card.Text>{thread.category}</Card.Text>
                       <Card.Text>{thread.createdAt}</Card.Text>
