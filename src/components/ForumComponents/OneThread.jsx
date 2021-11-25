@@ -48,13 +48,13 @@ export class OneThread extends Component {
   render() {
     const { isLoading, oneThread, edit } = this.state;
     return (
-      <div class="one-thread-card">
+      <div className="one-thread-div">
         <h2>One Thread</h2>
         {isLoading && <h1>...Loading</h1>}
         {!isLoading && (
-          <Card>
-            <Card.Body>
-              <Card.Title>{oneThread.title}</Card.Title>
+          <Card className="one-thread-card" border="light">
+            <Card.Body className="one-thread-card-body">
+              <Card.Title>Title:{oneThread.title}</Card.Title>
               <Card.Text>{oneThread.description}</Card.Text>
               <Card.Text>{oneThread.category}</Card.Text>
               <Link to={`/thread/${oneThread._id}/edit`}>

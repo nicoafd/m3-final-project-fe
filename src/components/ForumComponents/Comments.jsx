@@ -1,6 +1,8 @@
 import axios from "axios";
 import React, { Component } from "react";
+import { Card } from "react-bootstrap";
 import AddCommentForm from "./AddCommentForm";
+import Button from "react-bootstrap/Button";
 
 export class Comments extends Component {
   state = {
@@ -47,14 +49,18 @@ export class Comments extends Component {
           <>
             {commentList.map((comment) => {
               return (
-                <div>
-                  <p style={{ fontSize: "18px" }}>{comment.userId.username}</p>
-                  <p>{comment.description}</p>
+                <Card>
+                  <Card.Body>
+                    <Card.Text style={{ fontSize: "18px" }}>
+                      {comment.userId.username}
+                    </Card.Text>
+                    <Card.Text>{comment.description}</Card.Text>
 
-                  <button onClick={() => this.handleDelete(comment._id)}>
-                    Delete
-                  </button>
-                </div>
+                    <Button onClick={() => this.handleDelete(comment._id)}>
+                      Delete
+                    </Button>
+                  </Card.Body>
+                </Card>
               );
             })}
           </>

@@ -12,6 +12,7 @@ export class AllThreads extends Component {
     threadList: [],
     filteredList: [],
     isFiltered: false,
+    activeCategory: "",
   };
 
   handleThreads = () => {
@@ -34,8 +35,11 @@ export class AllThreads extends Component {
       return item.category.includes(category);
     });
 
-    this.setState({ filteredList: filteredList, isFiltered: true });
-    console.log(filteredList);
+    this.setState({
+      filteredList: filteredList,
+      isFiltered: true,
+      activeCategory: category,
+    });
   };
 
   componentDidMount() {
@@ -49,7 +53,7 @@ export class AllThreads extends Component {
 
   render() {
     const { isLoggedIn } = this.props;
-    const { threadList, isFiltered, filteredList } = this.state;
+    const { threadList, isFiltered, filteredList, activeCategory } = this.state;
     return (
       <div className="all-thread-container">
         <div class="thread-category-container">
@@ -57,11 +61,10 @@ export class AllThreads extends Component {
             Clear filter
           </Button>
           <h3>Categories Filter</h3>
-          <>
+          <div className="scrollable">
             <Card
               className="thread-category-card"
               onClick={() => this.handleFilter("Mobile, Computers & Devices")}
-              border="light"
             >
               <Card.Img
                 class="thread-category-image"
@@ -78,7 +81,6 @@ export class AllThreads extends Component {
             <Card
               className="thread-category-card"
               onClick={() => this.handleFilter("Consoles & Videogames")}
-              border="light"
             >
               <Card.Img
                 class="thread-category-image"
@@ -95,7 +97,6 @@ export class AllThreads extends Component {
             <Card
               className="thread-category-card"
               onClick={() => this.handleFilter("Fashion")}
-              border="light"
             >
               <Card.Img
                 class="thread-category-image"
@@ -112,7 +113,6 @@ export class AllThreads extends Component {
             <Card
               className="thread-category-card"
               onClick={() => this.handleFilter("Sports & Outdoors")}
-              border="light"
             >
               <Card.Img
                 class="thread-category-image"
@@ -129,7 +129,6 @@ export class AllThreads extends Component {
             <Card
               className="thread-category-card"
               onClick={() => this.handleFilter("Home & Garden")}
-              border="light"
             >
               <Card.Img
                 class="thread-category-image"
@@ -146,7 +145,6 @@ export class AllThreads extends Component {
             <Card
               className="thread-category-card"
               onClick={() => this.handleFilter("Health & Beauty")}
-              border="light"
             >
               <Card.Img
                 class="thread-category-image"
@@ -163,7 +161,6 @@ export class AllThreads extends Component {
             <Card
               className="thread-category-card"
               onClick={() => this.handleFilter("Cinema, Books & Music")}
-              border="light"
             >
               <Card.Img
                 class="thread-category-image"
@@ -180,7 +177,6 @@ export class AllThreads extends Component {
             <Card
               className="thread-category-card"
               onClick={() => this.handleFilter("Vehicles & Motor")}
-              border="light"
             >
               <Card.Img
                 class="thread-category-image"
@@ -197,7 +193,6 @@ export class AllThreads extends Component {
             <Card
               className="thread-category-card"
               onClick={() => this.handleFilter("Art & Collectibles")}
-              border="light"
             >
               <Card.Img
                 class="thread-category-image"
@@ -214,7 +209,6 @@ export class AllThreads extends Component {
             <Card
               className="thread-category-card"
               onClick={() => this.handleFilter("Toys & Kids")}
-              border="light"
             >
               <Card.Img
                 class="thread-category-image"
@@ -227,7 +221,7 @@ export class AllThreads extends Component {
                 </Card.Title>
               </Card.Body>
             </Card>
-          </>
+          </div>
 
           <div class="category-container-mobile">
             <Form.Select
@@ -267,30 +261,8 @@ export class AllThreads extends Component {
             </>
           )}
           {isFiltered && (
-            <>
+            <div className="scrollable">
               {filteredList.map((thread) => {
-                return (
-                  <Card
-                    style={{ width: "70vw" }}
-                    className="single-thread-card"
-                  >
-                    <Card.Body key={thread._id}>
-                      <Card.Title>{thread.createdBy.username}</Card.Title>
-                      <Card.Title>{thread.title}</Card.Title>
-                      <Card.Text>{thread.category}</Card.Text>
-                      <Card.Text>{thread.createdAt}</Card.Text>
-                      <Link to={`/thread/${thread._id}`}>
-                        <Button>See Details</Button>
-                      </Link>
-                    </Card.Body>
-                  </Card>
-                );
-              })}
-            </>
-          )}
-          {!isFiltered && (
-            <>
-              {threadList.map((thread) => {
                 return (
                   <Card
                     style={{ width: "70vw" }}
@@ -310,7 +282,31 @@ export class AllThreads extends Component {
                   </Card>
                 );
               })}
-            </>
+            </div>
+          )}
+          {!isFiltered && (
+            <div className="scrollable">
+              {threadList.map((thread) => {
+                return (
+                  <Card
+                    style={{ width: "70vw" }}
+                    className="single-thread-card"
+                  >
+                    <Card.Body key={thread._id}>
+                      <Card.Title>
+                        Created by: {thread.createdBy.username}
+                      </Card.Title>
+                      <Card.Title>{thread.title}</Card.Title>
+                      <Card.Text>Category: {thread.category}</Card.Text>
+                      <Card.Text>{thread.createdAt.slice(0, 10)}</Card.Text>
+                      <Link to={`/thread/${thread._id}`}>
+                        <Button>See Details</Button>
+                      </Link>
+                    </Card.Body>
+                  </Card>
+                );
+              })}
+            </div>
           )}
         </div>
       </div>

@@ -1,5 +1,4 @@
 .create-thread-form,
-.one-thread-card,
 .all-threads {
   display: flex;
   flex-direction: column;
@@ -8,7 +7,16 @@
   padding-top: 1vh;
 }
 
+.create-thread-form {
+  height: 70vh;
+  padding-top: 20vh;
+}
+
 /* CSS for all threads*/
+.scrollable {
+  overflow-y: auto;
+  max-height: 70vh;
+}
 
 .thread-category-container {
   display: flex !important;
@@ -34,6 +42,10 @@
   align-items: center;
   margin-bottom: 0.2vh;
   min-width: 25vw !important;
+}
+
+.thread-category-card:hover {
+  border: 1px solid rgb(248, 157, 13);
 }
 
 .all-threads {
@@ -98,3 +110,21 @@
 }
 
 /*CSS for One thread*/
+.one-thread-div {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 10vh;
+  width: 100vw;
+}
+
+.one-thread-card {
+  display: flex;
+  flex-direction: row;
+  min-width: 80vw;
+  min-height: 30vh;
+}
+
+.one-thread-card-body {
+  min-width: 70vw;
+}
