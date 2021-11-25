@@ -61,7 +61,7 @@ export class AllThreads extends Component {
             Clear filter
           </Button>
           <h3>Categories Filter</h3>
-          <div className="scrollable">
+          <div className="thread-scrollable">
             <Card
               className="thread-category-card"
               onClick={() => this.handleFilter("Mobile, Computers & Devices")}
@@ -261,7 +261,7 @@ export class AllThreads extends Component {
             </>
           )}
           {isFiltered && (
-            <div className="scrollable">
+            <div className="thread-scrollable">
               {filteredList.map((thread) => {
                 return (
                   <Card
@@ -285,7 +285,7 @@ export class AllThreads extends Component {
             </div>
           )}
           {!isFiltered && (
-            <div className="scrollable">
+            <div className="thread-scrollable">
               {threadList.map((thread) => {
                 return (
                   <Card

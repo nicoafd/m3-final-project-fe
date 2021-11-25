@@ -13,7 +13,7 @@
 }
 
 /* CSS for all threads*/
-.scrollable {
+.thread-scrollable {
   overflow-y: auto;
   max-height: 70vh;
 }
@@ -34,6 +34,7 @@
   display: flex !important;
   flex-direction: row;
   justify-content: space-evenly;
+  min-height: 80vh;
 }
 
 .thread-category-card {
