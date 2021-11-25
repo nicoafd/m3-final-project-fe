@@ -45,8 +45,6 @@ export class AllProducts extends Component {
       isFiltered: true,
       categorySelected: category,
     });
-    console.log(this.state.categorySelected);
-    console.log(filteredList);
   };
 
   displayText = () => {};
@@ -306,16 +304,11 @@ export class AllProducts extends Component {
                     <Card.Img variant="top" src={product.image} />
                     <Card.Body>
                       <Card.Title>{product.name}</Card.Title>
-                      <Card.Text>{product.description}</Card.Text>
-                      <button onClick={() => this.handleClick(product)}>
-                        Buy
-                      </button>
+
                       <Link to={`/product/${product._id}`}>
-                        <button>See Details</button>
+                        <Button className="see-details-btn">See Details</Button>
                       </Link>
-                      {itemToBuy && itemToBuy._id === product._id && (
-                        <Payment itemToBuy={itemToBuy} />
-                      )}
+
                     </Card.Body>
                   </Card>
                 );
@@ -332,15 +325,11 @@ export class AllProducts extends Component {
                     <Card.Body>
                       <Card.Title>{product.name}</Card.Title>
                       <Card.Text>{product.description}</Card.Text>
-                      <button onClick={() => this.handleClick(product)}>
-                        Buy
-                      </button>
+
                       <Link to={`/product/${product._id}`}>
-                        <button>See Details</button>
+                        <Button className="see-details-btn">See Details</Button>
                       </Link>
-                      {itemToBuy && itemToBuy._id === product._id && (
-                        <Payment itemToBuy={itemToBuy} />
-                      )}
+
                     </Card.Body>
                   </Card>
                 );
