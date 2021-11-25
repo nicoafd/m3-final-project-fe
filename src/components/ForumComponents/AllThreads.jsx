@@ -42,13 +42,21 @@ export class AllThreads extends Component {
     this.handleThreads();
   }
 
+  handleTurnOffFilter = () => {
+    const { threadList } = this.state;
+    this.setState({ isFiltered: false, filteredList: [...threadList] });
+  };
+
   render() {
     const { isLoggedIn } = this.props;
     const { threadList, isFiltered, filteredList } = this.state;
     return (
       <div className="all-thread-container">
         <div class="thread-category-container">
-          <h3>Categories</h3>
+          <Button onClick={() => this.handleTurnOffFilter()}>
+            Clear filter
+          </Button>
+          <h3>Categories Filter</h3>
           <>
             <Card
               className="thread-category-card"
@@ -226,9 +234,6 @@ export class AllThreads extends Component {
               onChange={(event) => this.handleFilter(event.target.value)}
               id="category"
             >
-              <option onClick={() => this.setState({ isFiltered: false })}>
-                All
-              </option>
               <option>Mobile, Computers & Devices</option>
               <option>Consoles & Videogames</option>
               <option>Fashion</option>
@@ -240,18 +245,12 @@ export class AllThreads extends Component {
               <option>Art & Collectibles</option>
               <option>Toys & Kids</option>
             </Form.Select>
-            <Button
-              className="all-categories-btn"
-              onClick={() => this.setState({ isFiltered: false })}
-            >
-              All Categories
-            </Button>
           </div>
         </div>
         <div class="all-threads">
           {isLoggedIn && (
             <Link to="/create">
-              <button>Create Thread</button>
+              <Button>Create Thread</Button>
             </Link>
           )}
 
@@ -281,7 +280,7 @@ export class AllThreads extends Component {
                       <Card.Text>{thread.category}</Card.Text>
                       <Card.Text>{thread.createdAt}</Card.Text>
                       <Link to={`/thread/${thread._id}`}>
-                        <button>See Details</button>
+                        <Button>See Details</Button>
                       </Link>
                     </Card.Body>
                   </Card>
@@ -298,12 +297,14 @@ export class AllThreads extends Component {
                     className="single-thread-card"
                   >
                     <Card.Body key={thread._id}>
-                      <Card.Title>{thread.createdBy.username}</Card.Title>
+                      <Card.Title>
+                        Created by: {thread.createdBy.username}
+                      </Card.Title>
                       <Card.Title>{thread.title}</Card.Title>
-                      <Card.Text>{thread.category}</Card.Text>
+                      <Card.Text>Category: {thread.category}</Card.Text>
                       <Card.Text>{thread.createdAt}</Card.Text>
                       <Link to={`/thread/${thread._id}`}>
-                        <button>See Details</button>
+                        <Button>See Details</Button>
                       </Link>
                     </Card.Body>
                   </Card>

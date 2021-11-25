@@ -14,7 +14,9 @@
   display: flex !important;
   flex-wrap: wrap !important;
   flex-direction: column !important;
+  align-items: center;
   max-width: 25vw !important;
+  min-width: 25vw !important;
   margin-left: 0.5vw !important;
   padding-top: 1vh !important;
   margin-top: 10vh !important;
@@ -26,8 +28,17 @@
   justify-content: space-evenly;
 }
 
+.thread-category-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 0.2vh;
+  min-width: 25vw !important;
+}
+
 .all-threads {
   margin-top: 10vh;
+  min-width: 70vw !important;
 }
 .category-container-mobile {
   display: none;
@@ -54,6 +65,35 @@
 @media (max-width: 530px) {
   .category-container {
     margin-top: 10vh;
+  }
+}
+
+/* We need another media query at 520px approximately */
+
+@media (max-width: 400px) {
+  .thread-category-container {
+    row-gap: 2.5vh;
+    column-gap: 0.5vw;
+  }
+
+  .card {
+    height: 15vh;
+    width: 25vw;
+  }
+
+  .category-image {
+    height: 3.2rem;
+    width: 1.5rem;
+  }
+}
+
+@media (max-width: 520px) {
+  .thread-category-card {
+    display: none !important;
+  }
+
+  .category-container-mobile {
+    display: table-row !important;
   }
 }
 

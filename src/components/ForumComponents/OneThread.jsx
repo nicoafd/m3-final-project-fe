@@ -4,6 +4,9 @@ import axios from "axios";
 import Comments from "./Comments";
 import "./Forum.css";
 
+import Card from "react-bootstrap/Card";
+import Button from "react-bootstrap/Button";
+
 export class OneThread extends Component {
   state = {
     oneThread: null,
@@ -49,22 +52,24 @@ export class OneThread extends Component {
         <h2>One Thread</h2>
         {isLoading && <h1>...Loading</h1>}
         {!isLoading && (
-          <div>
-            <h2>{oneThread.title}</h2>
-            <p>{oneThread.description}</p>
-            <p>{oneThread.category}</p>
-            <Link to={`/thread/${oneThread._id}/edit`}>
-              <button>Edit</button>
-            </Link>
+          <Card>
+            <Card.Body>
+              <Card.Title>{oneThread.title}</Card.Title>
+              <Card.Text>{oneThread.description}</Card.Text>
+              <Card.Text>{oneThread.category}</Card.Text>
+              <Link to={`/thread/${oneThread._id}/edit`}>
+                <Button>Edit</Button>
+              </Link>
 
-            <button onClick={this.handleDelete}>Delete</button>
+              <Button onClick={this.handleDelete}>Delete</Button>
+            </Card.Body>
+            {edit && <Card.Text>Edited</Card.Text>}
 
-            {edit && <p>Edited</p>}
             <Comments
               id={this.props.match.params.id}
               history={this.props.history}
             />
-          </div>
+          </Card>
         )}
       </div>
     );
