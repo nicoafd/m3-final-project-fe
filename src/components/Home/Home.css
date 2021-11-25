@@ -3,10 +3,5 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 90vh;
-}
-
-@media (max-width: 400px) {
-  .home-container {
-  }
+  height: 88vh;
 }

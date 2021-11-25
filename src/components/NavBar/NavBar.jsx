@@ -11,7 +11,7 @@ const linkStyles = {
 };
 
 const activeStyles = {
-  color: "yellow",
+  color: "rgb(248,157,13)",
 };
 
 export default function NavBar({ isLoggedIn, user, setUser }) {

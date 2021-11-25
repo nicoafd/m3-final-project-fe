@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  /*  height: 88vh; */
 }
 
 .profile-img-div {
@@ -23,8 +24,12 @@
 
 .profile-products,
 .profile-threads {
-  margin-top: 3.2vh;
+  margin: 3.2vh 0;
   width: 80vw;
+}
+
+.scrollable {
+  height: 35vh;
   overflow-y: auto;
 }
 
@@ -68,15 +73,33 @@
     justify-content: space-evenly;
   }
   .profile-img-div {
-    width: 33vw;
+    width: 50vw;
+    height: 50vh;
+    margin-top: 5vh;
   }
   .profile-listings {
-    margin-top: 15vh;
+    margin-top: 10vh;
   }
   .profile-products {
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    width: 25vw;
   }
   .profile-threads {
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    width: 25vw;
+  }
+  .profile-img {
+    width: 20%;
+    height: 30%;
+    margin: 4vh 0 2vh 0;
+  }
+  .scrollable {
+    height: 30vh;
+  }
+  .profile-threads > h6 {
+    margin: 2.4vh 0;
+  }
+  .profile-products > h6 {
+    margin: 2.4vh 0;
   }
 }

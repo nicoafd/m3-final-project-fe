@@ -14,16 +14,17 @@ const stripePromise = loadStripe(
 
 export default function App({ itemToBuy }) {
   const [clientSecret, setClientSecret] = useState("");
-
-  useEffect(() => {
+  const [transactionId, setTransactionId] = useEffect(() => {
     // Create PaymentIntent as soon as the page loads
     fetch(`${process.env.REACT_APP_API_HOST}/payments/create-payment-intent`, {
       method: "POST",
+      credentials: "include",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ items: [itemToBuy] }),
     })
       .then((res) => res.json())
-      .then((data) => setClientSecret(data.clientSecret));
+      .then((data) => setClientSecret(data.clientSecret))
+      .catch((err) => console.log(err));
   }, [itemToBuy]);
 
   const appearance = {

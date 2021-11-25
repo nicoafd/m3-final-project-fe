@@ -4,8 +4,7 @@ import {
   useStripe,
   useElements,
 } from "@stripe/react-stripe-js";
-
-
+import axios from "axios";
 
 export default function CheckoutForm() {
   const stripe = useStripe();
@@ -27,25 +26,27 @@ export default function CheckoutForm() {
       return;
     }
 
-    stripe.retrievePaymentIntent(clientSecret).then(({ paymentIntent }) => {
-      switch (paymentIntent.status) {
-        case "succeeded":
-          setMessage("Payment succeeded!");
-          break;
-        case "processing":
-          setMessage("Your payment is processing.");
-          break;
-        case "requires_payment_method":
-          setMessage("Your payment was not successful, please try again.");
-          break;
-        default:
-          setMessage("Something went wrong.");
-          break;
-      }
-    });
+    stripe
+      .retrievePaymentIntent(clientSecret)
+      .then(({ paymentIntent }) => {
+        switch (paymentIntent.status) {
+          case "succeeded":
+            setMessage("Payment succeeded!");
+            break;
+          case "processing":
+            setMessage("Your payment is processing.");
+            break;
+          case "requires_payment_method":
+            setMessage("Your payment was not successful, please try again.");
+            break;
+          default:
+            setMessage("Something went wrong.");
+            break;
+        }
+      })
+      .catch((err) => console.log(err));
   }, [stripe]);
 
-  
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -61,8 +62,7 @@ export default function CheckoutForm() {
       elements,
       confirmParams: {
         // Make sure to change this to your payment completion page
-        return_url:
-          "http://localhost:3000/order/success?session_id={CHECKOUT_SESSION_ID}",
+        return_url: `http://localhost:3000/order/success?session_id={CHECKOUT_SESSION_ID}`,
       },
     });
 
@@ -77,14 +77,34 @@ export default function CheckoutForm() {
       setMessage("An unexpected error occured.");
     }
 
+    // approveTransaction();
+
     setIsLoading(false);
   };
 
-  
+  const approveTransaction = () => {
+    axios
+      .patch(
+        `${process.env.REACT_APP_API_HOST}/transaction-complete/${this.history.props.match.id}`,
+        { withCredentials: true },
+        { isApproved: true }
+      )
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((err) => {
+        this.props.history.push("/error");
+      });
+  };
+
   return (
     <form id="payment-form" onSubmit={handleSubmit}>
       <PaymentElement id="payment-element" />
-      <button id="payment-button" disabled={isLoading || !stripe || !elements} id="submit">
+      <button
+        id="payment-button"
+        disabled={isLoading || !stripe || !elements}
+        id="submit"
+      >
         <span id="button-text">
           {isLoading ? <div className="spinner" id="spinner"></div> : "Pay now"}
         </span>

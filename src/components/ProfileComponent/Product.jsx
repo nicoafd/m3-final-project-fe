@@ -26,7 +26,7 @@ function Product() {
   }, []);
 
   return (
-    <div>
+    <div className="scrollable">
       {isLoading ? (
         <RingLoader loading={isLoading} size={50} />
       ) : (
