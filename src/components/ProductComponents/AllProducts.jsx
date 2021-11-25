@@ -16,6 +16,7 @@ export class AllProducts extends Component {
     itemToBuy: null,
     filteredList: [],
     isFiltered: false,
+    categorySelected: "",
   };
 
   handleProducts = () => {
@@ -39,7 +40,12 @@ export class AllProducts extends Component {
       return item.category.includes(category);
     });
 
-    this.setState({ filteredList: filteredList, isFiltered: true });
+    this.setState({
+      filteredList: filteredList,
+      isFiltered: true,
+      categorySelected: category,
+    });
+    console.log(this.state.categorySelected);
     console.log(filteredList);
   };
 
@@ -54,8 +60,14 @@ export class AllProducts extends Component {
   };
 
   render() {
-    const { productList, isLoading, itemToBuy, isFiltered, filteredList } =
-      this.state;
+    const {
+      productList,
+      isLoading,
+      itemToBuy,
+      isFiltered,
+      filteredList,
+      categorySelected,
+    } = this.state;
     const { isLoggedIn } = this.props;
     return (
       <div>
@@ -236,9 +248,7 @@ export class AllProducts extends Component {
               onChange={(event) => this.handleFilter(event.target.value)}
               id="category"
             >
-              <option onClick={() => this.setState({ isFiltered: false })}>
-                All Categories
-              </option>
+              <option>All Categories</option>
               <option value="Mobile, Computers & Devices">
                 Mobile, Computers & Devices
               </option>
@@ -258,13 +268,19 @@ export class AllProducts extends Component {
             </Form.Select>
             <Button
               className="all-categories-btn"
-              onClick={() => this.setState({ isFiltered: false })}
+              onClick={() =>
+                this.setState({
+                  isFiltered: false,
+                  filteredList: [...productList],
+                })
+              }
             >
               All Categories
             </Button>
           </div>
         </div>
         <div class="all-products">
+          <h4>{categorySelected}</h4>
           {isLoggedIn && (
             <Link to="/sell">
               <button>List Product</button>

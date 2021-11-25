@@ -20,6 +20,7 @@ import ProductEdit from "./components/ProductComponents/ProductEdit";
 import ThreadEdit from "./components/ForumComponents/ThreadEdit";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Footer from "./components/Footer/Footer";
+import PaymentComplete from "./components/PaymentsComponents/PaymentComplete";
 
 //:/
 
@@ -97,6 +98,8 @@ class App extends Component {
           <Route path="/product/:id" component={OneProduct} exact />
           <Route path="/product/:id/edit" component={ProductEdit} exact />
 
+          <Route path="/order/success" component={PaymentComplete} exact />
+
           {isLoggedIn && (
             <Route path="/sell" component={AddProductForm} exact />
           )}
@@ -112,7 +115,7 @@ class App extends Component {
           <Route path="/not-authorized" component={NotAuthorized} />
           <Route path="/error" component={ServerError} />
         </Switch>
-        <Footer/>
+        <Footer />
       </div>
     );
   }

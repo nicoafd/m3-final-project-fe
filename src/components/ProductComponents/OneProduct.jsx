@@ -5,12 +5,14 @@ import { Link } from "react-router-dom";
 import "./Product.css";
 import { Card } from "react-bootstrap";
 import Button from "@restart/ui/esm/Button";
+import Payment from "../PaymentsComponents/Payment"
 
 export class OneProduct extends Component {
   state = {
     oneProduct: null,
     isLoading: true,
     edit: false,
+    itemToBuy: null,
   };
 
   componentDidMount() {
@@ -22,7 +24,7 @@ export class OneProduct extends Component {
         }
       )
       .then((response) => {
-        console.log(response)
+        console.log(response);
         this.setState({
           oneProduct: response.data,
           isLoading: false,
@@ -31,6 +33,11 @@ export class OneProduct extends Component {
       })
       .catch((err) => this.props.history.push("/error"));
   }
+
+  // FOR STRIPE
+  handleClick = (item) => {
+    this.setState({ itemToBuy: item });
+  };
 
   handleDelete = () => {
     axios
@@ -42,7 +49,7 @@ export class OneProduct extends Component {
   };
 
   render() {
-    const { isLoading, oneProduct, edit } = this.state;
+    const { isLoading, oneProduct, edit, itemToBuy } = this.state;
     return (
       <div class="one-product-card">
         {isLoading && <h1>...Loading</h1>}
@@ -63,8 +70,16 @@ export class OneProduct extends Component {
                     <Button>Edit</Button>
                   </Link>
                   {edit && <p>Edited</p>}
+                  <button onClick={() => this.handleClick(oneProduct)}>
+                    Buy
+                  </button>
+                  {itemToBuy && itemToBuy._id === oneProduct._id && (
+                    <Payment itemToBuy={itemToBuy} />
+                  )}
                 </Card.Body>
-                <Card.Footer className="text-muted">Added by {oneProduct.addedBy.username}</Card.Footer>
+                <Card.Footer className="text-muted">
+                  Added by {oneProduct.addedBy.username}
+                </Card.Footer>
               </Card>
             </div>
           </>
