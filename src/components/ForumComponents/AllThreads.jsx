@@ -274,7 +274,7 @@ export class AllThreads extends Component {
                       </Card.Title>
                       <Card.Title>{thread.title}</Card.Title>
                       <Card.Text>Category: {thread.category}</Card.Text>
-                      <Card.Text>{thread.createdAt}</Card.Text>
+                      {/* <Card.Text>{thread.createdAt}</Card.Text> */}
                       <Link to={`/thread/${thread._id}`}>
                         <Button>See Details</Button>
                       </Link>
@@ -298,7 +298,7 @@ export class AllThreads extends Component {
                       </Card.Title>
                       <Card.Title>{thread.title}</Card.Title>
                       <Card.Text>Category: {thread.category}</Card.Text>
-                      <Card.Text>{thread.createdAt.slice(0, 10)}</Card.Text>
+                      {/* <Card.Text>{thread.createdAt.slice(0, 10)}</Card.Text> */}
                       <Link to={`/thread/${thread._id}`}>
                         <Button>See Details</Button>
                       </Link>
