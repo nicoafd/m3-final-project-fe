@@ -4,7 +4,8 @@ import { Link } from "react-router-dom";
 import "./Product.css";
 import { Button, Card, ListGroup, ListGroupItem } from "react-bootstrap";
 import Payment from "../PaymentsComponents/Payment";
-import { BsHandThumbsUpFill } from "react-icons/bs";
+import { BsHandThumbsUpFill, BsArrowLeft } from "react-icons/bs";
+import "./Product.css";
 
 export class OneProduct extends Component {
   state = {
@@ -56,6 +57,13 @@ export class OneProduct extends Component {
     return (
       <div class="one-product-card">
         {isLoading && <h1>...Loading</h1>}
+        <button
+          className="goback-btn"
+          onClick={() => this.props.history.goBack()}
+        >
+          <BsArrowLeft />
+          Go Back
+        </button>
         {!isLoading && (
           <>
             <div>

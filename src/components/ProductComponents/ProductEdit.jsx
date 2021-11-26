@@ -3,6 +3,7 @@ import axios from "axios";
 import "./Product.css";
 import { Form, InputGroup } from "react-bootstrap";
 import Button from "@restart/ui/esm/Button";
+import { BsArrowLeft } from "react-icons/bs";
 
 export class ProductEdit extends Component {
   state = {
@@ -46,6 +47,13 @@ export class ProductEdit extends Component {
       this.state;
     return (
       <div class="add-product-form">
+        <button
+          className="goback-btn"
+          onClick={() => this.props.history.goBack()}
+        >
+          <BsArrowLeft />
+          Go Back
+        </button>
         <Form onSubmit={this.handleSubmit}>
           <Form.Group className="mb-3" controlId="formGroupEmail">
             <Form.Label htmlFor="name">Name of Product</Form.Label>

@@ -283,7 +283,7 @@ export class AllProducts extends Component {
           <h4>{categorySelected}</h4>
           {isLoggedIn && (
             <Link to="/sell">
-              <button>List Product</button>
+              <Button>List Product</Button>
             </Link>
           )}
           <h3>Latest Products...</h3>
@@ -307,6 +307,8 @@ export class AllProducts extends Component {
                     <Card.Body>
                       <Card.Title>{product.name}</Card.Title>
 
+                      <Card.Text>{product.category}</Card.Text>
+
                       <Link to={`/product/${product._id}`}>
                         <Button className="see-details-btn">See Details</Button>
                       </Link>
@@ -325,7 +327,8 @@ export class AllProducts extends Component {
                     <Card.Img variant="top" src={product.image} />
                     <Card.Body>
                       <Card.Title>{product.name}</Card.Title>
-                      <Card.Text>{product.description}</Card.Text>
+
+                      <Card.Text>{product.category}</Card.Text>
 
                       <Link to={`/product/${product._id}`}>
                         <Button className="see-details-btn">See Details</Button>
