@@ -280,13 +280,19 @@ export class AllProducts extends Component {
           </div>
         </div>
         <div className="all-products product-scrollable">
-          <h4>{categorySelected}</h4>
-          {isLoggedIn && (
-            <Link to="/sell">
-              <Button>List Product</Button>
-            </Link>
-          )}
-          <h3>Latest Products...</h3>
+          <div className="heading-all-products">
+            {categorySelected && (
+              <>
+                <h4>{categorySelected}</h4>
+              </>
+            )}
+            {isLoggedIn && (
+              <Link to="/sell">
+                <Button>List Product</Button>
+              </Link>
+            )}
+            <h3>Latest Products...</h3>
+          </div>
           {filteredList.length === 0 && (
             <>
               <h4 style={{ color: "red" }}>
@@ -320,7 +326,7 @@ export class AllProducts extends Component {
           )}
 
           {!isFiltered && (
-            <>
+            <div className="all-products-cards">
               {productList.map((product) => {
                 return (
                   <Card className="product-card">
@@ -337,7 +343,7 @@ export class AllProducts extends Component {
                   </Card>
                 );
               })}
-            </>
+            </div>
           )}
         </div>
       </div>
