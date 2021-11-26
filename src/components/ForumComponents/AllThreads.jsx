@@ -294,7 +294,7 @@ export class AllThreads extends Component {
                   >
                     <Card.Body key={thread._id}>
                       <Card.Title>
-                        Created by: {thread.createdBy.username}
+                        {/* Created by: {thread.createdBy.username} */}
                       </Card.Title>
                       <Card.Title>{thread.title}</Card.Title>
                       <Card.Text>Category: {thread.category}</Card.Text>
