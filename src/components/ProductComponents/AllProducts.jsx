@@ -242,11 +242,13 @@ export class AllProducts extends Component {
           </>
 
           <div class="category-container-mobile">
+            <p className="product-body-text" style={{ fontWeight: "bold" }}>
+              Select a category from the drop-down menu!
+            </p>
             <Form.Select
               onChange={(event) => this.handleFilter(event.target.value)}
               id="category"
             >
-              <option>All Categories</option>
               <option value="Mobile, Computers & Devices">
                 Mobile, Computers & Devices
               </option>
@@ -277,14 +279,14 @@ export class AllProducts extends Component {
             </Button>
           </div>
         </div>
-        <div class="all-products">
+        <div className="all-products product-scrollable">
           <h4>{categorySelected}</h4>
           {isLoggedIn && (
             <Link to="/sell">
               <button>List Product</button>
             </Link>
           )}
-          <h3>Latest Products</h3>
+          <h3>Latest Products...</h3>
           {filteredList.length === 0 && (
             <>
               <h4 style={{ color: "red" }}>
@@ -297,7 +299,7 @@ export class AllProducts extends Component {
             </>
           )}
           {isFiltered && (
-            <>
+            <div className="all-product-cards">
               {filteredList.map((product) => {
                 return (
                   <Card className="product-card">
@@ -308,12 +310,11 @@ export class AllProducts extends Component {
                       <Link to={`/product/${product._id}`}>
                         <Button className="see-details-btn">See Details</Button>
                       </Link>
-
                     </Card.Body>
                   </Card>
                 );
               })}
-            </>
+            </div>
           )}
 
           {!isFiltered && (
@@ -329,7 +330,6 @@ export class AllProducts extends Component {
                       <Link to={`/product/${product._id}`}>
                         <Button className="see-details-btn">See Details</Button>
                       </Link>
-
                     </Card.Body>
                   </Card>
                 );
