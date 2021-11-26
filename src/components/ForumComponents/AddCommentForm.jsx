@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
+import "./Forum.css";
+import Button from "react-bootstrap/Button";
 
 class AddCommentForm extends Component {
   state = {
@@ -31,15 +33,18 @@ class AddCommentForm extends Component {
     const { description, errorMessage } = this.state;
     return (
       <div>
-        <form onSubmit={this.handleSubmit}>
-          <label htmlFor="title">comment:</label>
+        <form onSubmit={this.handleSubmit} className="add-comment-form">
           <input
+            className="comment-input"
             type="text"
             name="description"
+            placeholder="Write your comment"
             value={description}
             onChange={this.handleChange}
           />
-          <button type="submit">submit</button>
+          <Button className="comment-button thread-buttons" type="submit">
+            submit
+          </Button>
         </form>
 
         {errorMessage && <p>{errorMessage}</p>}

@@ -3,6 +3,8 @@ import React, { Component } from "react";
 import { Card } from "react-bootstrap";
 import AddCommentForm from "./AddCommentForm";
 import Button from "react-bootstrap/Button";
+import { BsFillTrashFill } from "react-icons/bs";
+import "./Forum.css";
 
 export class Comments extends Component {
   state = {
@@ -43,7 +45,7 @@ export class Comments extends Component {
     const { commentList } = this.state;
     const { isLoggedIn, user, isActive } = this.props;
     return (
-      <div>
+      <div className="comment-container ">
         {isActive && (
           <AddCommentForm
             id={this.props.id}
@@ -53,27 +55,28 @@ export class Comments extends Component {
         )}
 
         {commentList.length && (
-          <>
+          <div className="comment-category-scrollable">
             {commentList.map((comment) => {
               return (
-                <Card>
-                  <Card.Body>
-                    <Card.Text style={{ fontSize: "18px" }}>
-                      {comment.userId.username}
-                    </Card.Text>
-                    <Card.Text>{comment.description}</Card.Text>
+                <Card className="comment-card ">
+                  <Card.Body className="comment-card-body">
+                    <div>
+                      <Card.Text>{comment.userId.username}</Card.Text>
+                      <Card.Text>{comment.description}</Card.Text>
+                    </div>
                     {comment.userId._id === this.state.userId && (
                       <>
-                        <Button onClick={() => this.handleDelete(comment._id)}>
-                          Delete
-                        </Button>
+                        <BsFillTrashFill
+                          className="delete-comment-button"
+                          onClick={() => this.handleDelete(comment._id)}
+                        />
                       </>
                     )}
                   </Card.Body>
                 </Card>
               );
             })}
-          </>
+          </div>
         )}
       </div>
     );

@@ -12,8 +12,13 @@
   padding-top: 20vh;
 }
 
+.single-thread-card {
+  width: 70vw;
+}
+
 /* CSS for all threads*/
-.thread-scrollable {
+.thread-scrollable,
+.thread-category-scrollable {
   overflow-y: auto;
   max-height: 70vh;
 }
@@ -75,57 +80,162 @@
   white-space: initial;
 }
 
-@media (max-width: 530px) {
-  .category-container {
-    margin-top: 10vh;
-  }
-}
-
 /* We need another media query at 520px approximately */
 
-@media (max-width: 400px) {
+/*CSS for One thread*/
+.one-thread-div {
+  display: flex !important;
+  flex-direction: column !important;
+  min-height: 85vh !important;
+  margin-top: 10vh;
+  align-items: center !important;
+}
+
+.one-thread-card {
+  width: 90vw !important;
+  height: 30vh !important;
+}
+
+.comment-container {
+  width: 90vw !important;
+  min-height: 45vh !important;
+}
+
+.comment-card {
+  width: 90vw !important;
+  height: 16vh !important;
+}
+
+.comment-category-scrollable {
+  overflow-y: auto !important;
+  height: 38vh !important;
+}
+
+.comment-card-body {
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: space-between;
+}
+
+.delete-comment-button {
+  max-height: 5vh !important;
+  margin: 5vh 0 !important;
+}
+
+.add-comment-form {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 5vh;
+  margin-top: 5vh !important;
+  margin-bottom: 3.2vh !important;
+}
+
+.comment-input {
+  width: 80vw;
+}
+
+@media (max-width: 520px) {
   .thread-category-container {
-    row-gap: 2.5vh;
-    column-gap: 0.5vw;
+    width: 90vw !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
   }
 
+  .category-container-mobile {
+    width: 90vw !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  .thread-category-scrollable {
+    display: none;
+  }
   .card {
-    height: 15vh;
-    width: 25vw;
+    height: 30vh;
+    width: 90vw;
   }
 
   .category-image {
     height: 3.2rem;
     width: 1.5rem;
   }
-}
-
-@media (max-width: 520px) {
   .thread-category-card {
     display: none !important;
+  }
+  .single-thread-card {
+    height: 20vh !important;
+    width: 90vw !important;
+    padding: 0 !important;
+    margin: 0 !important;
   }
 
   .category-container-mobile {
     display: table-row !important;
   }
+
+  .all-thread-container {
+    display: flex;
+    flex-direction: column;
+  }
+  .thread-scrollable {
+    min-height: 70vh !important;
+    width: 90vw !important;
+  }
+  .all-threads {
+    margin-top: 5vh;
+    padding: 0;
+  }
+
+  .thread-title-text {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  #category {
+    margin-left: 5vw;
+  }
 }
 
-/*CSS for One thread*/
-.one-thread-div {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  padding-top: 10vh;
-  width: 100vw;
-}
+@media (min-width: 900px) {
+  .comment-card {
+    width: 89vw !important;
+  }
 
-.one-thread-card {
-  display: flex;
-  flex-direction: row;
-  min-width: 80vw;
-  min-height: 30vh;
-}
+  .add-comment-form {
+    margin-top: 5vh !important;
+  }
 
-.one-thread-card-body {
-  min-width: 70vw;
+  .one-thread-card-body {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+  }
+
+  .comment-button-div {
+    display: flex;
+    flex-direction: column;
+    row-gap: 2.4vh;
+    justify-content: center;
+  }
+
+  .one-thread-card {
+    height: 20vh !important;
+  }
+
+  .comment-category-scrollable {
+    height: 50vh !important;
+  }
+
+  .thread-heading {
+    margin-top: 2.4vh !important;
+    margin-bottom: 2.4vh !important;
+  }
+
+  .thread-buttons {
+    width: 4vw !important;
+  }
 }

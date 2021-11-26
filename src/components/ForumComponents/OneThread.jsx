@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import Comments from "./Comments";
 import "./Forum.css";
+import { AiFillEdit } from "react-icons/ai";
 
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
@@ -60,35 +61,42 @@ export class OneThread extends Component {
     const { isLoggedIn, user } = this.props;
     return (
       <div className="one-thread-div">
-        <h2>One Thread</h2>
+        <h2 className="thread-heading">Discussion</h2>
         {isLoading && <h1>...Loading</h1>}
         {!isLoading && (
           <Card className="one-thread-card" border="light">
             <Card.Body className="one-thread-card-body">
-              <Card.Title>Title:{oneThread.title}</Card.Title>
-              <Card.Text>{oneThread.description}</Card.Text>
-              <Card.Text>{oneThread.category}</Card.Text>
+              <div>
+                <Card.Title>Title:{oneThread.title}</Card.Title>
+                <Card.Text>{oneThread.description}</Card.Text>
+                <Card.Text>{oneThread.category}</Card.Text>
+                {edit && <AiFillEdit />}
+              </div>
+
               {oneThread.createdBy === userId && (
-                <>
+                <div className="comment-button-div">
                   <Link to={`/thread/${oneThread._id}/edit`}>
-                    <Button>Edit</Button>
+                    <Button className="thread-buttons">Edit</Button>
                   </Link>
 
-                  <Button onClick={this.handleDelete}>Delete</Button>
-                </>
+                  <Button
+                    className="thread-buttons"
+                    onClick={this.handleDelete}
+                  >
+                    Delete
+                  </Button>
+                </div>
               )}
             </Card.Body>
-            {edit && <Card.Text>Edited</Card.Text>}
-
-            <Comments
-              id={this.props.match.params.id}
-              history={this.props.history}
-              isLoggedIn={isLoggedIn}
-              user={user}
-              isActive={this.state.isActive}
-            />
           </Card>
         )}
+        <Comments
+          id={this.props.match.params.id}
+          history={this.props.history}
+          isLoggedIn={isLoggedIn}
+          user={user}
+          isActive={this.state.isActive}
+        />
       </div>
     );
   }

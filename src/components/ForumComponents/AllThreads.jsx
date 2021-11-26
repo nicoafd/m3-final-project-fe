@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import React, { Component } from "react";
 import Card from "react-bootstrap/Card";
 
+import "./Forum.css";
+
 import Categories from "../CategoryComponent/Categories";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -60,8 +62,8 @@ export class AllThreads extends Component {
           <Button onClick={() => this.handleTurnOffFilter()}>
             Clear filter
           </Button>
-          <h3>Categories Filter</h3>
-          <div className="thread-scrollable">
+          <h3>Filter</h3>
+          <div className="thread-category-scrollable">
             <Card
               className="thread-category-card"
               onClick={() => this.handleFilter("Mobile, Computers & Devices")}
@@ -264,15 +266,12 @@ export class AllThreads extends Component {
             <div className="thread-scrollable">
               {filteredList.map((thread) => {
                 return (
-                  <Card
-                    style={{ width: "70vw" }}
-                    className="single-thread-card"
-                  >
+                  <Card className="single-thread-card">
                     <Card.Body key={thread._id}>
-                      <Card.Title>
-                        Created by: {thread.createdBy.username}
-                      </Card.Title>
-                      <Card.Title>{thread.title}</Card.Title>
+                      <div className="thread-title-text">
+                        <Card.Title>{thread.title}</Card.Title>
+                        <Card.Text>By: {thread.createdBy.username}</Card.Text>
+                      </div>
                       <Card.Text>Category: {thread.category}</Card.Text>
                       {/* <Card.Text>{thread.createdAt}</Card.Text> */}
                       <Link to={`/thread/${thread._id}`}>
@@ -288,15 +287,12 @@ export class AllThreads extends Component {
             <div className="thread-scrollable">
               {threadList.map((thread) => {
                 return (
-                  <Card
-                    style={{ width: "70vw" }}
-                    className="single-thread-card"
-                  >
+                  <Card className="single-thread-card">
                     <Card.Body key={thread._id}>
-                      <Card.Title>
-                        Created by: {thread.createdBy.username}
-                      </Card.Title>
-                      <Card.Title>{thread.title}</Card.Title>
+                      <div className="thread-title-text">
+                        <Card.Title>{thread.title}</Card.Title>
+                        <Card.Text>By: {thread.createdBy.username}</Card.Text>
+                      </div>
                       <Card.Text>Category: {thread.category}</Card.Text>
                       {/* <Card.Text>{thread.createdAt.slice(0, 10)}</Card.Text> */}
                       <Link to={`/thread/${thread._id}`}>
