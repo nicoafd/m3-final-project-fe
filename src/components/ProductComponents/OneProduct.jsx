@@ -17,7 +17,7 @@ export class OneProduct extends Component {
   };
 
   componentDidMount() {
-    const {isLoggedIn, user} = this.props
+    const { isLoggedIn, user } = this.props;
     axios
       .get(
         `${process.env.REACT_APP_API_HOST}/product/${this.props.match.params.id}`,
@@ -26,15 +26,12 @@ export class OneProduct extends Component {
         }
       )
       .then((response) => {
-        console.log(response);
         this.setState({
           oneProduct: response.data,
           isLoading: false,
           data: response.data.edit,
           userId: isLoggedIn ? user._id : "",
-
         });
-
       })
       .catch((err) => this.props.history.push("/error"));
   }

@@ -12,10 +12,13 @@ export class OneThread extends Component {
     oneThread: null,
     isLoading: true,
     edit: false,
+    userId: "",
+    isLoggedIn: null,
+    isActive: null,
   };
 
   componentDidMount() {
-    console.log(this.props);
+    const { user, isLoggedIn } = this.props;
     axios
       .get(
         `${process.env.REACT_APP_API_HOST}/thread/${this.props.match.params.id}`,
@@ -28,15 +31,22 @@ export class OneThread extends Component {
           oneThread: response.data,
           isLoading: false,
           edit: response.data.edit,
+          userId: isLoggedIn ? user._id : "",
+          isActive: response.data.isActive,
         });
       })
-      .catch((err) => this.props.history.push("/error"));
+      .catch((err) => {
+        console.log(err);
+        this.props.history.push("/error");
+      });
   }
 
   handleDelete = () => {
+    const { isActive } = this.state;
     axios
-      .delete(
+      .patch(
         `${process.env.REACT_APP_API_HOST}/thread/${this.props.match.params.id}`,
+        { isActive: !isActive },
         {
           withCredentials: true,
         }
@@ -46,7 +56,8 @@ export class OneThread extends Component {
   };
 
   render() {
-    const { isLoading, oneThread, edit } = this.state;
+    const { isLoading, oneThread, edit, userId } = this.state;
+    const { isLoggedIn, user } = this.props;
     return (
       <div className="one-thread-div">
         <h2>One Thread</h2>
@@ -57,17 +68,24 @@ export class OneThread extends Component {
               <Card.Title>Title:{oneThread.title}</Card.Title>
               <Card.Text>{oneThread.description}</Card.Text>
               <Card.Text>{oneThread.category}</Card.Text>
-              <Link to={`/thread/${oneThread._id}/edit`}>
-                <Button>Edit</Button>
-              </Link>
+              {oneThread.createdBy === userId && (
+                <>
+                  <Link to={`/thread/${oneThread._id}/edit`}>
+                    <Button>Edit</Button>
+                  </Link>
 
-              <Button onClick={this.handleDelete}>Delete</Button>
+                  <Button onClick={this.handleDelete}>Delete</Button>
+                </>
+              )}
             </Card.Body>
             {edit && <Card.Text>Edited</Card.Text>}
 
             <Comments
               id={this.props.match.params.id}
               history={this.props.history}
+              isLoggedIn={isLoggedIn}
+              user={user}
+              isActive={this.state.isActive}
             />
           </Card>
         )}

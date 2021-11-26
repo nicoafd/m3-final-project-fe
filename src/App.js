@@ -91,12 +91,24 @@ class App extends Component {
             exact
           />
 
-          <Route path="/thread/:id" component={OneThread} exact />
-          {<Route path="/product/:id/edit" component={ProductEdit} exact />}
-          {<Route path="/thread/:id/edit" component={ThreadEdit} exact />}
+          <Route
+            path="/thread/:id"
+            render={(props) => (
+              <OneThread {...props} user={user} isLoggedIn={isLoggedIn} />
+            )}
+            exact
+          />
+          <Route path="/product/:id/edit" component={ProductEdit} exact />
+          <Route path="/thread/:id/edit" component={ThreadEdit} exact />
 
-          <Route path="/product/:id" render={(props) => (<OneProduct {...props} user={user} isLoggedIn={isLoggedIn} />)} exact />
-          
+          <Route
+            path="/product/:id"
+            render={(props) => (
+              <OneProduct {...props} user={user} isLoggedIn={isLoggedIn} />
+            )}
+            exact
+          />
+
           <Route path="/product/:id/edit" component={ProductEdit} exact />
 
           <Route path="/order/success" component={PaymentComplete} exact />
