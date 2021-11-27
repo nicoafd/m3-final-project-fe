@@ -276,11 +276,13 @@ export class AllProducts extends Component {
             Clear filter
           </Button>
         </div>
-        {isLoggedIn && (
-          <Link to="/sell">
-            <Button>List Product</Button>
-          </Link>
-        )}
+        <div className="sell-product-btn">
+          {isLoggedIn && (
+            <Link to="/sell">
+              <Button>List Product</Button>
+            </Link>
+          )}
+        </div>
         <div className="all-products product-scrollable">
           <div className="heading-all-products">
             {categorySelected && (

@@ -84,6 +84,9 @@
   font-size: 12px;
   white-space: initial;
 }
+.goback-btn {
+  margin-bottom: 2.4vh !important;
+}
 
 /* We need another media query at 520px approximately */
 

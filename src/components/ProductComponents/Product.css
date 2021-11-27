@@ -121,6 +121,12 @@
   justify-content: center;
   align-items: center;
 }
+.sell-product-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2.4vh;
+}
 
 /* Media queries begin here*/
 

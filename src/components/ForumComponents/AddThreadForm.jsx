@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { Component } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import { BsArrowLeft } from "react-icons/bs";
 import "./Forum.css";
 
 class AddThreadForm extends Component {
@@ -41,6 +42,12 @@ class AddThreadForm extends Component {
     const { title, description, category, errorMessage } = this.state;
     return (
       <div class="create-thread-form">
+        <Button
+          className="goback-btn"
+          onClick={() => this.props.history.goBack()}
+        >
+          <BsArrowLeft /> Go Back
+        </Button>
         <Form class="add-thread-form" onSubmit={this.handleSubmit}>
           <Form.Group className="mb-3" controlId="formGroupEmail">
             <Form.Label htmlFor="title">Thread Title</Form.Label>
