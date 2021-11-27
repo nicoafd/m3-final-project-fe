@@ -1,4 +1,4 @@
-import Button from "@restart/ui/esm/Button";
+import Button from "react-bootstrap/Button";
 import axios from "axios";
 import React, { Component } from "react";
 import { Form, InputGroup } from "react-bootstrap";
@@ -72,7 +72,7 @@ export default class SignupForm extends Component {
     const { username, password, email, city, errorMessage, imageIsUploading } =
       this.state;
     return (
-      <div>
+      <div className="sign-up-form">
         <div class="add-product-form">
           <Form onSubmit={this.handleSubmit}>
             <Form.Group className="mb-3" controlId="formGroupEmail">
@@ -131,12 +131,7 @@ export default class SignupForm extends Component {
               </InputGroup>
             </Form.Group>
 
-            <Button
-              type="submit"
-              disabled={imageIsUploading}
-              variant="secondary"
-              size="sm"
-            >
+            <Button type="submit" disabled={imageIsUploading}>
               Register
             </Button>
             {errorMessage && <p>{errorMessage}</p>}

@@ -1,7 +1,21 @@
 .auth-form {
   display: flex;
   flex-direction: column;
-  margin-top: 15vh;
+  margin-top: 10vh;
   align-items: center;
   padding-top: 80px;
+}
+
+.btn-primary {
+  background-color: black;
+  color: rgb(248, 157, 13);
+  border: 5px solid black !important;
+}
+
+.sign-up-form {
+  height: 80vh;
+}
+
+.auth-form {
+  height: 70vh;
 }

@@ -8,6 +8,10 @@
 }
 
 .create-thread-form {
+  height: 84vh !important;
+}
+
+.create-thread-form {
   height: 70vh;
   padding-top: 20vh;
 }
@@ -40,6 +44,7 @@
   flex-direction: row;
   justify-content: space-evenly;
   min-height: 80vh;
+  margin-bottom: 2vh;
 }
 
 .thread-category-card {
@@ -141,6 +146,10 @@
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
+  }
+
+  #category {
+    margin-left: 0 !important;
   }
 
   .category-container-mobile {

@@ -67,7 +67,7 @@ class AddThreadForm extends Component {
 
           <Form.Select
             onChange={this.handleChange}
-            id="category"
+            id="thread-category-select"
             name="category"
             value={category}
           >
@@ -86,9 +86,7 @@ class AddThreadForm extends Component {
             <option value="Toys & Kids">Toys & Kids</option>
           </Form.Select>
           <br></br>
-          <Button type="submit" variant="secondary" size="sm">
-            Post Thread
-          </Button>
+          <Button type="submit">Post Thread</Button>
           {errorMessage && <p>{errorMessage}</p>}
         </Form>
       </div>

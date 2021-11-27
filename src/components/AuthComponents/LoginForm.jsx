@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { Component } from "react";
+import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import "./Auth.css";
 
@@ -45,23 +46,30 @@ export default class LoginForm extends Component {
     return (
       <div class="auth-form">
         <Form onSubmit={this.handleSubmit}>
-          <input
-            type="email"
-            name="email"
-            value={email}
-            onChange={this.handleChange}
-            placeholder="example@example.com"
-          />
-          <input
-            type="password"
-            name="password"
-            value={password}
-            onChange={this.handleChange}
-            placeholder="Password"
-          />
+          <Form.Group className="mb-3">
+            <Form.Label htmlFor="email">Email</Form.Label>
+            <Form.Control
+              type="email"
+              name="email"
+              value={email}
+              onChange={this.handleChange}
+              placeholder="example@example.com"
+            />
+          </Form.Group>
+
+          <Form.Group className="mb-3">
+            <Form.Label htmlFor="password">Password</Form.Label>
+            <Form.Control
+              type="password"
+              name="password"
+              value={password}
+              onChange={this.handleChange}
+              placeholder="Password"
+            />
+          </Form.Group>
 
           {errorMessage && <p>{errorMessage}</p>}
-          <button type="submit">Login</button>
+          <Button type="submit">Login</Button>
         </Form>
       </div>
     );
