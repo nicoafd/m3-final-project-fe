@@ -47,7 +47,11 @@ function Thread() {
                     {thread.description}
                   </div>
                   <Link to={`/thread/${thread._id}`}>
-                    <Badge variant="primary" pill>
+                    <Badge
+                      id="thread-details-badge"
+                      style={{ backgroundColor: "#000000" }}
+                      pill
+                    >
                       details
                     </Badge>
                   </Link>

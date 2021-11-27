@@ -147,9 +147,16 @@
     align-items: center !important;
     justify-content: center !important;
   }
+  #turn-off-filter {
+    margin-left: 5vw !important;
+  }
 
-  #category {
-    margin-left: 0 !important;
+  #filter-header {
+    margin-left: 5vw !important;
+  }
+
+  #mobile-form-category {
+    margin-left: 5vw !important;
   }
 
   .category-container-mobile {
@@ -202,16 +209,28 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    overflow: hidden;
+    text-overflow: clip;
+    width: 80%;
   }
 
   #category {
     margin-left: 5vw;
+  }
+
+  .created-by-thread {
+    width: 30%;
+    margin-left: 5%;
   }
 }
 
 @media (min-width: 900px) {
   .comment-card {
     width: 89vw !important;
+  }
+
+  .one-thread-div {
+    height: fit-content !important;
   }
 
   .add-comment-form {
@@ -222,6 +241,7 @@
     display: flex !important;
     flex-direction: row !important;
     justify-content: space-between !important;
+    height: fit-content !important;
   }
 
   .comment-button-div {
@@ -246,5 +266,12 @@
 
   .thread-buttons {
     width: 4vw !important;
+  }
+  #mobile-form-category {
+    display: none;
+  }
+
+  #act-deact-btn {
+    width: fit-content !important;
   }
 }

@@ -43,7 +43,7 @@ class AddCommentForm extends Component {
             onChange={this.handleChange}
           />
           <Button className="comment-button thread-buttons" type="submit">
-            submit
+            Submit
           </Button>
         </form>
 
