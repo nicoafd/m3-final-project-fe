@@ -57,61 +57,56 @@ export class OneProduct extends Component {
     return (
       <div class="one-product-card">
         {isLoading && <h1>...Loading</h1>}
-        <button
+        <Button
           className="goback-btn"
           onClick={() => this.props.history.goBack()}
         >
           <BsArrowLeft />
           Go Back
-        </button>
+        </Button>
         {!isLoading && (
           <>
-            <div>
-              <Card className="text-center">
-                <Card.Header>{oneProduct.category}</Card.Header>
-                <Card.Body>
-                  <Card.Title>{oneProduct.name}</Card.Title>
-                  <Card.Img
-                    className="one-product-img"
-                    src={oneProduct.image}
-                  />
-                  <Card.Text>{oneProduct.description}</Card.Text>
-                  <ListGroup className="list-group-flush">
-                    <ListGroupItem>Price: €{oneProduct.price}</ListGroupItem>
-                    <br></br>
-                  </ListGroup>
+            <Card className="text-center">
+              <Card.Header>{oneProduct.category}</Card.Header>
+              <Card.Body>
+                <Card.Title>{oneProduct.name}</Card.Title>
+                <Card.Img className="one-product-img" src={oneProduct.image} />
+                <Card.Text>{oneProduct.description}</Card.Text>
+                <ListGroup className="list-group-flush">
+                  <ListGroupItem>Price: €{oneProduct.price}</ListGroupItem>
+                  <br></br>
+                </ListGroup>
 
-                  {oneProduct.addedBy._id === userId && (
-                    <>
-                      <Button
-                        className="product-btn"
-                        onClick={this.handleDelete}
-                        variant="primary"
-                      >
-                        Delete
-                      </Button>
-                      <Link to={`/product/${oneProduct._id}/edit`}>
-                        <Button className="product-btn">Edit</Button>
-                      </Link>
-                    </>
-                  )}
+                {oneProduct.addedBy._id === userId && (
+                  <>
+                    <Button
+                      className="product-btn"
+                      onClick={this.handleDelete}
+                      variant="primary"
+                    >
+                      Delete
+                    </Button>
+                    <Link to={`/product/${oneProduct._id}/edit`}>
+                      <Button className="product-btn">Edit</Button>
+                    </Link>
+                  </>
+                )}
 
-                  {edit && <p>Edited</p>}
-                  <Button
-                    className="product-btn"
-                    onClick={() => this.handleClick(oneProduct)}
-                  >
-                    Buy
-                  </Button>
-                  {itemToBuy && itemToBuy._id === oneProduct._id && (
-                    <Payment itemToBuy={itemToBuy} />
-                  )}
-                </Card.Body>
-                <Card.Footer className="text-muted">
-                  Added by {oneProduct.addedBy.username}
-                </Card.Footer>
-              </Card>
-            </div>
+                {edit && <p>Edited</p>}
+                <Button
+                  className="product-btn"
+                  onClick={() => this.handleClick(oneProduct)}
+                >
+                  Buy
+                </Button>
+                {itemToBuy && itemToBuy._id === oneProduct._id && (
+                  <Payment itemToBuy={itemToBuy} />
+                )}
+              </Card.Body>
+              <Card.Footer className="text-muted">
+                Added by {oneProduct.addedBy.username}
+              </Card.Footer>
+            </Card>
           </>
         )}
       </div>

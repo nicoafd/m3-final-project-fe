@@ -39,8 +39,6 @@ class AddProductForm extends Component {
       .catch((err) => this.props.history.push("/error"));
   };
 
-
-
   handleSubmit = (event) => {
     event.preventDefault();
     const { name, image, description, price, category, stock } = this.state;
@@ -126,7 +124,7 @@ class AddProductForm extends Component {
 
           <Form.Select
             onChange={this.handleChange}
-            id="category"
+            id="category-select"
             name="category"
             value={category}
           >
@@ -155,12 +153,7 @@ class AddProductForm extends Component {
             />
           </Form.Group>
 
-          <Button
-            type="submit"
-            disabled={imageIsUploading}
-            variant="secondary"
-            size="sm"
-          >
+          <Button type="submit" disabled={imageIsUploading}>
             Submit Product
           </Button>
           {errorMessage && <p>{errorMessage}</p>}

@@ -22,6 +22,7 @@
   display: flex;
   flex-direction: column;
   margin-top: 4vh;
+  height: 87.2vh !important;
   align-items: center;
   padding-top: 11vh;
 }
@@ -114,7 +115,14 @@
   background-color: #000000 !important;
   font-weight: 500 !important;
 }
-/* We need another media query at 520px approximately */
+
+.product-filter-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Media queries begin here*/
 
 @media (max-width: 600px) {
   .category-container {
@@ -157,6 +165,7 @@
   }
   .text-center {
     width: 100%;
+    height: fit-content;
   }
   .goback-btn {
     margin: 0 64vw 2.4vh 0;
@@ -166,7 +175,12 @@
     flex-direction: column !important;
     align-items: center !important;
   }
+  .product-card-img {
+    height: 24vh;
+    width: auto;
+  }
 }
+
 @media (min-height: 700px) {
   .text-center {
     padding-bottom: 0vh;
@@ -187,6 +201,9 @@
   #category {
     display: none;
   }
+  #category-select {
+    margin-left: 0vh !important;
+  }
 
   .all-categories-btn,
   .product-body-text {
@@ -195,7 +212,8 @@
   .all-products {
     display: flex;
     flex-direction: column;
-    margin-top: 2.4vh;
+    margin-top: 4vh;
+    height: 80vh !important;
     padding: 0;
   }
   .all-products-cards {
@@ -211,5 +229,8 @@
     flex-direction: column;
     align-items: center;
     row-gap: 1.6vh;
+  }
+  .one-product-card {
+    margin-bottom: 5vh;
   }
 }

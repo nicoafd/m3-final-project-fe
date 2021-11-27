@@ -47,11 +47,14 @@ export class AllProducts extends Component {
     });
   };
 
-  displayText = () => {};
-
   componentDidMount() {
     this.handleProducts();
   }
+
+  handleTurnOffFilter = () => {
+    const { productList } = this.state;
+    this.setState({ isFiltered: false, filteredList: [...productList] });
+  };
 
   handleClick = (item) => {
     this.setState({ itemToBuy: item });
@@ -266,19 +269,14 @@ export class AllProducts extends Component {
               <option value="Art & Collectibles">Art & Collectibles</option>
               <option value="Toys & Kids">Toys & Kids</option>
             </Form.Select>
-            <Button
-              className="all-categories-btn"
-              onClick={() =>
-                this.setState({
-                  isFiltered: false,
-                  filteredList: [...productList],
-                })
-              }
-            >
-              All Categories
-            </Button>
           </div>
         </div>
+        <div className="product-filter-btn">
+          <Button onClick={() => this.handleTurnOffFilter()}>
+            Clear filter
+          </Button>
+        </div>
+
         <div className="all-products product-scrollable">
           <div className="heading-all-products">
             {categorySelected && (
@@ -309,7 +307,11 @@ export class AllProducts extends Component {
               {filteredList.map((product) => {
                 return (
                   <Card className="product-card">
-                    <Card.Img variant="top" src={product.image} />
+                    <Card.Img
+                      className="product-card-img"
+                      variant="top"
+                      src={product.image}
+                    />
                     <Card.Body>
                       <Card.Title>{product.name}</Card.Title>
 
@@ -330,7 +332,11 @@ export class AllProducts extends Component {
               {productList.map((product) => {
                 return (
                   <Card className="product-card">
-                    <Card.Img variant="top" src={product.image} />
+                    <Card.Img
+                      className="product-card-img"
+                      variant="top"
+                      src={product.image}
+                    />
                     <Card.Body>
                       <Card.Title>{product.name}</Card.Title>
 
