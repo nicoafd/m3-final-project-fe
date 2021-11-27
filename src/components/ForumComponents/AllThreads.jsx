@@ -59,10 +59,13 @@ export class AllThreads extends Component {
     return (
       <div className="all-thread-container">
         <div class="thread-category-container">
-          <Button onClick={() => this.handleTurnOffFilter()}>
+          <Button
+            id="turn-off-filter"
+            onClick={() => this.handleTurnOffFilter()}
+          >
             Clear filter
           </Button>
-          <h3>Filter</h3>
+          <h3 id="filter-header">Filter</h3>
           <div className="thread-category-scrollable">
             <Card
               className="thread-category-card"
@@ -228,7 +231,7 @@ export class AllThreads extends Component {
           <div class="category-container-mobile">
             <Form.Select
               onChange={(event) => this.handleFilter(event.target.value)}
-              id="category"
+              id="mobile-form-category"
             >
               <option>Mobile, Computers & Devices</option>
               <option>Consoles & Videogames</option>
@@ -269,8 +272,12 @@ export class AllThreads extends Component {
                   <Card className="single-thread-card">
                     <Card.Body key={thread._id}>
                       <div className="thread-title-text">
-                        <Card.Title>{thread.title}</Card.Title>
-                        <Card.Text>By: {thread.createdBy.username}</Card.Text>
+                        <Card.Title className="text-truncate">
+                          {thread.title}
+                        </Card.Title>
+                        <Card.Text className="text-truncate">
+                          By: {thread.createdBy.username}
+                        </Card.Text>
                       </div>
                       <Card.Text>Category: {thread.category}</Card.Text>
                       {/* <Card.Text>{thread.createdAt}</Card.Text> */}
@@ -290,8 +297,12 @@ export class AllThreads extends Component {
                   <Card className="single-thread-card">
                     <Card.Body key={thread._id}>
                       <div className="thread-title-text">
-                        <Card.Title>{thread.title}</Card.Title>
-                        <Card.Text>By: {thread.createdBy.username}</Card.Text>
+                        <Card.Title className="text-truncate">
+                          {thread.title}
+                        </Card.Title>
+                        <Card.Text className="text-truncate created-by-thread">
+                          By: {thread.createdBy.username}
+                        </Card.Text>
                       </div>
                       <Card.Text>Category: {thread.category}</Card.Text>
                       {/* <Card.Text>{thread.createdAt.slice(0, 10)}</Card.Text> */}

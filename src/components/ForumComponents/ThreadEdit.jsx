@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Form } from "react-bootstrap";
-import Button from "@restart/ui/esm/Button";
+// import Button from "@restart/ui/esm/Button";
+import Button from "react-bootstrap/Button";
+import { BsArrowLeft } from "react-icons/bs";
 import "./Forum.css";
 
 export class ThreadEdit extends Component {
@@ -39,6 +41,13 @@ export class ThreadEdit extends Component {
     const { title, description, category, isActive } = this.state;
     return (
       <div class="create-thread-form">
+        <Button
+          className="goback-btn"
+          onClick={() => this.props.history.goBack()}
+        >
+          <BsArrowLeft />
+          Go Back
+        </Button>
         <Form class="add-thread-form" onSubmit={this.handleSubmit}>
           <Form.Group className="mb-3" controlId="formGroupEmail">
             <Form.Label htmlFor="title">Thread Title</Form.Label>
@@ -84,9 +93,7 @@ export class ThreadEdit extends Component {
             <option value="Toys & Kids">Toys & Kids</option>
           </Form.Select>
           <br></br>
-          <Button type="submit" variant="secondary" size="sm">
-            Edit Thread
-          </Button>
+          <Button type="submit">Edit Thread</Button>
         </Form>
       </div>
     );

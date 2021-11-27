@@ -67,10 +67,15 @@ export class OneThread extends Component {
           <Card className="one-thread-card" border="light">
             <Card.Body className="one-thread-card-body">
               <div>
-                <Card.Title>Title:{oneThread.title}</Card.Title>
+                <Card.Title>{oneThread.title}</Card.Title>
                 <Card.Text>{oneThread.description}</Card.Text>
                 <Card.Text>{oneThread.category}</Card.Text>
-                {edit && <AiFillEdit />}
+                {edit && (
+                  <p>
+                    <AiFillEdit />
+                    Edited
+                  </p>
+                )}
               </div>
 
               {oneThread.createdBy === userId && (
@@ -80,10 +85,11 @@ export class OneThread extends Component {
                   </Link>
 
                   <Button
+                    id="act-deact-btn"
                     className="thread-buttons"
                     onClick={this.handleDelete}
                   >
-                    Delete
+                    {this.state.isActive ? "Deactivate" : "Activate"}
                   </Button>
                 </div>
               )}

@@ -43,7 +43,7 @@ function Product() {
                     {product.description}
                   </div>
                   <Link to={`/product/${product._id}`}>
-                    <Badge variant="primary" pill>
+                    <Badge id="product-details-badge" pill>
                       details
                     </Badge>
                   </Link>
