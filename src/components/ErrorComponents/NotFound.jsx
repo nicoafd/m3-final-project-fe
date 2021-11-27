@@ -1,10 +1,11 @@
 import React from "react";
+import Button from "react-bootstrap/Button";
 
 function NotFound({ history }) {
   return (
-    <div>
+    <div style={{ paddingTop: "20vh", height: "80vh" }}>
       <h2>Not fouund. Please go back</h2>
-      <button onClick={() => history.goBack()}>Go back</button>
+      <Button onClick={() => history.goBack()}>Go back</Button>
     </div>
   );
 }

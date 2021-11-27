@@ -1,10 +1,11 @@
 import React from "react";
+import Button from "react-bootstrap/Button";
 
 function NotAuthorized({ history }) {
   return (
-    <div>
+    <div style={{ paddingTop: "20vh", height: "80vh" }}>
       <h2>You are not authorized. Pleaso log in.</h2>
-      <button onClick={() => history.goBack()}>Go back</button>
+      <Button onClick={() => history.goBack()}>Go back</Button>
     </div>
   );
 }
