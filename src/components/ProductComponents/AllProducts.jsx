@@ -276,7 +276,13 @@ export class AllProducts extends Component {
             Clear filter
           </Button>
         </div>
-
+        <div className="sell-product-btn">
+          {isLoggedIn && (
+            <Link to="/sell">
+              <Button>List Product</Button>
+            </Link>
+          )}
+        </div>
         <div className="all-products product-scrollable">
           <div className="heading-all-products">
             {categorySelected && (
@@ -284,11 +290,7 @@ export class AllProducts extends Component {
                 <h4>{categorySelected}</h4>
               </>
             )}
-            {isLoggedIn && (
-              <Link to="/sell">
-                <Button>List Product</Button>
-              </Link>
-            )}
+
             <h3>Latest Products...</h3>
           </div>
           {filteredList.length === 0 && (

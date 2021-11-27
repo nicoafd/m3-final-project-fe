@@ -4,6 +4,7 @@ import axios from "axios";
 import Comments from "./Comments";
 import "./Forum.css";
 import { AiFillEdit } from "react-icons/ai";
+import { BsArrowLeft } from "react-icons/bs";
 
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
@@ -62,6 +63,12 @@ export class OneThread extends Component {
     return (
       <div className="one-thread-div">
         <h2 className="thread-heading">Discussion</h2>
+        <Button
+          className="goback-btn"
+          onClick={() => this.props.history.goBack()}
+        >
+          <BsArrowLeft /> Go Back
+        </Button>
         {isLoading && <h1>...Loading</h1>}
         {!isLoading && (
           <Card className="one-thread-card" border="light">
