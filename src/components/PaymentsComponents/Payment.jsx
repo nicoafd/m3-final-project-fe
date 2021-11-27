@@ -8,9 +8,7 @@ import "./Payment.css";
 // Make sure to call loadStripe outside of a component’s render to avoid
 // recreating the Stripe object on every render.
 // loadStripe is initialized with a fake API key.
-const stripePromise = loadStripe(
-  "pk_test_51JwX9tHrox29DJrePxlMELbAbakAPPpCDb1oixYXOqT5cICYtjD6z6YZyWLduovddj77RbEyg2AGjt7krrOFtFiG00t7ez9tXR"
-);
+const stripePromise = loadStripe(`${process.env.STRIPE_SECRET_KEY}`);
 
 export default function App({ itemToBuy }) {
   const [clientSecret, setClientSecret] = useState("");

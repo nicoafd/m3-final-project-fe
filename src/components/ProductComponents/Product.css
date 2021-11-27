@@ -233,4 +233,8 @@
   .one-product-card {
     margin-bottom: 5vh;
   }
+  .product-card-img {
+    height: 24vh;
+    width: auto;
+  }
 }

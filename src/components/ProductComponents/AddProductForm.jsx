@@ -4,6 +4,7 @@ import RingLoader from "react-spinners/RingLoader";
 import "./Product.css";
 import Form from "react-bootstrap/Form";
 import { InputGroup, Button } from "react-bootstrap";
+import { BsArrowLeft } from "react-icons/bs";
 
 class AddProductForm extends Component {
   state = {
@@ -74,6 +75,12 @@ class AddProductForm extends Component {
     } = this.state;
     return (
       <div class="add-product-form">
+        <Button
+          className="goback-btn"
+          onClick={() => this.props.history.goBack()}
+        >
+          <BsArrowLeft /> Go Back
+        </Button>
         <Form onSubmit={this.handleSubmit}>
           <Form.Group className="mb-3" controlId="formGroupEmail">
             <Form.Label htmlFor="name">Name of Product</Form.Label>
