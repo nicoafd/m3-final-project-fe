@@ -13,7 +13,7 @@ class Home extends Component {
       <div className="home-container">
         <img
           className="home-logo"
-          src="https://res.cloudinary.com/db9eiaidf/image/upload/v1637173969/tradehub-logo-white_s3sfhi.png"
+          src="https://res.cloudinary.com/db9eiaidf/image/upload/v1643208327/tradehub-logo-white_vxlhpu.png"
           alt="logo black"
           style={{ width: "50vw" }}
         />
@@ -21,7 +21,6 @@ class Home extends Component {
           At TradeHub you will sell items you no longer use, and connect with
           the community.
         </h2>
-
       </div>
     );
   }

@@ -40,7 +40,7 @@ export default function NavBar({ isLoggedIn, user, setUser }) {
       <div>
         <NavLink exact to="/">
           <img
-            src="https://res.cloudinary.com/db9eiaidf/image/upload/v1637173969/tradehub-logo-black_tgvwyt.png"
+            src="https://res.cloudinary.com/db9eiaidf/image/upload/v1643208242/tradehub-logo-black_ulwwa8.png"
             alt="logo"
             style={{ width: "9rem" }}
           />
